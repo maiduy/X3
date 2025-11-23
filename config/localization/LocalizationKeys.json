@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "keyMapping": {
+    "common": {
+      "category": "Common UI Elements",
+      "description": "Basic UI buttons, labels, and common actions",
+      "keys": [
+        "ok", "cancel", "confirm", "close", "back", "next", "save", "delete",
+        "loading", "error", "success", "warning", "yes", "no", "level", "max", "new", "unlock"
+      ],
+      "totalKeys": 18
+    },
+    "characters": {
+      "category": "Character Information",
+      "description": "Character names and descriptions",
+      "keys": [
+        "CHAR_NAME_FIRE_DRAGON", "CHAR_DESC_FIRE_DRAGON",
+        "CHAR_NAME_FROST_MAGE", "CHAR_DESC_FROST_MAGE",
+        "CHAR_NAME_HOLY_KNIGHT", "CHAR_DESC_HOLY_KNIGHT",
+        "CHAR_NAME_SHADOW_ASSASSIN", "CHAR_DESC_SHADOW_ASSASSIN",
+        "CHAR_NAME_NATURE_HEALER", "CHAR_DESC_NATURE_HEALER"
+      ],
+      "totalKeys": 10,
+      "pattern": "CHAR_NAME_* and CHAR_DESC_*"
+    },
+    "skills": {
+      "category": "Skill Information",
+      "description": "Skill names and descriptions",
+      "keys": [
+        "SKILL_NAME_PHOENIX_STRIKE", "SKILL_DESC_PHOENIX_STRIKE",
+        "SKILL_NAME_BLIZZARD", "SKILL_DESC_BLIZZARD",
+        "SKILL_NAME_DIVINE_HEALING", "SKILL_DESC_DIVINE_HEALING",
+        "SKILL_NAME_DEATH_MARK", "SKILL_DESC_DEATH_MARK",
+        "SKILL_NAME_FIRE_MASTERY", "SKILL_DESC_FIRE_MASTERY",
+        "SKILL_NAME_BACKSTAB", "SKILL_DESC_BACKSTAB"
+      ],
+      "totalKeys": 12,
+      "pattern": "SKILL_NAME_* and SKILL_DESC_*"
+    },
+    "items": {
+      "category": "Item Information",
+      "description": "Item names and descriptions",
+      "keys": [
+        "ITEM_NAME_SWORD_FLAME", "ITEM_DESC_SWORD_FLAME",
+        "ITEM_NAME_ARMOR_ICE_PLATE", "ITEM_DESC_ARMOR_ICE_PLATE",
+        "ITEM_NAME_DRAGON_AMULET", "ITEM_DESC_DRAGON_AMULET",
+        "ITEM_NAME_HP_POTION", "ITEM_DESC_HP_POTION",
+        "ITEM_NAME_DRAGON_SCALE", "ITEM_DESC_DRAGON_SCALE",
+        "ITEM_NAME_GOLD", "ITEM_DESC_GOLD",
+        "ITEM_NAME_GEM", "ITEM_DESC_GEM",
+        "ITEM_NAME_SUMMON_SCROLL", "ITEM_DESC_SUMMON_SCROLL"
+      ],
+      "totalKeys": 16,
+      "pattern": "ITEM_NAME_* and ITEM_DESC_*"
+    },
+    "gearSets": {
+      "category": "Gear Set Information",
+      "description": "Gear set names and descriptions",
+      "keys": [
+        "SET_NAME_INFERNO", "SET_DESC_INFERNO",
+        "SET_NAME_GLACIER", "SET_DESC_GLACIER",
+        "SET_NAME_LIFESTEAL", "SET_DESC_LIFESTEAL",
+        "SET_NAME_SPEED", "SET_DESC_SPEED",
+        "SET_NAME_COUNTER", "SET_DESC_COUNTER",
+        "SET_NAME_IMMUNITY", "SET_DESC_IMMUNITY"
+      ],
+      "totalKeys": 12,
+      "pattern": "SET_NAME_* and SET_DESC_*"
+    },
+    "ui": {
+      "category": "UI Navigation",
+      "description": "Menu items, screens, and navigation labels",
+      "keys": [
+        "main_menu", "battle", "heroes", "inventory", "shop", "arena",
+        "quests", "events", "settings", "profile", "summon", "campaign",
+        "daily_quests", "weekly_quests", "achievements", "leaderboard",
+        "friends", "guild", "mail"
+      ],
+      "totalKeys": 19
+    },
+    "stats": {
+      "category": "Character Stats",
+      "description": "Stat labels and abbreviations",
+      "keys": [
+        "hp", "atk", "def", "spd", "crit", "critDmg",
+        "accuracy", "evasion", "effectRes"
+      ],
+      "totalKeys": 9
+    },
+    "rewards": {
+      "category": "Reward Messages",
+      "description": "Reward notifications and achievement messages",
+      "keys": [
+        "first_clear", "daily_reward", "weekly_reward",
+        "achievement_unlocked", "level_up", "new_hero", "rank_up"
+      ],
+      "totalKeys": 7
+    },
+    "notifications": {
+      "category": "System Notifications",
+      "description": "Event notifications, system messages",
+      "keys": [
+        "maintenance_soon", "maintenance_active", "event_starting",
+        "event_ending", "energy_full", "quest_complete",
+        "friend_request", "guild_invite"
+      ],
+      "totalKeys": 8,
+      "dynamicParameters": [
+        "{time}", "{eventName}"
+      ]
+    },
+    "errors": {
+      "category": "Error Messages",
+      "description": "Error and warning messages",
+      "keys": [
+        "network_error", "server_error", "invalid_input",
+        "not_enough_resources", "level_too_low", "feature_locked"
+      ],
+      "totalKeys": 6
+    },
+    "battle": {
+      "category": "Battle UI",
+      "description": "Battle screen controls and messages",
+      "keys": [
+        "victory", "defeat", "auto", "speed_x1", "speed_x2", "speed_x3",
+        "pause", "resume", "retreat", "confirm_retreat"
+      ],
+      "totalKeys": 10
+    },
+    "shop": {
+      "category": "Shop UI",
+      "description": "Shop interface and purchase messages",
+      "keys": [
+        "purchase", "purchase_confirm", "insufficient_currency",
+        "purchase_limit", "daily_deal", "best_value", "limited_time", "sold_out"
+      ],
+      "totalKeys": 8
+    },
+    "gacha": {
+      "category": "Gacha/Summon UI",
+      "description": "Summon system interface",
+      "keys": [
+        "summon", "summon_x1", "summon_x10", "guaranteed_ssr",
+        "pity_count", "rates", "history", "skip"
+      ],
+      "totalKeys": 8,
+      "dynamicParameters": [
+        "{count}"
+      ]
+    }
+  },
+  "summary": {
+    "totalCategories": 13,
+    "totalKeys": 143,
+    "supportedLanguages": ["en", "zh", "ko"],
+    "expansionKeys": {
+      "characters": "New characters require CHAR_NAME_* and CHAR_DESC_* keys",
+      "skills": "New skills require SKILL_NAME_* and SKILL_DESC_* keys",
+      "items": "New items require ITEM_NAME_* and ITEM_DESC_* keys",
+      "gearSets": "New gear sets require SET_NAME_* and SET_DESC_* keys"
+    }
+  },
+  "namingConventions": {
+    "entityNames": "ENTITY_TYPE_NAME_ID (uppercase, underscores)",
+    "entityDescriptions": "ENTITY_TYPE_DESC_ID (uppercase, underscores)",
+    "uiElements": "snake_case (lowercase, underscores)",
+    "parameters": "{parameterName} (camelCase in curly braces)"
+  },
+  "bestPractices": {
+    "consistency": "Use consistent patterns for related content (e.g., all character names follow CHAR_NAME_*)",
+    "parameters": "Use parameterized strings for dynamic content (e.g., {time}, {count})",
+    "fallback": "All keys must exist in the fallback language (English)",
+    "contextual": "Include context in key names to avoid ambiguity",
+    "maxLength": "Keep translations under 1000 characters as per validation rules"
+  },
+  "integrationGuide": {
+    "unity": {
+      "example": "LocalizationManager.GetText(\"characters\", \"CHAR_NAME_FIRE_DRAGON\")",
+      "parameters": "LocalizationManager.GetText(\"notifications\", \"maintenance_soon\", new Dictionary<string, string> { {\"time\", \"30 minutes\"} })"
+    },
+    "configReferences": {
+      "characters": "Characters.json references nameKey and descriptionKey",
+      "skills": "Skills.json references nameKey and descriptionKey",
+      "items": "Items.json references nameKey and descriptionKey",
+      "gearSets": "GearSets.json references nameKey and descriptionKey"
+    }
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "sets": [
+    {
+      "id": "SET_INFERNO",
+      "meta": {
+        "nameKey": "SET_NAME_INFERNO",
+        "descriptionKey": "SET_DESC_INFERNO",
+        "icon": "Icon_Set_Inferno",
+        "element": "Fire",
+        "tier": "SSR"
+      },
+      "pieces": {
+        "2": {
+          "name": "Blazing Power",
+          "description": "Increases Fire DMG by 15%",
+          "effects": [
+            {
+              "type": "ElementalDmgBonus",
+              "element": "Fire",
+              "value": 0.15
+            }
+          ]
+        },
+        "4": {
+          "name": "Phoenix's Fury",
+          "description": "After using a skill, increases ATK by 25% for 3 turns. This effect stacks up to 3 times.",
+          "effects": [
+            {
+              "type": "OnSkillUse",
+              "trigger": "AfterSkillCast",
+              "buff": {
+                "id": "BUFF_INFERNO_ATK",
+                "stat": "atk%",
+                "value": 0.25,
+                "duration": 3,
+                "maxStacks": 3,
+                "stackBehavior": "Independent"
+              }
+            }
+          ]
+        }
+      },
+      "requiredSlots": ["Weapon", "Chest", "Gloves", "Boots"]
+    },
+    {
+      "id": "SET_GLACIER",
+      "meta": {
+        "nameKey": "SET_NAME_GLACIER",
+        "descriptionKey": "SET_DESC_GLACIER",
+        "icon": "Icon_Set_Glacier",
+        "element": "Ice",
+        "tier": "SR"
+      },
+      "pieces": {
+        "2": {
+          "name": "Frozen Armor",
+          "description": "Increases DEF by 20%",
+          "effects": [
+            {
+              "type": "StatBonus",
+              "stat": "def%",
+              "value": 0.20
+            }
+          ]
+        },
+        "4": {
+          "name": "Glacial Retaliation",
+          "description": "When hit, 50% chance to freeze the attacker for 1 turn. Cooldown: 3 turns.",
+          "effects": [
+            {
+              "type": "OnHit",
+              "trigger": "WhenReceiveDamage",
+              "chance": 0.5,
+              "cooldown": 3,
+              "effect": {
+                "type": "ApplyDebuff",
+                "id": "DEBUFF_FREEZE",
+                "duration": 1,
+                "target": "Attacker"
+              }
+            }
+          ]
+        }
+      },
+      "requiredSlots": ["Helmet", "Chest", "Gloves", "Boots"]
+    },
+    {
+      "id": "SET_LIFESTEAL",
+      "meta": {
+        "nameKey": "SET_NAME_LIFESTEAL",
+        "descriptionKey": "SET_DESC_LIFESTEAL",
+        "icon": "Icon_Set_Lifesteal",
+        "element": "Dark",
+        "tier": "SSR"
+      },
+      "pieces": {
+        "2": {
+          "name": "Vampiric Touch",
+          "description": "Heals for 10% of damage dealt",
+          "effects": [
+            {
+              "type": "Lifesteal",
+              "value": 0.10
+            }
+          ]
+        },
+        "4": {
+          "name": "Blood Frenzy",
+          "description": "When HP is below 50%, increases lifesteal to 25% and ATK by 30%",
+          "effects": [
+            {
+              "type": "ConditionalBuff",
+              "condition": "HP_BELOW_50",
+              "effects": [
+                {
+                  "type": "Lifesteal",
+                  "value": 0.15
+                },
+                {
+                  "type": "StatBonus",
+                  "stat": "atk%",
+                  "value": 0.30
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "requiredSlots": ["Weapon", "Ring", "Necklace", "Boots"]
+    },
+    {
+      "id": "SET_SPEED",
+      "meta": {
+        "nameKey": "SET_NAME_SPEED",
+        "descriptionKey": "SET_DESC_SPEED",
+        "icon": "Icon_Set_Speed",
+        "element": "Wind",
+        "tier": "SR"
+      },
+      "pieces": {
+        "2": {
+          "name": "Swift Strike",
+          "description": "Increases SPD by 25%",
+          "effects": [
+            {
+              "type": "StatBonus",
+              "stat": "spd%",
+              "value": 0.25
+            }
+          ]
+        },
+        "4": {
+          "name": "Blitz Assault",
+          "description": "At the start of battle, increases ATB by 15%",
+          "effects": [
+            {
+              "type": "OnBattleStart",
+              "effect": {
+                "type": "IncreaseATB",
+                "value": 0.15,
+                "target": "Self"
+              }
+            }
+          ]
+        }
+      },
+      "requiredSlots": ["Weapon", "Gloves", "Boots", "Ring"]
+    },
+    {
+      "id": "SET_COUNTER",
+      "meta": {
+        "nameKey": "SET_NAME_COUNTER",
+        "descriptionKey": "SET_DESC_COUNTER",
+        "icon": "Icon_Set_Counter",
+        "element": "Physical",
+        "tier": "SSR"
+      },
+      "pieces": {
+        "2": {
+          "name": "Riposte",
+          "description": "15% chance to counterattack when hit",
+          "effects": [
+            {
+              "type": "OnHit",
+              "trigger": "WhenReceiveDamage",
+              "chance": 0.15,
+              "effect": {
+                "type": "Counterattack",
+                "damageMultiplier": 0.75,
+                "target": "Attacker"
+              }
+            }
+          ]
+        },
+        "4": {
+          "name": "Perfect Parry",
+          "description": "Counterattack chance increased to 50%. Counterattacks deal 100% damage and have +30% CRIT Rate.",
+          "effects": [
+            {
+              "type": "OnHit",
+              "trigger": "WhenReceiveDamage",
+              "chance": 0.35,
+              "effect": {
+                "type": "Counterattack",
+                "damageMultiplier": 0.25,
+                "critRateBonus": 0.30,
+                "target": "Attacker"
+              }
+            }
+          ]
+        }
+      },
+      "requiredSlots": ["Weapon", "Chest", "Helmet", "Gloves"]
+    },
+    {
+      "id": "SET_IMMUNITY",
+      "meta": {
+        "nameKey": "SET_NAME_IMMUNITY",
+        "descriptionKey": "SET_DESC_IMMUNITY",
+        "icon": "Icon_Set_Immunity",
+        "element": "Light",
+        "tier": "SR"
+      },
+      "pieces": {
+        "2": {
+          "name": "Cleansing Light",
+          "description": "Increases Effect Resistance by 20%",
+          "effects": [
+            {
+              "type": "StatBonus",
+              "stat": "effectRes",
+              "value": 0.20
+            }
+          ]
+        },
+        "4": {
+          "name": "Divine Protection",
+          "description": "At the start of battle, grants Immunity for 2 turns (cannot be debuffed)",
+          "effects": [
+            {
+              "type": "OnBattleStart",
+              "effect": {
+                "type": "ApplyBuff",
+                "id": "BUFF_IMMUNITY",
+                "duration": 2,
+                "target": "Self"
+              }
+            }
+          ]
+        }
+      },
+      "requiredSlots": ["Helmet", "Chest", "Ring", "Necklace"]
+    }
+  ],
+  "buffs": [
+    {
+      "id": "BUFF_INFERNO_ATK",
+      "name": "Inferno's Power",
+      "type": "Buff",
+      "icon": "Icon_Buff_InfernoATK",
+      "effects": [
+        {
+          "type": "StatModifier",
+          "stat": "atk%",
+          "value": 0.25
+        }
+      ],
+      "visual": {
+        "vfx": "VFX_Buff_InfernoATK",
+        "color": "#FF4500"
+      }
+    },
+    {
+      "id": "BUFF_IMMUNITY",
+      "name": "Immunity",
+      "type": "Buff",
+      "icon": "Icon_Buff_Immunity",
+      "effects": [
+        {
+          "type": "DebuffImmunity",
+          "value": 1.0
+        }
+      ],
+      "visual": {
+        "vfx": "VFX_Buff_Immunity",
+        "color": "#FFD700"
+      }
+    }
+  ],
+  "debuffs": [
+    {
+      "id": "DEBUFF_FREEZE",
+      "name": "Frozen",
+      "type": "Debuff",
+      "icon": "Icon_Debuff_Freeze",
+      "effects": [
+        {
+          "type": "DisableAction",
+          "actions": ["Move", "Attack", "Skill"]
+        }
+      ],
+      "visual": {
+        "vfx": "VFX_Debuff_Freeze",
+        "color": "#00BFFF"
+      }
+    }
+  ]
+}

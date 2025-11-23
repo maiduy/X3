@@ -1,0 +1,259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "manifestVersion": "1.0.0",
+  "minClientVersion": "1.0.0",
+  "environment": "Production",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "cdnBaseUrl": "https://cdn.game.example.com/configs",
+  "files": {
+    "killSwitch": {
+      "path": "system/KillSwitch.json",
+      "hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "size": 2048,
+      "priority": 1,
+      "critical": true,
+      "description": "Emergency controls and feature gates"
+    },
+    "maintenance": {
+      "path": "system/Maintenance.json",
+      "hash": "098f6bcd4621d373cade4e832627b4f6",
+      "size": 1024,
+      "priority": 2,
+      "critical": true,
+      "description": "Maintenance mode configuration"
+    },
+    "systemSettings": {
+      "path": "system/SystemSettings.json",
+      "hash": "5d41402abc4b2a76b9719d911017c592",
+      "size": 8192,
+      "priority": 3,
+      "critical": true,
+      "description": "Global system configuration"
+    },
+    "characters": {
+      "path": "core/Characters.json",
+      "hash": "7d793037a0760186574b0282f2f435e7",
+      "size": 10240,
+      "priority": 10,
+      "critical": false,
+      "description": "Character definitions"
+    },
+    "items": {
+      "path": "core/Items.json",
+      "hash": "8277e0910d750195b448797616e091ad",
+      "size": 11264,
+      "priority": 11,
+      "critical": false,
+      "description": "Item and equipment definitions"
+    },
+    "growthCurves": {
+      "path": "core/GrowthCurves.json",
+      "hash": "1679091c5a880faf6fb5e6087eb1b2dc",
+      "size": 3072,
+      "priority": 12,
+      "critical": false,
+      "description": "Character stat growth formulas"
+    },
+    "gearSets": {
+      "path": "core/GearSets.json",
+      "hash": "c4ca4238a0b923820dcc509a6f75849b",
+      "size": 4096,
+      "priority": 13,
+      "critical": false,
+      "description": "Equipment set bonuses"
+    },
+    "skills": {
+      "path": "gameplay/Skills.json",
+      "hash": "c81e728d9d4c2f636f067f89cc14862c",
+      "size": 7168,
+      "priority": 20,
+      "critical": false,
+      "description": "Skill and status effect definitions"
+    },
+    "battleRules": {
+      "path": "gameplay/BattleRules.json",
+      "hash": "eccbc87e4b5ce2fe28308fd9f2a7baf3",
+      "size": 4096,
+      "priority": 21,
+      "critical": false,
+      "description": "Combat system rules"
+    },
+    "aiProfiles": {
+      "path": "gameplay/AIProfiles.json",
+      "hash": "a87ff679a2f3e71d9181a67b7542122c",
+      "size": 6144,
+      "priority": 22,
+      "critical": false,
+      "description": "AI behavior profiles"
+    },
+    "levels": {
+      "path": "content/Levels.json",
+      "hash": "e4da3b7fbbce2345d7772b0674a318d5",
+      "size": 8192,
+      "priority": 30,
+      "critical": false,
+      "description": "PvE campaign and dungeon configurations"
+    },
+    "arenaConfig": {
+      "path": "content/ArenaConfig.json",
+      "hash": "1679091c5a880faf6fb5e6087eb1b2dc",
+      "size": 8192,
+      "priority": 31,
+      "critical": false,
+      "description": "PvP arena configuration"
+    },
+    "banners": {
+      "path": "economy/Banners.json",
+      "hash": "8f14e45fceea167a5a36dedd4bea2543",
+      "size": 5120,
+      "priority": 40,
+      "critical": false,
+      "description": "Gacha banner configurations"
+    },
+    "shopProducts": {
+      "path": "economy/ShopProducts.json",
+      "hash": "c9f0f895fb98ab9159f51fd0297e236d",
+      "size": 7168,
+      "priority": 41,
+      "critical": false,
+      "description": "Shop and IAP products"
+    },
+    "economy": {
+      "path": "economy/Economy.json",
+      "hash": "45c48cce2e2d7fbdea1afc51c7c6ad26",
+      "size": 4096,
+      "priority": 42,
+      "critical": false,
+      "description": "Economy balance configuration"
+    },
+    "eventSchedule": {
+      "path": "liveops/EventSchedule.json",
+      "hash": "d3d9446802a44259755d38e6d163e820",
+      "size": 6144,
+      "priority": 50,
+      "critical": false,
+      "description": "Event scheduling and configuration"
+    },
+    "quests": {
+      "path": "liveops/Quests.json",
+      "hash": "6512bd43d9caa6e02c990b0a82652dca",
+      "size": 4096,
+      "priority": 51,
+      "critical": false,
+      "description": "Quest and mission configurations"
+    },
+    "matchmaking": {
+      "path": "system/Matchmaking.json",
+      "hash": "c20ad4d76fe97759aa27a0c99bff6710",
+      "size": 3584,
+      "priority": 60,
+      "critical": false,
+      "description": "Matchmaking algorithms"
+    },
+    "rewards": {
+      "path": "system/Rewards.json",
+      "hash": "c51ce410c124a10e0db5e4b97fc2af39",
+      "size": 6144,
+      "priority": 61,
+      "critical": false,
+      "description": "Reward tables and achievement configs"
+    },
+    "featureFlags": {
+      "path": "system/FeatureFlags.json",
+      "hash": "aab3238922bcc25a6f606eb525ffdc56",
+      "size": 5120,
+      "priority": 62,
+      "critical": false,
+      "description": "Feature toggles and A/B tests"
+    },
+    "segmentConfig": {
+      "path": "system/SegmentConfig.json",
+      "hash": "9bf31c7ff062936a96d3c8bd1f8f2ff3",
+      "size": 3072,
+      "priority": 63,
+      "critical": false,
+      "description": "User segmentation for A/B testing"
+    },
+    "globalModifiers": {
+      "path": "system/GlobalModifiers.json",
+      "hash": "d82c8d1619ad8176d665453cfb2e55f0",
+      "size": 2048,
+      "priority": 64,
+      "critical": false,
+      "description": "Global game modifiers for events"
+    },
+    "analytics": {
+      "path": "analytics/Analytics.json",
+      "hash": "a684eceee76fc522773286a895bc8436",
+      "size": 8192,
+      "priority": 70,
+      "critical": false,
+      "description": "Analytics metrics and tracking"
+    },
+    "localization": {
+      "path": "localization/Localization.json",
+      "hash": "b5e3a4d2c8f9a1e6d7c3b2a9f8e7d6c5",
+      "size": 4096,
+      "priority": 4,
+      "critical": true,
+      "description": "Master localization configuration"
+    },
+    "localizationKeys": {
+      "path": "localization/LocalizationKeys.json",
+      "hash": "c6f4b5e3d9a2c1f8e7d6b5a4c3b2a1f0",
+      "size": 3072,
+      "priority": 5,
+      "critical": true,
+      "description": "Localization key mapping and conventions"
+    },
+    "languageEn": {
+      "path": "localization/languages/en.json",
+      "hash": "d7a5c6f4e9b3d2a1c8f7e6d5c4b3a2f1",
+      "size": 5120,
+      "priority": 6,
+      "critical": true,
+      "description": "English language translations"
+    },
+    "languageZh": {
+      "path": "localization/languages/zh.json",
+      "hash": "e8b6d7a5c4f3e2d1b9a8c7f6e5d4c3b2",
+      "size": 4864,
+      "priority": 6,
+      "critical": false,
+      "description": "Chinese (Simplified) language translations"
+    },
+    "languageKo": {
+      "path": "localization/languages/ko.json",
+      "hash": "f9c7e8b6d5a4f3e2c1d0b9a8f7e6d5c4",
+      "size": 5056,
+      "priority": 6,
+      "critical": false,
+      "description": "Korean language translations"
+    }
+  },
+  "updateStrategy": {
+    "type": "Incremental",
+    "checkInterval": 300,
+    "forceUpdateOnLaunch": false,
+    "allowBackgroundUpdate": true,
+    "maxRetryAttempts": 3,
+    "retryDelay": 5000
+  },
+  "caching": {
+    "enabled": true,
+    "maxCacheSize": 52428800,
+    "cacheDuration": 86400,
+    "compressionEnabled": true
+  },
+  "validation": {
+    "verifyHash": true,
+    "verifySignature": false,
+    "allowFallbackToCache": true,
+    "strictMode": false
+  },
+  "rollback": {
+    "enabled": true,
+    "keepPreviousVersions": 3,
+    "autoRollbackOnError": true
+  }
+}

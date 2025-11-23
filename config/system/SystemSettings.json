@@ -154,10 +154,33 @@
   },
   "localization": {
     "defaultLanguage": "en",
-    "supportedLanguages": ["en", "vi", "ja", "ko", "zh-CN", "zh-TW"],
+    "supportedLanguages": ["en", "zh", "ko"],
     "fallbackLanguage": "en",
     "autoDetectLanguage": true,
-    "languagePackVersion": "1.0.0"
+    "languagePackVersion": "1.0.0",
+    "configPath": "localization/Localization.json",
+    "languageFilesPath": "localization/languages/{lang}.json",
+    "keyMappingPath": "localization/LocalizationKeys.json",
+    "cacheEnabled": true,
+    "cacheDuration": 86400,
+    "hotReloadEnabled": true,
+    "compressionEnabled": true,
+    "missingKeyBehavior": "UseKey",
+    "logMissingKeys": true,
+    "formatSupport": {
+      "date": true,
+      "time": true,
+      "number": true,
+      "currency": true,
+      "pluralization": true,
+      "parameters": true
+    },
+    "validation": {
+      "requireAllKeys": false,
+      "warnMissingKeys": true,
+      "allowHTMLTags": false,
+      "maxTextLength": 1000
+    }
   },
   "regions": {
     "default": "Global",

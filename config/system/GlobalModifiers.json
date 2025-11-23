@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "activeModifiers": [],
+  "modifierTemplates": [
+    {
+      "id": "MOD_DOUBLE_GOLD",
+      "meta": {
+        "nameKey": "MOD_NAME_DOUBLE_GOLD",
+        "descriptionKey": "MOD_DESC_DOUBLE_GOLD",
+        "icon": "Icon_Modifier_DoubleGold",
+        "category": "Economy"
+      },
+      "target": "DropRate_Gold",
+      "operation": "Multiply",
+      "value": 2.0,
+      "scope": "Global",
+      "stackable": false,
+      "visual": {
+        "showInUI": true,
+        "badgeIcon": "Badge_2xGold",
+        "particleEffect": "VFX_GoldShower"
+      }
+    },
+    {
+      "id": "MOD_REDUCED_ENERGY_COST",
+      "meta": {
+        "nameKey": "MOD_NAME_REDUCED_ENERGY",
+        "descriptionKey": "MOD_DESC_REDUCED_ENERGY",
+        "icon": "Icon_Modifier_EnergyDiscount",
+        "category": "Economy"
+      },
+      "target": "StaminaCost",
+      "operation": "Multiply",
+      "value": 0.5,
+      "scope": "Global",
+      "stackable": false,
+      "affectedModes": ["PvE", "Dungeon"],
+      "visual": {
+        "showInUI": true,
+        "badgeIcon": "Badge_HalfEnergy",
+        "color": "#00FF00"
+      }
+    },
+    {
+      "id": "MOD_EXP_BOOST",
+      "meta": {
+        "nameKey": "MOD_NAME_EXP_BOOST",
+        "descriptionKey": "MOD_DESC_EXP_BOOST",
+        "icon": "Icon_Modifier_ExpBoost",
+        "category": "Progression"
+      },
+      "target": "ExpGain",
+      "operation": "Multiply",
+      "value": 1.5,
+      "scope": "Global",
+      "stackable": true,
+      "maxStacks": 3,
+      "visual": {
+        "showInUI": true,
+        "badgeIcon": "Badge_ExpBoost",
+        "color": "#FFD700"
+      }
+    },
+    {
+      "id": "MOD_DROP_RATE_UP",
+      "meta": {
+        "nameKey": "MOD_NAME_DROP_RATE_UP",
+        "descriptionKey": "MOD_DESC_DROP_RATE_UP",
+        "icon": "Icon_Modifier_DropRate",
+        "category": "Loot"
+      },
+      "target": "DropRate_All",
+      "operation": "Multiply",
+      "value": 1.3,
+      "scope": "Global",
+      "stackable": false,
+      "affectedModes": ["PvE", "Dungeon", "Raid"],
+      "visual": {
+        "showInUI": true,
+        "badgeIcon": "Badge_DropBoost",
+        "particleEffect": "VFX_ItemRain"
+      }
+    },
+    {
+      "id": "MOD_PVP_REWARD_BONUS",
+      "meta": {
+        "nameKey": "MOD_NAME_PVP_BONUS",
+        "descriptionKey": "MOD_DESC_PVP_BONUS",
+        "icon": "Icon_Modifier_PvPBonus",
+        "category": "PvP"
+      },
+      "target": "PvPRewards",
+      "operation": "Add",
+      "value": 50,
+      "scope": "Global",
+      "stackable": false,
+      "affectedModes": ["Arena", "RankedPvP"],
+      "visual": {
+        "showInUI": true,
+        "badgeIcon": "Badge_PvPBonus"
+      }
+    },
+    {
+      "id": "MOD_SUMMON_RATE_UP",
+      "meta": {
+        "nameKey": "MOD_NAME_SUMMON_RATE_UP",
+        "descriptionKey": "MOD_DESC_SUMMON_RATE_UP",
+        "icon": "Icon_Modifier_SummonRate",
+        "category": "Gacha"
+      },
+      "target": "GachaRate_SSR",
+      "operation": "Add",
+      "value": 0.01,
+      "scope": "Global",
+      "stackable": false,
+      "affectedBanners": ["BANNER_STANDARD"],
+      "visual": {
+        "showInUI": true,
+        "badgeIcon": "Badge_RateUp",
+        "color": "#FF4500"
+      },
+      "disclaimer": "Rate up event active! SSR rate increased by 1%"
+    },
+    {
+      "id": "MOD_COOLDOWN_REDUCTION",
+      "meta": {
+        "nameKey": "MOD_NAME_CDR",
+        "descriptionKey": "MOD_DESC_CDR",
+        "icon": "Icon_Modifier_CDR",
+        "category": "Combat"
+      },
+      "target": "SkillCooldown",
+      "operation": "Multiply",
+      "value": 0.8,
+      "scope": "Global",
+      "stackable": false,
+      "affectedModes": ["PvE"],
+      "visual": {
+        "showInUI": true,
+        "badgeIcon": "Badge_CDR",
+        "color": "#00BFFF"
+      }
+    },
+    {
+      "id": "MOD_RAID_DMG_BOOST",
+      "meta": {
+        "nameKey": "MOD_NAME_RAID_DMG",
+        "descriptionKey": "MOD_DESC_RAID_DMG",
+        "icon": "Icon_Modifier_RaidDmg",
+        "category": "Raid"
+      },
+      "target": "PlayerDamage",
+      "operation": "Multiply",
+      "value": 1.25,
+      "scope": "Raid",
+      "stackable": false,
+      "affectedEvents": ["EVENT_DRAGON_RAID"],
+      "visual": {
+        "showInUI": true,
+        "badgeIcon": "Badge_DmgBoost",
+        "color": "#FF0000"
+      }
+    },
+    {
+      "id": "MOD_FREE_ENERGY_REFILL",
+      "meta": {
+        "nameKey": "MOD_NAME_FREE_REFILL",
+        "descriptionKey": "MOD_DESC_FREE_REFILL",
+        "icon": "Icon_Modifier_FreeRefill",
+        "category": "Economy"
+      },
+      "target": "EnergyRefillCost",
+      "operation": "Set",
+      "value": 0,
+      "scope": "Global",
+      "stackable": false,
+      "limits": {
+        "maxRefillsPerPlayer": 3,
+        "resetDaily": true
+      },
+      "visual": {
+        "showInUI": true,
+        "badgeIcon": "Badge_FreeRefill",
+        "color": "#00FF00"
+      }
+    },
+    {
+      "id": "MOD_ENHANCED_FIRST_CLEAR",
+      "meta": {
+        "nameKey": "MOD_NAME_FIRST_CLEAR_BONUS",
+        "descriptionKey": "MOD_DESC_FIRST_CLEAR_BONUS",
+        "icon": "Icon_Modifier_FirstClear",
+        "category": "Progression"
+      },
+      "target": "FirstClearRewards",
+      "operation": "Multiply",
+      "value": 2.0,
+      "scope": "Global",
+      "stackable": false,
+      "affectedModes": ["PvE"],
+      "visual": {
+        "showInUI": true,
+        "badgeIcon": "Badge_FirstClearBonus",
+        "color": "#FFD700"
+      }
+    }
+  ],
+  "operationTypes": {
+    "Add": {
+      "description": "Adds the modifier value to the base value",
+      "formula": "base + modifier"
+    },
+    "Multiply": {
+      "description": "Multiplies the base value by the modifier value",
+      "formula": "base * modifier"
+    },
+    "Set": {
+      "description": "Sets the value to the modifier value, ignoring base",
+      "formula": "modifier"
+    },
+    "Max": {
+      "description": "Takes the maximum of base and modifier",
+      "formula": "max(base, modifier)"
+    },
+    "Min": {
+      "description": "Takes the minimum of base and modifier",
+      "formula": "min(base, modifier)"
+    }
+  },
+  "scopeTypes": {
+    "Global": "Applies to all players worldwide",
+    "Region": "Applies to specific regions only",
+    "Segment": "Applies to specific user segments",
+    "Event": "Applies only during specific events",
+    "Raid": "Applies only in raid battles",
+    "User": "Applies to specific user IDs"
+  },
+  "activationRules": {
+    "maxActiveModifiers": 10,
+    "conflictResolution": "HighestPriority",
+    "stackingRules": {
+      "sameType": "Replace",
+      "differentType": "Stack"
+    },
+    "expiration": {
+      "autoExpire": true,
+      "notifyBeforeExpiration": 3600
+    }
+  },
+  "monitoring": {
+    "trackUsage": true,
+    "trackImpact": true,
+    "metricsToTrack": [
+      "METRIC_CURRENCY_EARNED",
+      "METRIC_CURRENCY_SPENT",
+      "METRIC_GACHA_PULL_COUNT",
+      "METRIC_STAGE_COMPLETION"
+    ]
+  }
+}

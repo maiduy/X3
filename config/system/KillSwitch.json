@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "maintenance": {
+    "isActive": false,
+    "message": "Server is under maintenance. Please try again later.",
+    "messageKey": "MAINTENANCE_MESSAGE_DEFAULT",
+    "estimatedEndTime": null,
+    "allowedUsers": [],
+    "allowedIPs": [],
+    "allowTestAccounts": false,
+    "redirectUrl": null
+  },
+  "emergencyMode": {
+    "enabled": false,
+    "level": "None",
+    "actions": {
+      "disableIAP": false,
+      "disablePvP": false,
+      "disableGacha": false,
+      "disableChat": false,
+      "readOnlyMode": false
+    },
+    "message": "The game is experiencing technical difficulties. Some features may be temporarily unavailable."
+  },
+  "disabledFeatures": [],
+  "disabledCharacters": [],
+  "disabledItems": [],
+  "disabledSkills": [],
+  "disabledStages": [],
+  "disabledBanners": [],
+  "disabledProducts": [],
+  "disabledEvents": [],
+  "disabledQuests": [],
+  "forceUpdateRequired": {
+    "enabled": false,
+    "minVersion": "1.0.0",
+    "message": "A new version is available. Please update to continue playing.",
+    "storeUrl": {
+      "ios": "https://apps.apple.com/app/id123456789",
+      "android": "https://play.google.com/store/apps/details?id=com.game.example"
+    }
+  },
+  "hotfixValues": {
+    "global_chat_enabled": true,
+    "friend_invites_enabled": true,
+    "leaderboard_enabled": true,
+    "daily_login_enabled": true,
+    "energy_refill_enabled": true
+  },
+  "rateLimit": {
+    "api_requests_per_minute": 60,
+    "gacha_pulls_per_minute": 10,
+    "shop_purchases_per_minute": 5,
+    "battle_starts_per_minute": 10
+  },
+  "antiAbuse": {
+    "enableSpamDetection": true,
+    "enableDupeDetection": true,
+    "enableCheatDetection": true,
+    "suspiciousActivityThreshold": 10,
+    "autoBlockEnabled": false
+  },
+  "serverHealth": {
+    "cpuThreshold": 80,
+    "memoryThreshold": 85,
+    "autoScaleEnabled": true,
+    "degradedModeThreshold": 90
+  },
+  "featureGates": {
+    "FEATURE_PVP_ARENA": {
+      "enabled": true,
+      "reason": null,
+      "disabledSince": null
+    },
+    "FEATURE_GUILD_SYSTEM": {
+      "enabled": false,
+      "reason": "Under development",
+      "disabledSince": "2025-11-20T00:00:00Z"
+    },
+    "FEATURE_CHAT_SYSTEM": {
+      "enabled": true,
+      "reason": null,
+      "disabledSince": null
+    },
+    "FEATURE_GACHA": {
+      "enabled": true,
+      "reason": null,
+      "disabledSince": null
+    },
+    "FEATURE_IAP": {
+      "enabled": true,
+      "reason": null,
+      "disabledSince": null
+    }
+  },
+  "contentBlacklist": {
+    "bannedWords": [],
+    "bannedUserIds": [],
+    "bannedDeviceIds": [],
+    "restrictedRegions": []
+  },
+  "fallbackConfig": {
+    "useLocalCache": true,
+    "maxCacheAge": 86400,
+    "defaultDropRates": {
+      "SSR": 0.02,
+      "SR": 0.18,
+      "R": 0.80
+    },
+    "defaultEnergyRegenRate": 1,
+    "defaultEnergyRegenInterval": 300
+  },
+  "monitoring": {
+    "enableErrorReporting": true,
+    "enablePerformanceTracking": true,
+    "enableUserBehaviorTracking": true,
+    "samplingRate": 0.1
+  },
+  "notifications": {
+    "sendMaintenanceNotification": true,
+    "sendEmergencyNotification": true,
+    "notificationChannels": ["Push", "InGame", "Email"]
+  }
+}

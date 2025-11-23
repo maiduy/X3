@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "defaultLanguage": "en",
+  "supportedLanguages": [
+    {
+      "code": "en",
+      "name": "English",
+      "nativeName": "English",
+      "direction": "ltr",
+      "enabled": true,
+      "completeness": 1.0,
+      "localeCode": "en-US"
+    },
+    {
+      "code": "zh",
+      "name": "Chinese (Simplified)",
+      "nativeName": "简体中文",
+      "direction": "ltr",
+      "enabled": true,
+      "completeness": 1.0,
+      "localeCode": "zh-CN"
+    },
+    {
+      "code": "ko",
+      "name": "Korean",
+      "nativeName": "한국어",
+      "direction": "ltr",
+      "enabled": true,
+      "completeness": 1.0,
+      "localeCode": "ko-KR"
+    },
+    {
+      "code": "ja",
+      "name": "Japanese",
+      "nativeName": "日本語",
+      "direction": "ltr",
+      "enabled": false,
+      "completeness": 0.0,
+      "localeCode": "ja-JP"
+    },
+    {
+      "code": "vi",
+      "name": "Vietnamese",
+      "nativeName": "Tiếng Việt",
+      "direction": "ltr",
+      "enabled": false,
+      "completeness": 0.0,
+      "localeCode": "vi-VN"
+    }
+  ],
+  "languageFiles": {
+    "en": {
+      "path": "localization/languages/en.json",
+      "hash": "abc123",
+      "size": 51200
+    },
+    "zh": {
+      "path": "localization/languages/zh.json",
+      "hash": "def456",
+      "size": 45600
+    },
+    "ko": {
+      "path": "localization/languages/ko.json",
+      "hash": "ghi789",
+      "size": 48300
+    }
+  },
+  "settings": {
+    "autoDetectLanguage": true,
+    "fallbackLanguage": "en",
+    "cacheLocalizations": true,
+    "cacheDuration": 86400,
+    "hotReload": true,
+    "compressionEnabled": true
+  },
+  "formats": {
+    "date": {
+      "en": "MM/DD/YYYY",
+      "zh": "YYYY年MM月DD日",
+      "ko": "YYYY년 MM월 DD일"
+    },
+    "time": {
+      "en": "12h",
+      "zh": "24h",
+      "ko": "24h"
+    },
+    "number": {
+      "en": {"decimal": ".", "thousands": ","},
+      "zh": {"decimal": ".", "thousands": ","},
+      "ko": {"decimal": ".", "thousands": ","}
+    },
+    "currency": {
+      "en": {"symbol": "$", "position": "before"},
+      "zh": {"symbol": "¥", "position": "before"},
+      "ko": {"symbol": "₩", "position": "after"}
+    }
+  },
+  "pluralizationRules": {
+    "en": {
+      "zero": "{count} items",
+      "one": "{count} item",
+      "other": "{count} items"
+    },
+    "zh": {
+      "other": "{count}个物品"
+    },
+    "ko": {
+      "other": "{count}개 아이템"
+    }
+  },
+  "validation": {
+    "requireAllKeys": false,
+    "warnMissingKeys": true,
+    "allowHTMLTags": false,
+    "maxTextLength": 1000
+  }
+}

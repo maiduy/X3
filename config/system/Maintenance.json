@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "maintenanceSchedule": {
+    "isScheduled": false,
+    "plannedStart": null,
+    "plannedEnd": null,
+    "estimatedDuration": 7200,
+    "notifyBeforeStart": 3600,
+    "allowEarlyEntry": false
+  },
+  "currentMaintenance": {
+    "isActive": false,
+    "startTime": null,
+    "endTime": null,
+    "type": "Scheduled",
+    "severity": "Normal",
+    "reason": "Regular maintenance",
+    "affectedServices": []
+  },
+  "compensation": {
+    "enabled": true,
+    "autoCalculate": true,
+    "baseRewards": [
+      {"itemId": "CURRENCY_GEM", "amount": 100}
+    ],
+    "deliveryMethod": "Mailbox",
+    "expirationDays": 7
+  },
+  "monitoring": {
+    "healthCheckInterval": 60,
+    "autoDetectIssues": true
+  }
+}

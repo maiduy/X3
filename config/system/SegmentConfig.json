@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "segments": [
+    {
+      "id": "SEGMENT_NEW_PLAYERS",
+      "meta": {
+        "name": "New Players",
+        "description": "Players within first 7 days of gameplay",
+        "category": "Engagement",
+        "priority": 10
+      },
+      "criteria": {
+        "accountAge": {"max": 7},
+        "playerLevel": {"max": 20}
+      },
+      "overrides": {
+        "difficulty": {
+          "stageMultiplier": 0.8,
+          "enemyDamageReduction": 0.2
+        },
+        "rewards": {
+          "goldMultiplier": 1.5,
+          "expMultiplier": 1.5
+        },
+        "shop": {
+          "starterPacksVisible": true,
+          "specialOffers": ["OFFER_BEGINNER_BUNDLE"]
+        }
+      },
+      "active": true
+    },
+    {
+      "id": "SEGMENT_F2P_GRINDERS",
+      "meta": {
+        "name": "Free-to-Play Grinders",
+        "description": "Active players who haven't made purchases",
+        "category": "Monetization",
+        "priority": 20
+      },
+      "criteria": {
+        "totalSpent": {"max": 0},
+        "accountAge": {"min": 7},
+        "dailyPlaytime": {"min": 60},
+        "lastLogin": {"within": 7}
+      },
+      "overrides": {
+        "shop": {
+          "lowPriceOffersVisible": true,
+          "specialOffers": ["OFFER_FIRST_TIME_BUYER_0.99"],
+          "displayPriority": ["BestValue", "LimitedTime"]
+        },
+        "rewards": {
+          "dailyLoginBonus": 1.2,
+          "achievementRewards": 1.1
+        },
+        "gacha": {
+          "softPityAdjustment": -5,
+          "firstSSRGuarantee": 50
+        }
+      },
+      "active": true
+    },
+    {
+      "id": "SEGMENT_DOLPHINS",
+      "meta": {
+        "name": "Dolphins (Light Spenders)",
+        "description": "Players who spend $5-$50 monthly",
+        "category": "Monetization",
+        "priority": 30
+      },
+      "criteria": {
+        "totalSpent": {"min": 5, "max": 50},
+        "accountAge": {"min": 14},
+        "lastPurchase": {"within": 30}
+      },
+      "overrides": {
+        "shop": {
+          "specialOffers": ["OFFER_MONTHLY_PACK", "OFFER_VALUE_BUNDLE_4.99"],
+          "vipBenefits": true
+        },
+        "difficulty": {
+          "stageMultiplier": 0.95
+        },
+        "events": {
+          "exclusiveAccess": ["EVENT_VIP_DUNGEON"]
+        }
+      },
+      "active": true
+    },
+    {
+      "id": "SEGMENT_WHALES",
+      "meta": {
+        "name": "Whales (High Spenders)",
+        "description": "Players who spend $50+ monthly",
+        "category": "Monetization",
+        "priority": 40
+      },
+      "criteria": {
+        "totalSpent": {"min": 50},
+        "accountAge": {"min": 14},
+        "lastPurchase": {"within": 30}
+      },
+      "overrides": {
+        "shop": {
+          "specialOffers": ["OFFER_WHALE_PACK_99.99", "OFFER_EXCLUSIVE_BUNDLE"],
+          "premiumCurrencyBonus": 1.2,
+          "displayPriority": ["Premium", "Exclusive"]
+        },
+        "difficulty": {
+          "stageMultiplier": 0.85,
+          "rewardMultiplier": 1.1
+        },
+        "events": {
+          "exclusiveAccess": ["EVENT_VIP_DUNGEON", "EVENT_WHALE_RAID"],
+          "priorityMatchmaking": true
+        },
+        "support": {
+          "priorityQueue": true,
+          "dedicatedSupport": true
+        }
+      },
+      "active": true
+    },
+    {
+      "id": "SEGMENT_CHURNED_PLAYERS",
+      "meta": {
+        "name": "Churned Players",
+        "description": "Players who haven't logged in for 7+ days",
+        "category": "Retention",
+        "priority": 50
+      },
+      "criteria": {
+        "lastLogin": {"min": 7, "max": 30},
+        "accountAge": {"min": 7}
+      },
+      "overrides": {
+        "rewards": {
+          "comebackBonus": {
+            "enabled": true,
+            "rewards": [
+              {"itemId": "CURRENCY_GEM", "amount": 500},
+              {"itemId": "ITEM_SUMMON_SCROLL", "amount": 10},
+              {"itemId": "RESOURCE_ENERGY", "amount": 200}
+            ]
+          }
+        },
+        "notifications": {
+          "specialMessages": ["MSG_COMEBACK_WE_MISS_YOU"],
+          "pushNotifications": true
+        },
+        "events": {
+          "exclusiveAccess": ["EVENT_COMEBACK_CAMPAIGN"]
+        }
+      },
+      "active": true
+    },
+    {
+      "id": "SEGMENT_COMPETITIVE_PLAYERS",
+      "meta": {
+        "name": "Competitive PvP Players",
+        "description": "Players who primarily engage with PvP content",
+        "category": "Engagement",
+        "priority": 25
+      },
+      "criteria": {
+        "arenaMatches": {"min": 20, "period": "weekly"},
+        "arenaRank": {"min": "Gold"},
+        "pvpWinRate": {"min": 0.5}
+      },
+      "overrides": {
+        "shop": {
+          "specialOffers": ["OFFER_PVP_BUNDLE"],
+          "arenaCurrencyBonus": 1.2
+        },
+        "matchmaking": {
+          "priorityQueue": true,
+          "reducedWaitTime": true
+        },
+        "events": {
+          "exclusiveAccess": ["EVENT_RANKED_TOURNAMENT"]
+        }
+      },
+      "active": true
+    },
+    {
+      "id": "SEGMENT_BETA_TESTERS",
+      "meta": {
+        "name": "Beta Testers",
+        "description": "Players enrolled in beta testing program",
+        "category": "Development",
+        "priority": 100
+      },
+      "criteria": {
+        "betaTester": true
+      },
+      "overrides": {
+        "features": {
+          "earlyAccess": ["FEATURE_GUILD_SYSTEM", "FEATURE_CROSS_PLATFORM_PROGRESS"],
+          "debugTools": true
+        },
+        "rewards": {
+          "testingCompensation": {
+            "CURRENCY_GEM": 1000,
+            "ITEM_EXCLUSIVE_TITLE_BETA": 1
+          }
+        },
+        "support": {
+          "directFeedbackChannel": true,
+          "bugReportRewards": true
+        }
+      },
+      "active": true
+    }
+  ],
+  "segmentationRules": {
+    "evaluationFrequency": 3600,
+    "priorityStrategy": "HighestPriorityWins",
+    "allowMultipleSegments": true,
+    "maxSegmentsPerUser": 3,
+    "cacheDuration": 1800
+  },
+  "abTestGroups": {
+    "enabled": true,
+    "tests": [
+      {
+        "id": "AB_TEST_GACHA_RATES_V2",
+        "name": "Gacha Rate Test V2",
+        "description": "Test 2% vs 3% SSR rates for new players",
+        "status": "Active",
+        "startDate": "2025-12-01T00:00:00Z",
+        "endDate": "2025-12-15T23:59:59Z",
+        "targetSegments": ["SEGMENT_NEW_PLAYERS"],
+        "variants": [
+          {
+            "id": "Control",
+            "percentage": 50,
+            "overrides": {
+              "gachaRates": {
+                "SSR": 0.02
+              }
+            }
+          },
+          {
+            "id": "TestA",
+            "percentage": 50,
+            "overrides": {
+              "gachaRates": {
+                "SSR": 0.03
+              }
+            }
+          }
+        ],
+        "metrics": ["METRIC_RETENTION_D7", "METRIC_CONVERSION_RATE", "METRIC_GACHA_PULL_COUNT"]
+      }
+    ]
+  },
+  "fallbackBehavior": {
+    "onSegmentationFailure": "UseDefault",
+    "onOverrideError": "IgnoreOverride",
+    "enableLogging": true,
+    "enableMetrics": true
+  }
+}
