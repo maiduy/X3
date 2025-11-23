@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "characters": [
+    {
+      "id": "CHAR_FIRE_DRAGON",
+      "meta": {
+        "nameKey": "CHAR_NAME_FIRE_DRAGON",
+        "descriptionKey": "CHAR_DESC_FIRE_DRAGON",
+        "icon": "Icon_FireDragon_Portrait",
+        "model": "Model_FireDragon_Character",
+        "rarity": "SSR",
+        "element": "Fire",
+        "role": "DPS",
+        "faction": "Dragons",
+        "tags": ["Melee", "Burst", "AoE"]
+      },
+      "baseStats": {
+        "level": 1,
+        "maxLevel": 80,
+        "hp": 850,
+        "atk": 120,
+        "def": 65,
+        "spd": 95,
+        "crit": 0.05,
+        "critDmg": 1.5,
+        "accuracy": 0.95,
+        "evasion": 0.05,
+        "effectRes": 0.15
+      },
+      "growthCurves": {
+        "hp": {"base": 850, "perLevel": 42, "curve": "Linear"},
+        "atk": {"base": 120, "perLevel": 6.5, "curve": "Linear"},
+        "def": {"base": 65, "perLevel": 3.2, "curve": "Linear"},
+        "spd": {"base": 95, "perLevel": 0, "curve": "Flat"}
+      },
+      "assets": {
+        "prefab": "Addressables/Characters/FireDragon/Prefab",
+        "animations": "Addressables/Characters/FireDragon/Animations",
+        "portrait": "Addressables/UI/Portraits/FireDragon",
+        "skillVFX": "Addressables/VFX/FireDragon/"
+      },
+      "skillSet": {
+        "basic": "SKILL_FIRE_CLAW",
+        "skill1": "SKILL_FLAME_BREATH",
+        "skill2": "SKILL_DRAGON_RAGE",
+        "ultimate": "SKILL_PHOENIX_STRIKE",
+        "passive": "SKILL_FIRE_MASTERY"
+      },
+      "unlockRequirements": {
+        "defaultUnlocked": false,
+        "unlockMethod": "Gacha",
+        "fragments": 80
+      },
+      "ascension": {
+        "maxAscension": 6,
+        "materials": [
+          {"itemId": "MAT_DRAGON_SCALE", "count": 10},
+          {"itemId": "MAT_FIRE_ESSENCE", "count": 20}
+        ]
+      }
+    },
+    {
+      "id": "CHAR_FROST_MAGE",
+      "meta": {
+        "nameKey": "CHAR_NAME_FROST_MAGE",
+        "descriptionKey": "CHAR_DESC_FROST_MAGE",
+        "icon": "Icon_FrostMage_Portrait",
+        "model": "Model_FrostMage_Character",
+        "rarity": "SR",
+        "element": "Ice",
+        "role": "Support",
+        "faction": "Wizards",
+        "tags": ["Ranged", "Control", "Debuff"]
+      },
+      "baseStats": {
+        "level": 1,
+        "maxLevel": 80,
+        "hp": 720,
+        "atk": 95,
+        "def": 55,
+        "spd": 105,
+        "crit": 0.08,
+        "critDmg": 1.5,
+        "accuracy": 0.92,
+        "evasion": 0.08,
+        "effectRes": 0.20
+      },
+      "growthCurves": {
+        "hp": {"base": 720, "perLevel": 36, "curve": "Linear"},
+        "atk": {"base": 95, "perLevel": 5.2, "curve": "Linear"},
+        "def": {"base": 55, "perLevel": 2.8, "curve": "Linear"},
+        "spd": {"base": 105, "perLevel": 0, "curve": "Flat"}
+      },
+      "assets": {
+        "prefab": "Addressables/Characters/FrostMage/Prefab",
+        "animations": "Addressables/Characters/FrostMage/Animations",
+        "portrait": "Addressables/UI/Portraits/FrostMage",
+        "skillVFX": "Addressables/VFX/FrostMage/"
+      },
+      "skillSet": {
+        "basic": "SKILL_ICE_BOLT",
+        "skill1": "SKILL_FROST_NOVA",
+        "skill2": "SKILL_FROZEN_PRISON",
+        "ultimate": "SKILL_BLIZZARD",
+        "passive": "SKILL_ICE_SHIELD"
+      },
+      "unlockRequirements": {
+        "defaultUnlocked": false,
+        "unlockMethod": "Gacha",
+        "fragments": 50
+      },
+      "ascension": {
+        "maxAscension": 6,
+        "materials": [
+          {"itemId": "MAT_FROST_CRYSTAL", "count": 8},
+          {"itemId": "MAT_MAGIC_ESSENCE", "count": 15}
+        ]
+      }
+    },
+    {
+      "id": "CHAR_HOLY_KNIGHT",
+      "meta": {
+        "nameKey": "CHAR_NAME_HOLY_KNIGHT",
+        "descriptionKey": "CHAR_DESC_HOLY_KNIGHT",
+        "icon": "Icon_HolyKnight_Portrait",
+        "model": "Model_HolyKnight_Character",
+        "rarity": "SSR",
+        "element": "Light",
+        "role": "Tank",
+        "faction": "Paladins",
+        "tags": ["Melee", "Defense", "Heal"]
+      },
+      "baseStats": {
+        "level": 1,
+        "maxLevel": 80,
+        "hp": 1200,
+        "atk": 75,
+        "def": 110,
+        "spd": 80,
+        "crit": 0.03,
+        "critDmg": 1.5,
+        "accuracy": 0.90,
+        "evasion": 0.03,
+        "effectRes": 0.30
+      },
+      "growthCurves": {
+        "hp": {"base": 1200, "perLevel": 58, "curve": "Linear"},
+        "atk": {"base": 75, "perLevel": 3.8, "curve": "Linear"},
+        "def": {"base": 110, "perLevel": 5.5, "curve": "Linear"},
+        "spd": {"base": 80, "perLevel": 0, "curve": "Flat"}
+      },
+      "assets": {
+        "prefab": "Addressables/Characters/HolyKnight/Prefab",
+        "animations": "Addressables/Characters/HolyKnight/Animations",
+        "portrait": "Addressables/UI/Portraits/HolyKnight",
+        "skillVFX": "Addressables/VFX/HolyKnight/"
+      },
+      "skillSet": {
+        "basic": "SKILL_SHIELD_BASH",
+        "skill1": "SKILL_HOLY_GUARD",
+        "skill2": "SKILL_DIVINE_HEALING",
+        "ultimate": "SKILL_JUDGMENT",
+        "passive": "SKILL_DIVINE_PROTECTION"
+      },
+      "unlockRequirements": {
+        "defaultUnlocked": false,
+        "unlockMethod": "Gacha",
+        "fragments": 80
+      },
+      "ascension": {
+        "maxAscension": 6,
+        "materials": [
+          {"itemId": "MAT_HOLY_RELIC", "count": 10},
+          {"itemId": "MAT_LIGHT_ESSENCE", "count": 20}
+        ]
+      }
+    },
+    {
+      "id": "CHAR_SHADOW_ASSASSIN",
+      "meta": {
+        "nameKey": "CHAR_NAME_SHADOW_ASSASSIN",
+        "descriptionKey": "CHAR_DESC_SHADOW_ASSASSIN",
+        "icon": "Icon_ShadowAssassin_Portrait",
+        "model": "Model_ShadowAssassin_Character",
+        "rarity": "SR",
+        "element": "Dark",
+        "role": "DPS",
+        "faction": "Rogues",
+        "tags": ["Melee", "Single-Target", "Stealth"]
+      },
+      "baseStats": {
+        "level": 1,
+        "maxLevel": 80,
+        "hp": 680,
+        "atk": 135,
+        "def": 50,
+        "spd": 115,
+        "crit": 0.20,
+        "critDmg": 2.0,
+        "accuracy": 0.98,
+        "evasion": 0.15,
+        "effectRes": 0.10
+      },
+      "growthCurves": {
+        "hp": {"base": 680, "perLevel": 32, "curve": "Linear"},
+        "atk": {"base": 135, "perLevel": 7.0, "curve": "Linear"},
+        "def": {"base": 50, "perLevel": 2.5, "curve": "Linear"},
+        "spd": {"base": 115, "perLevel": 0, "curve": "Flat"}
+      },
+      "assets": {
+        "prefab": "Addressables/Characters/ShadowAssassin/Prefab",
+        "animations": "Addressables/Characters/ShadowAssassin/Animations",
+        "portrait": "Addressables/UI/Portraits/ShadowAssassin",
+        "skillVFX": "Addressables/VFX/ShadowAssassin/"
+      },
+      "skillSet": {
+        "basic": "SKILL_DAGGER_STRIKE",
+        "skill1": "SKILL_BACKSTAB",
+        "skill2": "SKILL_SHADOW_STEP",
+        "ultimate": "SKILL_DEATH_MARK",
+        "passive": "SKILL_CRITICAL_MASTERY"
+      },
+      "unlockRequirements": {
+        "defaultUnlocked": true,
+        "unlockMethod": "Story",
+        "fragments": 0
+      },
+      "ascension": {
+        "maxAscension": 6,
+        "materials": [
+          {"itemId": "MAT_SHADOW_SHARD", "count": 8},
+          {"itemId": "MAT_DARK_ESSENCE", "count": 15}
+        ]
+      }
+    },
+    {
+      "id": "CHAR_NATURE_HEALER",
+      "meta": {
+        "nameKey": "CHAR_NAME_NATURE_HEALER",
+        "descriptionKey": "CHAR_DESC_NATURE_HEALER",
+        "icon": "Icon_NatureHealer_Portrait",
+        "model": "Model_NatureHealer_Character",
+        "rarity": "R",
+        "element": "Nature",
+        "role": "Support",
+        "faction": "Druids",
+        "tags": ["Ranged", "Heal", "Buff"]
+      },
+      "baseStats": {
+        "level": 1,
+        "maxLevel": 80,
+        "hp": 760,
+        "atk": 70,
+        "def": 60,
+        "spd": 90,
+        "crit": 0.05,
+        "critDmg": 1.5,
+        "accuracy": 0.90,
+        "evasion": 0.05,
+        "effectRes": 0.25
+      },
+      "growthCurves": {
+        "hp": {"base": 760, "perLevel": 38, "curve": "Linear"},
+        "atk": {"base": 70, "perLevel": 3.5, "curve": "Linear"},
+        "def": {"base": 60, "perLevel": 3.0, "curve": "Linear"},
+        "spd": {"base": 90, "perLevel": 0, "curve": "Flat"}
+      },
+      "assets": {
+        "prefab": "Addressables/Characters/NatureHealer/Prefab",
+        "animations": "Addressables/Characters/NatureHealer/Animations",
+        "portrait": "Addressables/UI/Portraits/NatureHealer",
+        "skillVFX": "Addressables/VFX/NatureHealer/"
+      },
+      "skillSet": {
+        "basic": "SKILL_LEAF_STRIKE",
+        "skill1": "SKILL_HEALING_TOUCH",
+        "skill2": "SKILL_REJUVENATION",
+        "ultimate": "SKILL_NATURE_BLESSING",
+        "passive": "SKILL_REGENERATION"
+      },
+      "unlockRequirements": {
+        "defaultUnlocked": true,
+        "unlockMethod": "Tutorial",
+        "fragments": 0
+      },
+      "ascension": {
+        "maxAscension": 5,
+        "materials": [
+          {"itemId": "MAT_NATURE_SEED", "count": 5},
+          {"itemId": "MAT_LIFE_ESSENCE", "count": 10}
+        ]
+      }
+    }
+  ]
+}

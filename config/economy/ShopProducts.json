@@ -1,0 +1,339 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "shops": [
+    {
+      "id": "SHOP_GEM_STORE",
+      "meta": {
+        "nameKey": "SHOP_NAME_GEM_STORE",
+        "descriptionKey": "SHOP_DESC_GEM_STORE",
+        "icon": "Icon_Shop_GemStore",
+        "type": "IAP",
+        "unlockLevel": 1
+      },
+      "products": [
+        {
+          "id": "IAP_GEM_PACK_SMALL",
+          "meta": {
+            "nameKey": "IAP_NAME_GEM_SMALL",
+            "descriptionKey": "IAP_DESC_GEM_SMALL",
+            "icon": "Icon_IAP_GemSmall",
+            "displayOrder": 1
+          },
+          "price": {
+            "usd": 0.99,
+            "sku": "com.game.gem.pack.small"
+          },
+          "contents": [
+            {"itemId": "CURRENCY_GEM", "amount": 60}
+          ],
+          "bonusContents": [
+            {"itemId": "CURRENCY_GEM", "amount": 10, "condition": "FirstPurchase"}
+          ],
+          "limits": {
+            "perAccount": null,
+            "perDay": null,
+            "perWeek": null,
+            "perMonth": null
+          },
+          "availability": {
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": null
+          }
+        },
+        {
+          "id": "IAP_GEM_PACK_MEDIUM",
+          "meta": {
+            "nameKey": "IAP_NAME_GEM_MEDIUM",
+            "descriptionKey": "IAP_DESC_GEM_MEDIUM",
+            "icon": "Icon_IAP_GemMedium",
+            "displayOrder": 2
+          },
+          "price": {
+            "usd": 4.99,
+            "sku": "com.game.gem.pack.medium"
+          },
+          "contents": [
+            {"itemId": "CURRENCY_GEM", "amount": 330}
+          ],
+          "bonusContents": [
+            {"itemId": "CURRENCY_GEM", "amount": 50, "condition": "FirstPurchase"}
+          ],
+          "limits": {
+            "perAccount": null,
+            "perDay": null,
+            "perWeek": null,
+            "perMonth": null
+          },
+          "availability": {
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": null
+          }
+        },
+        {
+          "id": "IAP_GEM_PACK_LARGE",
+          "meta": {
+            "nameKey": "IAP_NAME_GEM_LARGE",
+            "descriptionKey": "IAP_DESC_GEM_LARGE",
+            "icon": "Icon_IAP_GemLarge",
+            "displayOrder": 3,
+            "badge": "POPULAR"
+          },
+          "price": {
+            "usd": 9.99,
+            "sku": "com.game.gem.pack.large"
+          },
+          "contents": [
+            {"itemId": "CURRENCY_GEM", "amount": 680}
+          ],
+          "bonusContents": [
+            {"itemId": "CURRENCY_GEM", "amount": 100, "condition": "FirstPurchase"}
+          ],
+          "limits": {
+            "perAccount": null,
+            "perDay": null,
+            "perWeek": null,
+            "perMonth": null
+          },
+          "availability": {
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": null
+          }
+        },
+        {
+          "id": "IAP_MONTHLY_PASS",
+          "meta": {
+            "nameKey": "IAP_NAME_MONTHLY_PASS",
+            "descriptionKey": "IAP_DESC_MONTHLY_PASS",
+            "icon": "Icon_IAP_MonthlyPass",
+            "displayOrder": 10,
+            "badge": "BEST_VALUE"
+          },
+          "price": {
+            "usd": 4.99,
+            "sku": "com.game.monthly.pass"
+          },
+          "contents": [
+            {"itemId": "CURRENCY_GEM", "amount": 300}
+          ],
+          "dailyRewards": {
+            "duration": 30,
+            "rewards": [
+              {"itemId": "CURRENCY_GEM", "amount": 60},
+              {"itemId": "CURRENCY_GOLD", "amount": 10000}
+            ]
+          },
+          "limits": {
+            "perAccount": 1,
+            "renewalAllowed": true
+          },
+          "availability": {
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "SHOP_ARENA",
+      "meta": {
+        "nameKey": "SHOP_NAME_ARENA",
+        "descriptionKey": "SHOP_DESC_ARENA",
+        "icon": "Icon_Shop_Arena",
+        "type": "Currency",
+        "unlockLevel": 15
+      },
+      "currency": "CURRENCY_ARENA_COIN",
+      "products": [
+        {
+          "id": "ARENA_SUMMON_SCROLL",
+          "meta": {
+            "nameKey": "PRODUCT_NAME_SUMMON_SCROLL",
+            "icon": "Icon_Summon_Scroll",
+            "displayOrder": 1
+          },
+          "price": [
+            {"itemId": "CURRENCY_ARENA_COIN", "amount": 200}
+          ],
+          "contents": [
+            {"itemId": "ITEM_SUMMON_SCROLL", "amount": 1}
+          ],
+          "limits": {
+            "perWeek": 5
+          },
+          "availability": {
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": null
+          }
+        },
+        {
+          "id": "ARENA_CHAR_FRAGMENT",
+          "meta": {
+            "nameKey": "PRODUCT_NAME_CHAR_FRAGMENT",
+            "icon": "Icon_Fragment_FireDragon",
+            "displayOrder": 2
+          },
+          "price": [
+            {"itemId": "CURRENCY_ARENA_COIN", "amount": 50}
+          ],
+          "contents": [
+            {"itemId": "CHAR_FIRE_DRAGON_FRAGMENT", "amount": 1}
+          ],
+          "limits": {
+            "perMonth": 30
+          },
+          "availability": {
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": null
+          }
+        },
+        {
+          "id": "ARENA_GOLD",
+          "meta": {
+            "nameKey": "PRODUCT_NAME_GOLD",
+            "icon": "Icon_Currency_Gold",
+            "displayOrder": 5
+          },
+          "price": [
+            {"itemId": "CURRENCY_ARENA_COIN", "amount": 10}
+          ],
+          "contents": [
+            {"itemId": "CURRENCY_GOLD", "amount": 10000}
+          ],
+          "limits": {
+            "perDay": 10
+          },
+          "availability": {
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": null
+          }
+        }
+      ],
+      "refreshSchedule": {
+        "type": "Daily",
+        "resetTime": "00:00:00"
+      }
+    },
+    {
+      "id": "SHOP_GUILD",
+      "meta": {
+        "nameKey": "SHOP_NAME_GUILD",
+        "descriptionKey": "SHOP_DESC_GUILD",
+        "icon": "Icon_Shop_Guild",
+        "type": "Currency",
+        "unlockLevel": 20
+      },
+      "currency": "CURRENCY_GUILD_COIN",
+      "products": [
+        {
+          "id": "GUILD_DRAGON_SCALE",
+          "meta": {
+            "nameKey": "PRODUCT_NAME_DRAGON_SCALE",
+            "icon": "Icon_Material_DragonScale",
+            "displayOrder": 1
+          },
+          "price": [
+            {"itemId": "CURRENCY_GUILD_COIN", "amount": 500}
+          ],
+          "contents": [
+            {"itemId": "MAT_DRAGON_SCALE", "amount": 1}
+          ],
+          "limits": {
+            "perWeek": 3
+          },
+          "availability": {
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": null
+          }
+        },
+        {
+          "id": "GUILD_LEGENDARY_ORE",
+          "meta": {
+            "nameKey": "PRODUCT_NAME_LEGENDARY_ORE",
+            "icon": "Icon_Material_LegendaryOre",
+            "displayOrder": 2
+          },
+          "price": [
+            {"itemId": "CURRENCY_GUILD_COIN", "amount": 300}
+          ],
+          "contents": [
+            {"itemId": "MAT_LEGENDARY_ORE", "amount": 1}
+          ],
+          "limits": {
+            "perWeek": 5
+          },
+          "availability": {
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": null
+          }
+        }
+      ],
+      "refreshSchedule": {
+        "type": "Weekly",
+        "resetDay": 1
+      }
+    },
+    {
+      "id": "SHOP_DAILY_DEALS",
+      "meta": {
+        "nameKey": "SHOP_NAME_DAILY_DEALS",
+        "descriptionKey": "SHOP_DESC_DAILY_DEALS",
+        "icon": "Icon_Shop_DailyDeals",
+        "type": "Special",
+        "unlockLevel": 5
+      },
+      "products": [
+        {
+          "id": "DAILY_GOLD_DEAL",
+          "meta": {
+            "nameKey": "PRODUCT_NAME_GOLD_DEAL",
+            "icon": "Icon_Currency_Gold",
+            "displayOrder": 1,
+            "badge": "DAILY"
+          },
+          "price": [
+            {"itemId": "CURRENCY_GEM", "amount": 50}
+          ],
+          "contents": [
+            {"itemId": "CURRENCY_GOLD", "amount": 50000}
+          ],
+          "limits": {
+            "perDay": 1
+          },
+          "discount": 0.5,
+          "availability": {
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": null
+          }
+        },
+        {
+          "id": "DAILY_ENERGY_DEAL",
+          "meta": {
+            "nameKey": "PRODUCT_NAME_ENERGY_DEAL",
+            "icon": "Icon_Resource_Energy",
+            "displayOrder": 2,
+            "badge": "DAILY"
+          },
+          "price": [
+            {"itemId": "CURRENCY_GEM", "amount": 30}
+          ],
+          "contents": [
+            {"itemId": "RESOURCE_ENERGY", "amount": 100}
+          ],
+          "limits": {
+            "perDay": 3
+          },
+          "availability": {
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": null
+          }
+        }
+      ],
+      "refreshSchedule": {
+        "type": "Daily",
+        "resetTime": "00:00:00"
+      }
+    }
+  ]
+}

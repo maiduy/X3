@@ -1,0 +1,310 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "items": [
+    {
+      "id": "ITEM_SWORD_FLAME",
+      "meta": {
+        "nameKey": "ITEM_NAME_SWORD_FLAME",
+        "descriptionKey": "ITEM_DESC_SWORD_FLAME",
+        "icon": "Icon_Weapon_Sword_Flame",
+        "model": "Model_Sword_Flame",
+        "type": "Weapon",
+        "subType": "Sword",
+        "rarity": "SSR",
+        "maxLevel": 90,
+        "slot": "MainHand"
+      },
+      "baseStats": {
+        "atk": 245,
+        "critRate": 0.12,
+        "critDmg": 0.35
+      },
+      "statRollRange": {
+        "atk": {"min": 220, "max": 270},
+        "critRate": {"min": 0.08, "max": 0.16},
+        "critDmg": {"min": 0.25, "max": 0.45}
+      },
+      "subStats": {
+        "maxSubStats": 4,
+        "pool": [
+          {"stat": "hp", "weight": 1000, "valueRange": {"min": 200, "max": 400}},
+          {"stat": "atk%", "weight": 800, "valueRange": {"min": 0.05, "max": 0.15}},
+          {"stat": "spd", "weight": 600, "valueRange": {"min": 5, "max": 15}},
+          {"stat": "effectHit", "weight": 400, "valueRange": {"min": 0.05, "max": 0.12}}
+        ]
+      },
+      "setBonus": {
+        "setId": "SET_INFERNO",
+        "2pieces": {
+          "description": "Fire DMG +15%",
+          "effects": [{"type": "ElementalDmgBonus", "element": "Fire", "value": 0.15}]
+        },
+        "4pieces": {
+          "description": "After using skill, increase ATK by 25% for 3 turns",
+          "effects": [
+            {"type": "OnSkillUse", "trigger": "AfterSkillCast", "buff": "BUFF_INFERNO_ATK"}
+          ]
+        }
+      },
+      "enhancement": {
+        "maxEnhancement": 15,
+        "costPerLevel": [
+          {"level": 1, "gold": 1000, "materials": [{"itemId": "MAT_WEAPON_ORE", "count": 5}]},
+          {"level": 5, "gold": 5000, "materials": [{"itemId": "MAT_WEAPON_ORE", "count": 10}]},
+          {"level": 10, "gold": 15000, "materials": [{"itemId": "MAT_RARE_ORE", "count": 5}]},
+          {"level": 15, "gold": 50000, "materials": [{"itemId": "MAT_LEGENDARY_ORE", "count": 3}]}
+        ]
+      },
+      "assets": {
+        "prefab": "Addressables/Items/Weapons/SwordFlame/Prefab",
+        "icon": "Addressables/UI/Icons/Items/SwordFlame"
+      }
+    },
+    {
+      "id": "ITEM_ARMOR_ICE_PLATE",
+      "meta": {
+        "nameKey": "ITEM_NAME_ARMOR_ICE_PLATE",
+        "descriptionKey": "ITEM_DESC_ARMOR_ICE_PLATE",
+        "icon": "Icon_Armor_IcePlate",
+        "model": "Model_Armor_IcePlate",
+        "type": "Armor",
+        "subType": "HeavyArmor",
+        "rarity": "SR",
+        "maxLevel": 80,
+        "slot": "Chest"
+      },
+      "baseStats": {
+        "def": 180,
+        "hp": 850,
+        "effectRes": 0.15
+      },
+      "statRollRange": {
+        "def": {"min": 160, "max": 200},
+        "hp": {"min": 750, "max": 950},
+        "effectRes": {"min": 0.10, "max": 0.20}
+      },
+      "subStats": {
+        "maxSubStats": 3,
+        "pool": [
+          {"stat": "def%", "weight": 1000, "valueRange": {"min": 0.08, "max": 0.15}},
+          {"stat": "hp%", "weight": 1000, "valueRange": {"min": 0.08, "max": 0.15}},
+          {"stat": "spd", "weight": 500, "valueRange": {"min": 3, "max": 10}},
+          {"stat": "effectRes", "weight": 700, "valueRange": {"min": 0.05, "max": 0.12}}
+        ]
+      },
+      "setBonus": {
+        "setId": "SET_GLACIER",
+        "2pieces": {
+          "description": "DEF +20%",
+          "effects": [{"type": "StatBonus", "stat": "def%", "value": 0.20}]
+        },
+        "4pieces": {
+          "description": "When hit, 50% chance to freeze attacker for 1 turn",
+          "effects": [
+            {"type": "OnHit", "trigger": "WhenReceiveDamage", "chance": 0.5, "debuff": "DEBUFF_FREEZE_1T"}
+          ]
+        }
+      },
+      "enhancement": {
+        "maxEnhancement": 12,
+        "costPerLevel": [
+          {"level": 1, "gold": 800, "materials": [{"itemId": "MAT_ARMOR_PLATE", "count": 4}]},
+          {"level": 6, "gold": 4000, "materials": [{"itemId": "MAT_ARMOR_PLATE", "count": 8}]},
+          {"level": 12, "gold": 12000, "materials": [{"itemId": "MAT_RARE_PLATE", "count": 4}]}
+        ]
+      },
+      "assets": {
+        "prefab": "Addressables/Items/Armor/IcePlate/Prefab",
+        "icon": "Addressables/UI/Icons/Items/IcePlate"
+      }
+    },
+    {
+      "id": "ITEM_ACCESSORY_DRAGON_AMULET",
+      "meta": {
+        "nameKey": "ITEM_NAME_DRAGON_AMULET",
+        "descriptionKey": "ITEM_DESC_DRAGON_AMULET",
+        "icon": "Icon_Accessory_DragonAmulet",
+        "model": "Model_Accessory_DragonAmulet",
+        "type": "Accessory",
+        "subType": "Amulet",
+        "rarity": "SSR",
+        "maxLevel": 90,
+        "slot": "Neck"
+      },
+      "baseStats": {
+        "atk": 120,
+        "hp": 500,
+        "critDmg": 0.40
+      },
+      "statRollRange": {
+        "atk": {"min": 100, "max": 140},
+        "hp": {"min": 400, "max": 600},
+        "critDmg": {"min": 0.30, "max": 0.50}
+      },
+      "subStats": {
+        "maxSubStats": 4,
+        "pool": [
+          {"stat": "atk%", "weight": 1000, "valueRange": {"min": 0.08, "max": 0.18}},
+          {"stat": "critRate", "weight": 900, "valueRange": {"min": 0.05, "max": 0.12}},
+          {"stat": "effectHit", "weight": 600, "valueRange": {"min": 0.08, "max": 0.15}},
+          {"stat": "spd", "weight": 500, "valueRange": {"min": 8, "max": 18}}
+        ]
+      },
+      "setBonus": null,
+      "uniqueEffect": {
+        "name": "Dragon's Fury",
+        "description": "Increase all elemental damage by 20%. When HP is above 80%, increase ATK by 15%",
+        "effects": [
+          {"type": "ElementalDmgBonus", "element": "All", "value": 0.20},
+          {"type": "ConditionalBuff", "condition": "HP_ABOVE_80", "stat": "atk%", "value": 0.15}
+        ]
+      },
+      "enhancement": {
+        "maxEnhancement": 15,
+        "costPerLevel": [
+          {"level": 1, "gold": 1500, "materials": [{"itemId": "MAT_ACCESSORY_GEM", "count": 6}]},
+          {"level": 5, "gold": 7000, "materials": [{"itemId": "MAT_ACCESSORY_GEM", "count": 12}]},
+          {"level": 10, "gold": 20000, "materials": [{"itemId": "MAT_RARE_GEM", "count": 6}]},
+          {"level": 15, "gold": 60000, "materials": [{"itemId": "MAT_LEGENDARY_GEM", "count": 4}]}
+        ]
+      },
+      "assets": {
+        "prefab": "Addressables/Items/Accessories/DragonAmulet/Prefab",
+        "icon": "Addressables/UI/Icons/Items/DragonAmulet"
+      }
+    },
+    {
+      "id": "ITEM_CONSUMABLE_HP_POTION",
+      "meta": {
+        "nameKey": "ITEM_NAME_HP_POTION",
+        "descriptionKey": "ITEM_DESC_HP_POTION",
+        "icon": "Icon_Consumable_HPPotion",
+        "model": null,
+        "type": "Consumable",
+        "subType": "Potion",
+        "rarity": "R",
+        "maxLevel": 1,
+        "slot": null
+      },
+      "effect": {
+        "type": "InstantHeal",
+        "value": 500,
+        "formula": "500 + (target.maxHp * 0.15)"
+      },
+      "usageRules": {
+        "usableInCombat": true,
+        "cooldown": 5.0,
+        "maxStack": 99,
+        "consumeOnUse": true
+      },
+      "assets": {
+        "icon": "Addressables/UI/Icons/Items/HPPotion",
+        "vfx": "Addressables/VFX/Items/HPPotionUse"
+      }
+    },
+    {
+      "id": "ITEM_MATERIAL_DRAGON_SCALE",
+      "meta": {
+        "nameKey": "ITEM_NAME_DRAGON_SCALE",
+        "descriptionKey": "ITEM_DESC_DRAGON_SCALE",
+        "icon": "Icon_Material_DragonScale",
+        "model": null,
+        "type": "Material",
+        "subType": "AscensionMaterial",
+        "rarity": "SSR",
+        "maxLevel": 1,
+        "slot": null
+      },
+      "usageRules": {
+        "maxStack": 9999,
+        "tradeable": false,
+        "sellable": true,
+        "sellPrice": 5000
+      },
+      "sources": [
+        {"type": "Drop", "sourceId": "BOSS_ANCIENT_DRAGON", "dropRate": 0.15},
+        {"type": "Shop", "sourceId": "SHOP_GUILD", "cost": {"itemId": "CURRENCY_GUILD_COIN", "amount": 500}},
+        {"type": "Event", "sourceId": "EVENT_DRAGON_RAID"}
+      ],
+      "assets": {
+        "icon": "Addressables/UI/Icons/Materials/DragonScale"
+      }
+    },
+    {
+      "id": "ITEM_CURRENCY_GOLD",
+      "meta": {
+        "nameKey": "ITEM_NAME_GOLD",
+        "descriptionKey": "ITEM_DESC_GOLD",
+        "icon": "Icon_Currency_Gold",
+        "model": null,
+        "type": "Currency",
+        "subType": "SoftCurrency",
+        "rarity": "Common",
+        "maxLevel": 1,
+        "slot": null
+      },
+      "usageRules": {
+        "maxStack": 999999999,
+        "tradeable": false,
+        "sellable": false
+      },
+      "assets": {
+        "icon": "Addressables/UI/Icons/Currency/Gold"
+      }
+    },
+    {
+      "id": "ITEM_CURRENCY_GEM",
+      "meta": {
+        "nameKey": "ITEM_NAME_GEM",
+        "descriptionKey": "ITEM_DESC_GEM",
+        "icon": "Icon_Currency_Gem",
+        "model": null,
+        "type": "Currency",
+        "subType": "PremiumCurrency",
+        "rarity": "Premium",
+        "maxLevel": 1,
+        "slot": null
+      },
+      "usageRules": {
+        "maxStack": 999999999,
+        "tradeable": false,
+        "sellable": false
+      },
+      "iapMapping": {
+        "canPurchase": true,
+        "exchangeRate": 1.0
+      },
+      "assets": {
+        "icon": "Addressables/UI/Icons/Currency/Gem"
+      }
+    },
+    {
+      "id": "ITEM_SUMMON_SCROLL",
+      "meta": {
+        "nameKey": "ITEM_NAME_SUMMON_SCROLL",
+        "descriptionKey": "ITEM_DESC_SUMMON_SCROLL",
+        "icon": "Icon_Summon_Scroll",
+        "model": null,
+        "type": "Special",
+        "subType": "GachaTicket",
+        "rarity": "SR",
+        "maxLevel": 1,
+        "slot": null
+      },
+      "usageRules": {
+        "maxStack": 9999,
+        "tradeable": false,
+        "sellable": false
+      },
+      "gachaMapping": {
+        "validBanners": ["BANNER_STANDARD", "BANNER_FIRE_DRAGON_V1"],
+        "pullCount": 1
+      },
+      "assets": {
+        "icon": "Addressables/UI/Icons/Special/SummonScroll"
+      }
+    }
+  ]
+}

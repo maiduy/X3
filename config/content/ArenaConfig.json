@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "arenaMode": {
+    "id": "ARENA_RANKED",
+    "meta": {
+      "nameKey": "ARENA_NAME_RANKED",
+      "descriptionKey": "ARENA_DESC_RANKED",
+      "icon": "Icon_Arena_Ranked"
+    },
+    "availability": {
+      "unlockLevel": 15,
+      "unlockCondition": "STAGE_3_BOSS_CLEARED"
+    },
+    "matchmaking": {
+      "algorithm": "ELO",
+      "matchmakingRange": 200,
+      "maxSearchTime": 60,
+      "botMatchThreshold": 90
+    },
+    "seasons": {
+      "duration": 30,
+      "resetDay": 1,
+      "preseasonDays": 3,
+      "offseasonDays": 2
+    },
+    "rankingSystem": {
+      "initialRank": "Bronze_3",
+      "tiers": [
+        {
+          "tier": "Bronze",
+          "divisions": 3,
+          "eloRange": {"min": 0, "max": 1199},
+          "divisionThresholds": [
+            {"division": 3, "elo": 0},
+            {"division": 2, "elo": 400},
+            {"division": 1, "elo": 800}
+          ],
+          "icon": "Icon_Rank_Bronze",
+          "rewards": {
+            "weekly": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 100}
+            ],
+            "seasonal": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 500},
+              {"itemId": "CURRENCY_GEM", "amount": 100}
+            ]
+          }
+        },
+        {
+          "tier": "Silver",
+          "divisions": 3,
+          "eloRange": {"min": 1200, "max": 1799},
+          "divisionThresholds": [
+            {"division": 3, "elo": 1200},
+            {"division": 2, "elo": 1400},
+            {"division": 1, "elo": 1600}
+          ],
+          "icon": "Icon_Rank_Silver",
+          "rewards": {
+            "weekly": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 200}
+            ],
+            "seasonal": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 1000},
+              {"itemId": "CURRENCY_GEM", "amount": 250}
+            ]
+          }
+        },
+        {
+          "tier": "Gold",
+          "divisions": 3,
+          "eloRange": {"min": 1800, "max": 2399},
+          "divisionThresholds": [
+            {"division": 3, "elo": 1800},
+            {"division": 2, "elo": 2000},
+            {"division": 1, "elo": 2200}
+          ],
+          "icon": "Icon_Rank_Gold",
+          "rewards": {
+            "weekly": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 350}
+            ],
+            "seasonal": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 2000},
+              {"itemId": "CURRENCY_GEM", "amount": 500},
+              {"itemId": "ITEM_SUMMON_SCROLL", "amount": 10}
+            ]
+          }
+        },
+        {
+          "tier": "Platinum",
+          "divisions": 3,
+          "eloRange": {"min": 2400, "max": 2999},
+          "divisionThresholds": [
+            {"division": 3, "elo": 2400},
+            {"division": 2, "elo": 2600},
+            {"division": 1, "elo": 2800}
+          ],
+          "icon": "Icon_Rank_Platinum",
+          "rewards": {
+            "weekly": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 500}
+            ],
+            "seasonal": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 4000},
+              {"itemId": "CURRENCY_GEM", "amount": 1000},
+              {"itemId": "ITEM_SUMMON_SCROLL", "amount": 20}
+            ]
+          }
+        },
+        {
+          "tier": "Diamond",
+          "divisions": 3,
+          "eloRange": {"min": 3000, "max": 3599},
+          "divisionThresholds": [
+            {"division": 3, "elo": 3000},
+            {"division": 2, "elo": 3200},
+            {"division": 1, "elo": 3400}
+          ],
+          "icon": "Icon_Rank_Diamond",
+          "rewards": {
+            "weekly": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 750}
+            ],
+            "seasonal": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 7000},
+              {"itemId": "CURRENCY_GEM", "amount": 2000},
+              {"itemId": "ITEM_SUMMON_SCROLL", "amount": 30},
+              {"itemId": "ITEM_EXCLUSIVE_AVATAR_DIAMOND", "amount": 1}
+            ]
+          }
+        },
+        {
+          "tier": "Master",
+          "divisions": 1,
+          "eloRange": {"min": 3600, "max": 4199},
+          "divisionThresholds": [
+            {"division": 1, "elo": 3600}
+          ],
+          "icon": "Icon_Rank_Master",
+          "limitedSlots": 500,
+          "rewards": {
+            "weekly": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 1000}
+            ],
+            "seasonal": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 12000},
+              {"itemId": "CURRENCY_GEM", "amount": 3500},
+              {"itemId": "ITEM_SUMMON_SCROLL", "amount": 50},
+              {"itemId": "ITEM_EXCLUSIVE_AVATAR_MASTER", "amount": 1},
+              {"itemId": "ITEM_EXCLUSIVE_FRAME_MASTER", "amount": 1}
+            ]
+          }
+        },
+        {
+          "tier": "Grandmaster",
+          "divisions": 1,
+          "eloRange": {"min": 4200, "max": 999999},
+          "divisionThresholds": [
+            {"division": 1, "elo": 4200}
+          ],
+          "icon": "Icon_Rank_Grandmaster",
+          "limitedSlots": 100,
+          "rewards": {
+            "weekly": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 1500}
+            ],
+            "seasonal": [
+              {"itemId": "CURRENCY_ARENA_COIN", "amount": 20000},
+              {"itemId": "CURRENCY_GEM", "amount": 5000},
+              {"itemId": "ITEM_SUMMON_SCROLL", "amount": 100},
+              {"itemId": "ITEM_EXCLUSIVE_AVATAR_GRANDMASTER", "amount": 1},
+              {"itemId": "ITEM_EXCLUSIVE_FRAME_GRANDMASTER", "amount": 1},
+              {"itemId": "ITEM_EXCLUSIVE_TITLE_GRANDMASTER", "amount": 1}
+            ]
+          }
+        }
+      ]
+    },
+    "eloSystem": {
+      "kFactor": 32,
+      "placementMatches": 10,
+      "maxGainPerMatch": 50,
+      "maxLossPerMatch": 40,
+      "winStreakBonus": {
+        "enabled": true,
+        "bonusPerWin": 2,
+        "maxBonus": 10
+      },
+      "demotionProtection": {
+        "enabled": true,
+        "protectionMatches": 3,
+        "appliesToTiers": ["Silver", "Gold", "Platinum", "Diamond"]
+      }
+    },
+    "battleRules": {
+      "teamSize": 5,
+      "banPhase": {
+        "enabled": true,
+        "bansPerPlayer": 2,
+        "banTime": 30
+      },
+      "pickPhase": {
+        "enabled": true,
+        "pickTime": 45,
+        "allowDuplicates": false
+      },
+      "turnLimit": 50,
+      "timeLimit": 600
+    },
+    "rewards": {
+      "perWin": [
+        {"itemId": "CURRENCY_ARENA_COIN", "amount": 15}
+      ],
+      "perLoss": [
+        {"itemId": "CURRENCY_ARENA_COIN", "amount": 5}
+      ],
+      "firstWinOfDay": [
+        {"itemId": "CURRENCY_ARENA_COIN", "amount": 50},
+        {"itemId": "CURRENCY_GEM", "amount": 10}
+      ]
+    },
+    "leaderboard": {
+      "updateFrequency": 300,
+      "displayTopN": 100,
+      "topRewards": [
+        {"rank": 1, "rewards": [{"itemId": "CURRENCY_GEM", "amount": 5000}, {"itemId": "ITEM_EXCLUSIVE_TITLE_RANK1", "amount": 1}]},
+        {"rank": 2, "rewards": [{"itemId": "CURRENCY_GEM", "amount": 3000}, {"itemId": "ITEM_EXCLUSIVE_TITLE_RANK2", "amount": 1}]},
+        {"rank": 3, "rewards": [{"itemId": "CURRENCY_GEM", "amount": 2000}, {"itemId": "ITEM_EXCLUSIVE_TITLE_RANK3", "amount": 1}]},
+        {"rankRange": {"min": 4, "max": 10}, "rewards": [{"itemId": "CURRENCY_GEM", "amount": 1000}]},
+        {"rankRange": {"min": 11, "max": 50}, "rewards": [{"itemId": "CURRENCY_GEM", "amount": 500}]},
+        {"rankRange": {"min": 51, "max": 100}, "rewards": [{"itemId": "CURRENCY_GEM", "amount": 250}]}
+      ]
+    }
+  },
+  "casualMode": {
+    "id": "ARENA_CASUAL",
+    "meta": {
+      "nameKey": "ARENA_NAME_CASUAL",
+      "descriptionKey": "ARENA_DESC_CASUAL",
+      "icon": "Icon_Arena_Casual"
+    },
+    "availability": {
+      "unlockLevel": 10,
+      "unlockCondition": null
+    },
+    "matchmaking": {
+      "algorithm": "PowerBased",
+      "matchmakingRange": 500,
+      "maxSearchTime": 30,
+      "botMatchThreshold": 60
+    },
+    "battleRules": {
+      "teamSize": 5,
+      "banPhase": {
+        "enabled": false
+      },
+      "pickPhase": {
+        "enabled": true,
+        "pickTime": 30,
+        "allowDuplicates": true
+      },
+      "turnLimit": 50,
+      "timeLimit": 600
+    },
+    "rewards": {
+      "perWin": [
+        {"itemId": "CURRENCY_GOLD", "amount": 500}
+      ],
+      "perLoss": [
+        {"itemId": "CURRENCY_GOLD", "amount": 200}
+      ]
+    },
+    "noEloChange": true,
+    "dailyLimit": null
+  }
+}

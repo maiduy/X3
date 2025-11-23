@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "questCategories": {
+    "daily": {
+      "resetTime": "00:00:00",
+      "resetTimezone": "UTC",
+      "maxActive": 10
+    },
+    "weekly": {
+      "resetDay": 1,
+      "resetTime": "00:00:00",
+      "maxActive": 10
+    },
+    "story": {
+      "persistent": true
+    },
+    "event": {
+      "linkedToEvents": true
+    }
+  },
+  "quests": [
+    {
+      "id": "DAILY_COMPLETE_STAGES",
+      "meta": {
+        "nameKey": "QUEST_NAME_COMPLETE_STAGES",
+        "descriptionKey": "QUEST_DESC_COMPLETE_STAGES",
+        "icon": "Icon_Quest_Stage",
+        "category": "daily",
+        "displayOrder": 1
+      },
+      "requirements": {
+        "minLevel": 1,
+        "unlockCondition": null
+      },
+      "objectives": [
+        {
+          "id": "OBJ_COMPLETE_STAGES",
+          "type": "StageCompletion",
+          "listeners": [
+            {
+              "event": "OnStageComplete",
+              "filters": {
+                "stageType": "Any"
+              },
+              "requiredCount": 5
+            }
+          ],
+          "descriptionKey": "OBJ_DESC_COMPLETE_5_STAGES"
+        }
+      ],
+      "rewards": [
+        {"itemId": "CURRENCY_GOLD", "amount": 5000},
+        {"itemId": "RESOURCE_ENERGY", "amount": 20}
+      ],
+      "chainQuest": null
+    },
+    {
+      "id": "DAILY_ARENA_BATTLES",
+      "meta": {
+        "nameKey": "QUEST_NAME_ARENA_BATTLES",
+        "descriptionKey": "QUEST_DESC_ARENA_BATTLES",
+        "icon": "Icon_Quest_Arena",
+        "category": "daily",
+        "displayOrder": 2
+      },
+      "requirements": {
+        "minLevel": 15,
+        "unlockCondition": "ARENA_UNLOCKED"
+      },
+      "objectives": [
+        {
+          "id": "OBJ_ARENA_WINS",
+          "type": "PvPVictory",
+          "listeners": [
+            {
+              "event": "OnPvPVictory",
+              "filters": {
+                "mode": "Arena"
+              },
+              "requiredCount": 3
+            }
+          ],
+          "descriptionKey": "OBJ_DESC_WIN_3_ARENA"
+        }
+      ],
+      "rewards": [
+        {"itemId": "CURRENCY_ARENA_COIN", "amount": 100},
+        {"itemId": "CURRENCY_GEM", "amount": 20}
+      ],
+      "chainQuest": null
+    },
+    {
+      "id": "WEEKLY_ENHANCE_ITEMS",
+      "meta": {
+        "nameKey": "QUEST_NAME_ENHANCE_ITEMS",
+        "descriptionKey": "QUEST_DESC_ENHANCE_ITEMS",
+        "icon": "Icon_Quest_Enhance",
+        "category": "weekly",
+        "displayOrder": 1
+      },
+      "requirements": {
+        "minLevel": 5,
+        "unlockCondition": null
+      },
+      "objectives": [
+        {
+          "id": "OBJ_ENHANCE_ITEMS",
+          "type": "ItemEnhancement",
+          "listeners": [
+            {
+              "event": "OnItemEnhance",
+              "filters": {
+                "itemType": "Any"
+              },
+              "requiredCount": 20
+            }
+          ],
+          "descriptionKey": "OBJ_DESC_ENHANCE_20_ITEMS"
+        }
+      ],
+      "rewards": [
+        {"itemId": "CURRENCY_GOLD", "amount": 50000},
+        {"itemId": "MAT_WEAPON_ORE", "amount": 10}
+      ],
+      "chainQuest": null
+    },
+    {
+      "id": "WEEKLY_BOSS_HUNT",
+      "meta": {
+        "nameKey": "QUEST_NAME_BOSS_HUNT",
+        "descriptionKey": "QUEST_DESC_BOSS_HUNT",
+        "icon": "Icon_Quest_Boss",
+        "category": "weekly",
+        "displayOrder": 2
+      },
+      "requirements": {
+        "minLevel": 10,
+        "unlockCondition": null
+      },
+      "objectives": [
+        {
+          "id": "OBJ_DEFEAT_BOSSES",
+          "type": "EnemyKill",
+          "listeners": [
+            {
+              "event": "OnEnemyKilled",
+              "filters": {
+                "tag": "Boss"
+              },
+              "requiredCount": 10
+            }
+          ],
+          "descriptionKey": "OBJ_DESC_DEFEAT_10_BOSSES"
+        }
+      ],
+      "rewards": [
+        {"itemId": "CURRENCY_GEM", "amount": 200},
+        {"itemId": "MAT_RARE_ORE", "amount": 5}
+      ],
+      "chainQuest": null
+    },
+    {
+      "id": "STORY_CHAPTER_1",
+      "meta": {
+        "nameKey": "QUEST_NAME_STORY_CH1",
+        "descriptionKey": "QUEST_DESC_STORY_CH1",
+        "icon": "Icon_Quest_Story",
+        "category": "story",
+        "displayOrder": 1
+      },
+      "requirements": {
+        "minLevel": 1,
+        "unlockCondition": null
+      },
+      "objectives": [
+        {
+          "id": "OBJ_CLEAR_STAGE_1_BOSS",
+          "type": "SpecificStage",
+          "listeners": [
+            {
+              "event": "OnStageComplete",
+              "filters": {
+                "stageId": "STAGE_1_BOSS"
+              },
+              "requiredCount": 1
+            }
+          ],
+          "descriptionKey": "OBJ_DESC_CLEAR_CHAPTER_1_BOSS"
+        }
+      ],
+      "rewards": [
+        {"itemId": "CURRENCY_GEM", "amount": 100},
+        {"itemId": "CHAR_SHADOW_ASSASSIN_FRAGMENT", "amount": 30}
+      ],
+      "chainQuest": "STORY_CHAPTER_2"
+    }
+  ]
+}

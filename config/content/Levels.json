@@ -1,0 +1,308 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "campaigns": [
+    {
+      "id": "CAMPAIGN_MAIN_STORY",
+      "meta": {
+        "nameKey": "CAMPAIGN_NAME_MAIN_STORY",
+        "descriptionKey": "CAMPAIGN_DESC_MAIN_STORY",
+        "icon": "Icon_Campaign_MainStory",
+        "chapters": 10,
+        "unlockLevel": 1
+      },
+      "chapters": [
+        {
+          "id": "CHAPTER_01",
+          "meta": {
+            "nameKey": "CHAPTER_01_NAME",
+            "chapterNumber": 1,
+            "storyUnlock": "STORY_PROLOGUE"
+          },
+          "stages": [
+            {
+              "id": "STAGE_1_1",
+              "meta": {
+                "nameKey": "STAGE_1_1_NAME",
+                "stageNumber": 1,
+                "difficulty": "Normal",
+                "recommendedPower": 500
+              },
+              "requirements": {
+                "unlockCondition": null,
+                "minLevel": 1,
+                "energyCost": 6
+              },
+              "mapConfig": {
+                "mapId": "MAP_FOREST_CLEARING",
+                "environment": "Forest",
+                "weatherEffect": null
+              },
+              "enemies": {
+                "waves": [
+                  {
+                    "waveNumber": 1,
+                    "units": [
+                      {"enemyId": "ENEMY_GOBLIN_WARRIOR", "level": 3, "position": 0},
+                      {"enemyId": "ENEMY_GOBLIN_ARCHER", "level": 3, "position": 2}
+                    ]
+                  },
+                  {
+                    "waveNumber": 2,
+                    "units": [
+                      {"enemyId": "ENEMY_GOBLIN_WARRIOR", "level": 4, "position": 1},
+                      {"enemyId": "ENEMY_GOBLIN_SHAMAN", "level": 5, "position": 3}
+                    ]
+                  }
+                ]
+              },
+              "victoryCondition": {
+                "type": "ELIMINATE_ALL",
+                "params": null
+              },
+              "rewards": {
+                "firstClear": [
+                  {"itemId": "CURRENCY_GOLD", "amount": 500},
+                  {"itemId": "CURRENCY_GEM", "amount": 10},
+                  {"itemId": "ITEM_SUMMON_SCROLL", "amount": 1}
+                ],
+                "repeat": [
+                  {"itemId": "CURRENCY_GOLD", "amount": 100},
+                  {"itemId": "MAT_COMMON_ORE", "amount": 2}
+                ],
+                "exp": 150,
+                "playerExp": 20
+              },
+              "drops": {
+                "table": "DROP_TABLE_CHAPTER_1_NORMAL",
+                "bonus": null
+              },
+              "stars": [
+                {"condition": "ClearStage", "reward": {"itemId": "CURRENCY_GEM", "amount": 5}},
+                {"condition": "NoDeaths", "reward": {"itemId": "CURRENCY_GOLD", "amount": 200}},
+                {"condition": "ClearUnder15Turns", "reward": {"itemId": "MAT_COMMON_ORE", "amount": 3}}
+              ]
+            },
+            {
+              "id": "STAGE_1_2",
+              "meta": {
+                "nameKey": "STAGE_1_2_NAME",
+                "stageNumber": 2,
+                "difficulty": "Normal",
+                "recommendedPower": 600
+              },
+              "requirements": {
+                "unlockCondition": "STAGE_1_1_CLEARED",
+                "minLevel": 2,
+                "energyCost": 6
+              },
+              "mapConfig": {
+                "mapId": "MAP_FOREST_PATH",
+                "environment": "Forest",
+                "weatherEffect": null
+              },
+              "enemies": {
+                "waves": [
+                  {
+                    "waveNumber": 1,
+                    "units": [
+                      {"enemyId": "ENEMY_GOBLIN_WARRIOR", "level": 5, "position": 0},
+                      {"enemyId": "ENEMY_GOBLIN_ARCHER", "level": 5, "position": 2},
+                      {"enemyId": "ENEMY_GOBLIN_ARCHER", "level": 5, "position": 4}
+                    ]
+                  },
+                  {
+                    "waveNumber": 2,
+                    "units": [
+                      {"enemyId": "ENEMY_GOBLIN_BRUTE", "level": 7, "position": 1, "isBoss": false}
+                    ]
+                  }
+                ]
+              },
+              "victoryCondition": {
+                "type": "ELIMINATE_ALL",
+                "params": null
+              },
+              "rewards": {
+                "firstClear": [
+                  {"itemId": "CURRENCY_GOLD", "amount": 600},
+                  {"itemId": "CURRENCY_GEM", "amount": 10},
+                  {"itemId": "MAT_WEAPON_ORE", "amount": 5}
+                ],
+                "repeat": [
+                  {"itemId": "CURRENCY_GOLD", "amount": 120},
+                  {"itemId": "MAT_COMMON_ORE", "amount": 3}
+                ],
+                "exp": 200,
+                "playerExp": 25
+              },
+              "drops": {
+                "table": "DROP_TABLE_CHAPTER_1_NORMAL",
+                "bonus": null
+              },
+              "stars": [
+                {"condition": "ClearStage", "reward": {"itemId": "CURRENCY_GEM", "amount": 5}},
+                {"condition": "NoDeaths", "reward": {"itemId": "CURRENCY_GOLD", "amount": 250}},
+                {"condition": "ClearUnder12Turns", "reward": {"itemId": "MAT_WEAPON_ORE", "amount": 3}}
+              ]
+            },
+            {
+              "id": "STAGE_1_BOSS",
+              "meta": {
+                "nameKey": "STAGE_1_BOSS_NAME",
+                "stageNumber": 10,
+                "difficulty": "Boss",
+                "recommendedPower": 1200,
+                "isBossStage": true
+              },
+              "requirements": {
+                "unlockCondition": "STAGE_1_9_CLEARED",
+                "minLevel": 5,
+                "energyCost": 12
+              },
+              "mapConfig": {
+                "mapId": "MAP_GOBLIN_THRONE",
+                "environment": "Cave",
+                "weatherEffect": null
+              },
+              "enemies": {
+                "waves": [
+                  {
+                    "waveNumber": 1,
+                    "units": [
+                      {"enemyId": "BOSS_GOBLIN_KING", "level": 10, "position": 2, "isBoss": true, "aiProfile": "AI_BOSS_PATTERN"},
+                      {"enemyId": "ENEMY_GOBLIN_GUARD", "level": 8, "position": 0},
+                      {"enemyId": "ENEMY_GOBLIN_GUARD", "level": 8, "position": 4}
+                    ]
+                  }
+                ]
+              },
+              "victoryCondition": {
+                "type": "KILL_BOSS",
+                "params": {"targetTag": "Boss"}
+              },
+              "rewards": {
+                "firstClear": [
+                  {"itemId": "CURRENCY_GOLD", "amount": 2000},
+                  {"itemId": "CURRENCY_GEM", "amount": 50},
+                  {"itemId": "ITEM_SUMMON_SCROLL", "amount": 5},
+                  {"itemId": "CHAR_SHADOW_ASSASSIN_FRAGMENT", "amount": 10}
+                ],
+                "repeat": [
+                  {"itemId": "CURRENCY_GOLD", "amount": 300},
+                  {"itemId": "MAT_RARE_ORE", "amount": 2}
+                ],
+                "exp": 500,
+                "playerExp": 100
+              },
+              "drops": {
+                "table": "DROP_TABLE_BOSS_CHAPTER_1",
+                "guaranteedRare": true
+              },
+              "stars": [
+                {"condition": "ClearStage", "reward": {"itemId": "CURRENCY_GEM", "amount": 20}},
+                {"condition": "NoDeaths", "reward": {"itemId": "CHAR_SHADOW_ASSASSIN_FRAGMENT", "amount": 5}},
+                {"condition": "ClearUnder20Turns", "reward": {"itemId": "MAT_RARE_ORE", "amount": 5}}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "dungeons": [
+    {
+      "id": "DUNGEON_GOLD_VAULT",
+      "meta": {
+        "nameKey": "DUNGEON_NAME_GOLD_VAULT",
+        "descriptionKey": "DUNGEON_DESC_GOLD_VAULT",
+        "icon": "Icon_Dungeon_GoldVault",
+        "type": "Resource",
+        "availability": {
+          "daysOfWeek": [1, 3, 5, 7],
+          "unlockLevel": 10
+        }
+      },
+      "difficulties": [
+        {
+          "difficulty": "Easy",
+          "recommendedPower": 2000,
+          "energyCost": 10,
+          "enemyLevel": 15,
+          "rewards": {
+            "guaranteed": [
+              {"itemId": "CURRENCY_GOLD", "amount": 5000}
+            ],
+            "random": []
+          }
+        },
+        {
+          "difficulty": "Hard",
+          "recommendedPower": 5000,
+          "energyCost": 15,
+          "enemyLevel": 30,
+          "rewards": {
+            "guaranteed": [
+              {"itemId": "CURRENCY_GOLD", "amount": 15000}
+            ],
+            "random": []
+          }
+        },
+        {
+          "difficulty": "Hell",
+          "recommendedPower": 10000,
+          "energyCost": 20,
+          "enemyLevel": 50,
+          "rewards": {
+            "guaranteed": [
+              {"itemId": "CURRENCY_GOLD", "amount": 50000}
+            ],
+            "random": []
+          }
+        }
+      ],
+      "dailyLimit": 3
+    },
+    {
+      "id": "DUNGEON_EXP_TOWER",
+      "meta": {
+        "nameKey": "DUNGEON_NAME_EXP_TOWER",
+        "descriptionKey": "DUNGEON_DESC_EXP_TOWER",
+        "icon": "Icon_Dungeon_ExpTower",
+        "type": "Resource",
+        "availability": {
+          "daysOfWeek": [2, 4, 6, 7],
+          "unlockLevel": 10
+        }
+      },
+      "difficulties": [
+        {
+          "difficulty": "Easy",
+          "recommendedPower": 2000,
+          "energyCost": 10,
+          "enemyLevel": 15,
+          "rewards": {
+            "guaranteed": [
+              {"itemId": "ITEM_EXP_POTION_SMALL", "amount": 10}
+            ],
+            "exp": 5000
+          }
+        },
+        {
+          "difficulty": "Hard",
+          "recommendedPower": 5000,
+          "energyCost": 15,
+          "enemyLevel": 30,
+          "rewards": {
+            "guaranteed": [
+              {"itemId": "ITEM_EXP_POTION_MEDIUM", "amount": 5}
+            ],
+            "exp": 15000
+          }
+        }
+      ],
+      "dailyLimit": 3
+    }
+  ]
+}

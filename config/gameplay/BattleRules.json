@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "turnSystem": {
+    "type": "ATB",
+    "baseTickRate": 100,
+    "speedToATBMultiplier": 1.0,
+    "actionCost": 100,
+    "turnOrderDisplay": true
+  },
+  "combatPhases": {
+    "preparation": {
+      "duration": 3.0,
+      "allowSkillSelection": true,
+      "allowPositioning": false
+    },
+    "combat": {
+      "maxTurns": 50,
+      "turnTimeout": 30.0,
+      "autoPlayEnabled": true
+    },
+    "victory": {
+      "duration": 2.0,
+      "showRewards": true
+    },
+    "defeat": {
+      "duration": 2.0,
+      "allowRetry": true
+    }
+  },
+  "elementalSystem": {
+    "elements": ["Fire", "Ice", "Nature", "Light", "Dark", "Physical"],
+    "advantageMatrix": {
+      "Fire": {"strong": ["Nature", "Ice"], "weak": ["Ice", "Water"]},
+      "Ice": {"strong": ["Nature", "Fire"], "weak": ["Fire"]},
+      "Nature": {"strong": ["Water"], "weak": ["Fire", "Ice"]},
+      "Light": {"strong": ["Dark"], "weak": ["Dark"]},
+      "Dark": {"strong": ["Light"], "weak": ["Light"]},
+      "Physical": {"strong": [], "weak": []}
+    },
+    "advantageMultiplier": {
+      "strong": 1.5,
+      "neutral": 1.0,
+      "weak": 0.75
+    }
+  },
+  "damageCalculation": {
+    "physicalFormula": "(atk * skillMultiplier * (1 + critDmg * isCrit)) * (100 / (100 + def)) * elementalMultiplier * randomFactor",
+    "magicalFormula": "(atk * skillMultiplier * (1 + critDmg * isCrit)) * (100 / (100 + def * 0.5)) * elementalMultiplier * randomFactor",
+    "trueDamageFormula": "atk * skillMultiplier",
+    "randomFactor": {
+      "min": 0.95,
+      "max": 1.05
+    },
+    "criticalHit": {
+      "baseCritRate": 0.05,
+      "baseCritDmg": 1.5,
+      "critRateCap": 1.0,
+      "critDmgCap": 3.0
+    },
+    "defenseFormulas": {
+      "damageReduction": "def / (def + 100)",
+      "defenseIgnore": "max(0, def - (def * ignoreValue))"
+    }
+  },
+  "resourceSystem": {
+    "mana": {
+      "startAmount": 100,
+      "maxAmount": 100,
+      "regenPerTurn": 20,
+      "regenOnHit": 5,
+      "regenOnKill": 30
+    },
+    "energy": {
+      "startAmount": 0,
+      "maxAmount": 100,
+      "gainOnAttack": 10,
+      "gainOnHit": 5,
+      "gainOnKill": 20,
+      "decayPerTurn": 0
+    }
+  },
+  "combatRules": {
+    "allowFriendlyFire": false,
+    "allowSelfTarget": true,
+    "resurrectAllowed": true,
+    "maxRevivesPerBattle": 3,
+    "speedTiebreakerRandom": true,
+    "continuousEffectTiming": "EndOfTurn"
+  },
+  "crowdControlRules": {
+    "stunPreventsAction": true,
+    "freezePreventsAction": true,
+    "sleepBreaksOnDamage": true,
+    "charmChangesTeam": true,
+    "maxCCDuration": 5,
+    "ccResistanceStacking": "Multiplicative"
+  },
+  "teamComposition": {
+    "pvp": {
+      "minUnits": 3,
+      "maxUnits": 5,
+      "duplicatesAllowed": false,
+      "sameElementLimit": null
+    },
+    "pve": {
+      "minUnits": 1,
+      "maxUnits": 5,
+      "duplicatesAllowed": false,
+      "sameElementLimit": null
+    }
+  },
+  "victoryConditions": [
+    {
+      "id": "ELIMINATE_ALL",
+      "type": "EliminateEnemies",
+      "description": "Defeat all enemy units"
+    },
+    {
+      "id": "SURVIVE_TURNS",
+      "type": "SurviveDuration",
+      "description": "Survive for N turns",
+      "param": {"turns": 10}
+    },
+    {
+      "id": "PROTECT_TARGET",
+      "type": "KeepAlive",
+      "description": "Keep specific unit alive",
+      "param": {"targetId": "PROTECTED_UNIT"}
+    },
+    {
+      "id": "KILL_BOSS",
+      "type": "EliminateSpecific",
+      "description": "Defeat the boss unit",
+      "param": {"targetTag": "Boss"}
+    }
+  ],
+  "defeatConditions": [
+    {
+      "id": "ALL_DEAD",
+      "type": "AllUnitsDefeated",
+      "description": "All player units are defeated"
+    },
+    {
+      "id": "TIMEOUT",
+      "type": "TurnLimit",
+      "description": "Exceeded maximum turn limit",
+      "param": {"maxTurns": 50}
+    },
+    {
+      "id": "VIP_DEAD",
+      "type": "ProtectedUnitDied",
+      "description": "Protected unit died",
+      "param": {"targetId": "VIP_UNIT"}
+    }
+  ],
+  "rewardCalculation": {
+    "baseExpFormula": "enemyLevel * 10 + enemyRarity * 50",
+    "baseGoldFormula": "enemyLevel * 5 + enemyRarity * 25",
+    "performanceMultipliers": {
+      "noDeaths": 1.5,
+      "fastClear": 1.3,
+      "perfectHealth": 1.2
+    },
+    "firstClearBonus": 2.0
+  }
+}

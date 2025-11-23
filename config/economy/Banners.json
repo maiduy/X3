@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "banners": [
+    {
+      "id": "BANNER_STANDARD",
+      "meta": {
+        "nameKey": "BANNER_NAME_STANDARD",
+        "descriptionKey": "BANNER_DESC_STANDARD",
+        "icon": "Icon_Banner_Standard",
+        "type": "Permanent",
+        "isPermanent": true
+      },
+      "duration": {
+        "start": "2025-01-01T00:00:00Z",
+        "end": null
+      },
+      "cost": {
+        "single": [
+          {"itemId": "ITEM_SUMMON_SCROLL", "amount": 1},
+          {"itemId": "CURRENCY_GEM", "amount": 160}
+        ],
+        "multi": [
+          {"itemId": "ITEM_SUMMON_SCROLL", "amount": 10},
+          {"itemId": "CURRENCY_GEM", "amount": 1600}
+        ]
+      },
+      "pity": {
+        "soft": 70,
+        "hard": 90,
+        "resetOnSSR": true,
+        "carryOver": true,
+        "guaranteedPickupOn": null
+      },
+      "rates": {
+        "SSR": 0.02,
+        "SR": 0.18,
+        "R": 0.80
+      },
+      "pool": {
+        "SSR": [
+          {"id": "CHAR_FIRE_DRAGON", "weight": 1.0, "isPickup": false},
+          {"id": "CHAR_HOLY_KNIGHT", "weight": 1.0, "isPickup": false}
+        ],
+        "SR": [
+          {"id": "CHAR_FROST_MAGE", "weight": 1.0, "isPickup": false},
+          {"id": "CHAR_SHADOW_ASSASSIN", "weight": 1.0, "isPickup": false}
+        ],
+        "R": [
+          {"id": "CHAR_NATURE_HEALER", "weight": 1.0, "isPickup": false}
+        ]
+      },
+      "guarantees": {
+        "multiPullGuarantee": {
+          "enabled": true,
+          "minRarity": "SR",
+          "pullCount": 10
+        }
+      },
+      "bonuses": {
+        "firstPull": {
+          "enabled": true,
+          "discount": 0.5
+        }
+      }
+    },
+    {
+      "id": "BANNER_FIRE_DRAGON_V1",
+      "meta": {
+        "nameKey": "BANNER_NAME_FIRE_DRAGON_V1",
+        "descriptionKey": "BANNER_DESC_FIRE_DRAGON_V1",
+        "icon": "Icon_Banner_FireDragon",
+        "type": "Limited",
+        "isPermanent": false,
+        "featuredCharacter": "CHAR_FIRE_DRAGON"
+      },
+      "duration": {
+        "start": "2025-11-01T00:00:00Z",
+        "end": "2025-11-15T23:59:59Z"
+      },
+      "cost": {
+        "single": [
+          {"itemId": "ITEM_SUMMON_SCROLL", "amount": 1},
+          {"itemId": "CURRENCY_GEM", "amount": 160}
+        ],
+        "multi": [
+          {"itemId": "ITEM_SUMMON_SCROLL", "amount": 10},
+          {"itemId": "CURRENCY_GEM", "amount": 1600}
+        ]
+      },
+      "pity": {
+        "soft": 50,
+        "hard": 90,
+        "resetOnSSR": true,
+        "carryOver": false,
+        "guaranteedPickupOn": 2
+      },
+      "rates": {
+        "SSR": 0.02,
+        "SR": 0.18,
+        "R": 0.80
+      },
+      "pool": {
+        "SSR": [
+          {"id": "CHAR_FIRE_DRAGON", "weight": 0.5, "isPickup": true},
+          {"id": "CHAR_HOLY_KNIGHT", "weight": 0.5, "isPickup": false}
+        ],
+        "SR": [
+          {"id": "CHAR_FROST_MAGE", "weight": 1.0, "isPickup": false},
+          {"id": "CHAR_SHADOW_ASSASSIN", "weight": 1.0, "isPickup": false}
+        ],
+        "R": [
+          {"id": "CHAR_NATURE_HEALER", "weight": 1.0, "isPickup": false}
+        ]
+      },
+      "pickup": {
+        "characterId": "CHAR_FIRE_DRAGON",
+        "rateShare": 0.5,
+        "guaranteedOn": [1, 2]
+      },
+      "guarantees": {
+        "multiPullGuarantee": {
+          "enabled": true,
+          "minRarity": "SR",
+          "pullCount": 10
+        },
+        "pickupGuarantee": {
+          "enabled": true,
+          "maxNonPickupSSR": 1,
+          "description": "If you lose 50/50 once, next SSR is guaranteed pickup"
+        }
+      },
+      "bonuses": {
+        "dailyDiscount": {
+          "enabled": true,
+          "discountedPulls": 1,
+          "discount": 0.2
+        }
+      }
+    },
+    {
+      "id": "BANNER_BEGINNER",
+      "meta": {
+        "nameKey": "BANNER_NAME_BEGINNER",
+        "descriptionKey": "BANNER_DESC_BEGINNER",
+        "icon": "Icon_Banner_Beginner",
+        "type": "Beginner",
+        "isPermanent": false
+      },
+      "duration": {
+        "start": "2025-01-01T00:00:00Z",
+        "end": null,
+        "expiresAfterDays": 7,
+        "expiresAfterPulls": 20
+      },
+      "cost": {
+        "single": [
+          {"itemId": "CURRENCY_GEM", "amount": 120}
+        ],
+        "multi": [
+          {"itemId": "CURRENCY_GEM", "amount": 1200}
+        ]
+      },
+      "pity": {
+        "soft": null,
+        "hard": 10,
+        "resetOnSSR": false,
+        "carryOver": false,
+        "guaranteedPickupOn": 1
+      },
+      "rates": {
+        "SSR": 0.05,
+        "SR": 0.25,
+        "R": 0.70
+      },
+      "pool": {
+        "SSR": [
+          {"id": "CHAR_FIRE_DRAGON", "weight": 0.33, "isPickup": true},
+          {"id": "CHAR_HOLY_KNIGHT", "weight": 0.33, "isPickup": true},
+          {"id": "CHAR_SHADOW_ASSASSIN", "weight": 0.34, "isPickup": true}
+        ],
+        "SR": [
+          {"id": "CHAR_FROST_MAGE", "weight": 1.0, "isPickup": false}
+        ],
+        "R": [
+          {"id": "CHAR_NATURE_HEALER", "weight": 1.0, "isPickup": false}
+        ]
+      },
+      "guarantees": {
+        "firstTenPull": {
+          "enabled": true,
+          "guaranteedSSR": true,
+          "guaranteedCount": 1
+        }
+      },
+      "bonuses": {
+        "discount": {
+          "enabled": true,
+          "discount": 0.25
+        }
+      },
+      "maxPulls": 20
+    }
+  ],
+  "dropRateDisplay": {
+    "showIndividualRates": true,
+    "showCumulativeRates": true,
+    "includeHistory": true,
+    "legalCompliance": {
+      "china": true,
+      "japan": true,
+      "korea": true
+    }
+  },
+  "wishSystem": {
+    "enabled": false,
+    "maxWishes": 5,
+    "wishPool": []
+  }
+}

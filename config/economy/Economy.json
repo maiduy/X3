@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "currencies": [
+    {
+      "id": "CURRENCY_GOLD",
+      "meta": {
+        "nameKey": "CURRENCY_NAME_GOLD",
+        "icon": "Icon_Currency_Gold",
+        "type": "Soft",
+        "rarity": "Common"
+      },
+      "limits": {
+        "maxAmount": 999999999,
+        "transferable": false
+      },
+      "sources": [
+        {"type": "StageCompletion", "avgPerRun": 150},
+        {"type": "DailyQuest", "avgPerDay": 15000},
+        {"type": "Selling", "variable": true}
+      ],
+      "sinks": [
+        {"type": "Upgrade", "avgPerDay": 50000},
+        {"type": "Shop", "avgPerDay": 20000}
+      ],
+      "dailyEconomy": {
+        "targetIncome": 100000,
+        "targetSpending": 80000,
+        "inflationRate": 0.02
+      }
+    },
+    {
+      "id": "CURRENCY_GEM",
+      "meta": {
+        "nameKey": "CURRENCY_NAME_GEM",
+        "icon": "Icon_Currency_Gem",
+        "type": "Premium",
+        "rarity": "Premium"
+      },
+      "limits": {
+        "maxAmount": 999999999,
+        "transferable": false
+      },
+      "sources": [
+        {"type": "IAP", "primary": true},
+        {"type": "Quest", "avgPerDay": 50},
+        {"type": "Event", "avgPerWeek": 500}
+      ],
+      "sinks": [
+        {"type": "Gacha", "avgPerDay": 320},
+        {"type": "Shop", "avgPerDay": 100},
+        {"type": "Refresh", "avgPerDay": 50}
+      ],
+      "conversionRates": {
+        "toGold": 1000,
+        "toEnergy": 10
+      },
+      "iapExchangeRate": 1.0
+    },
+    {
+      "id": "CURRENCY_ARENA_COIN",
+      "meta": {
+        "nameKey": "CURRENCY_NAME_ARENA_COIN",
+        "icon": "Icon_Currency_ArenaCoin",
+        "type": "Event",
+        "rarity": "Rare"
+      },
+      "limits": {
+        "maxAmount": 999999,
+        "transferable": false
+      },
+      "sources": [
+        {"type": "ArenaVictory", "avgPerMatch": 15},
+        {"type": "WeeklyRewards", "avgPerWeek": 200}
+      ],
+      "sinks": [
+        {"type": "ArenaShop", "primary": true}
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "RESOURCE_ENERGY",
+      "meta": {
+        "nameKey": "RESOURCE_NAME_ENERGY",
+        "icon": "Icon_Resource_Energy",
+        "type": "Regenerating"
+      },
+      "limits": {
+        "maxAmount": 200,
+        "naturalCap": 100
+      },
+      "regeneration": {
+        "rate": 1,
+        "interval": 300,
+        "bonusFromLevel": 0
+      },
+      "sources": [
+        {"type": "Regeneration", "perDay": 288},
+        {"type": "LevelUp", "amount": 100},
+        {"type": "DailyReward", "amount": 60}
+      ],
+      "costs": {
+        "normalStage": 6,
+        "hardStage": 8,
+        "dungeon": 15
+      }
+    }
+  ],
+  "balanceTargets": {
+    "newPlayer": {
+      "level": "1-20",
+      "dailyGold": 50000,
+      "dailyGems": 30,
+      "progressionRate": 1.5
+    },
+    "midPlayer": {
+      "level": "21-50",
+      "dailyGold": 150000,
+      "dailyGems": 100,
+      "progressionRate": 1.0
+    },
+    "endPlayer": {
+      "level": "51+",
+      "dailyGold": 500000,
+      "dailyGems": 300,
+      "progressionRate": 0.5
+    }
+  },
+  "exchangeRates": {
+    "gemToGold": 1000,
+    "gemToEnergy": 10,
+    "goldToEnergy": null
+  },
+  "inflationControl": {
+    "enabled": true,
+    "monthlyInflationTarget": 0.05,
+    "adjustmentMethods": ["EventRewards", "ShopPrices", "DropRates"]
+  }
+}

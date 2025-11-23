@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "flags": [
+    {
+      "id": "FEATURE_PVP_ARENA",
+      "meta": {
+        "name": "PvP Arena System",
+        "description": "Enable or disable the entire PvP arena feature",
+        "category": "GameMode"
+      },
+      "enabled": true,
+      "rollout": {
+        "strategy": "Gradual",
+        "percentage": 100,
+        "targetGroups": ["All"]
+      },
+      "requirements": {
+        "minVersion": "1.0.0",
+        "platforms": ["iOS", "Android", "PC"],
+        "regions": ["Global"]
+      },
+      "killSwitch": {
+        "enabled": true,
+        "reason": null
+      }
+    },
+    {
+      "id": "FEATURE_GUILD_SYSTEM",
+      "meta": {
+        "name": "Guild System",
+        "description": "Enable guild features including guild wars and guild shop",
+        "category": "Social"
+      },
+      "enabled": false,
+      "rollout": {
+        "strategy": "Beta",
+        "percentage": 10,
+        "targetGroups": ["BetaTesters", "VIP"]
+      },
+      "requirements": {
+        "minVersion": "1.1.0",
+        "platforms": ["iOS", "Android", "PC"],
+        "regions": ["Global"]
+      },
+      "killSwitch": {
+        "enabled": false,
+        "reason": null
+      }
+    },
+    {
+      "id": "FEATURE_SEASON_PASS",
+      "meta": {
+        "name": "Season Pass",
+        "description": "Enable season pass progression and rewards",
+        "category": "Monetization"
+      },
+      "enabled": true,
+      "rollout": {
+        "strategy": "All",
+        "percentage": 100,
+        "targetGroups": ["All"]
+      },
+      "requirements": {
+        "minVersion": "1.0.0",
+        "platforms": ["iOS", "Android", "PC"],
+        "regions": ["Global"]
+      },
+      "killSwitch": {
+        "enabled": true,
+        "reason": null
+      }
+    },
+    {
+      "id": "FEATURE_DAILY_DEALS",
+      "meta": {
+        "name": "Daily Deals Shop",
+        "description": "Enable daily rotating shop deals",
+        "category": "Economy"
+      },
+      "enabled": true,
+      "rollout": {
+        "strategy": "All",
+        "percentage": 100,
+        "targetGroups": ["All"]
+      },
+      "requirements": {
+        "minVersion": "1.0.0",
+        "platforms": ["iOS", "Android", "PC"],
+        "regions": ["Global"]
+      },
+      "killSwitch": {
+        "enabled": true,
+        "reason": null
+      }
+    },
+    {
+      "id": "FEATURE_CHAT_SYSTEM",
+      "meta": {
+        "name": "In-Game Chat",
+        "description": "Enable global and guild chat features",
+        "category": "Social"
+      },
+      "enabled": true,
+      "rollout": {
+        "strategy": "RegionBased",
+        "percentage": 100,
+        "targetGroups": ["All"],
+        "excludedRegions": ["CN"]
+      },
+      "requirements": {
+        "minVersion": "1.0.0",
+        "platforms": ["iOS", "Android", "PC"],
+        "regions": ["Global", "Except:CN"]
+      },
+      "killSwitch": {
+        "enabled": true,
+        "reason": null
+      }
+    },
+    {
+      "id": "FEATURE_AUTO_BATTLE",
+      "meta": {
+        "name": "Auto Battle",
+        "description": "Enable auto-battle AI for PvE content",
+        "category": "Gameplay"
+      },
+      "enabled": true,
+      "rollout": {
+        "strategy": "All",
+        "percentage": 100,
+        "targetGroups": ["All"]
+      },
+      "requirements": {
+        "minVersion": "1.0.0",
+        "platforms": ["iOS", "Android", "PC"],
+        "regions": ["Global"]
+      },
+      "killSwitch": {
+        "enabled": true,
+        "reason": null
+      }
+    },
+    {
+      "id": "FEATURE_ENERGY_REFILL_LIMIT",
+      "meta": {
+        "name": "Energy Refill Daily Limit",
+        "description": "Limit number of energy refills per day",
+        "category": "Economy"
+      },
+      "enabled": true,
+      "rollout": {
+        "strategy": "All",
+        "percentage": 100,
+        "targetGroups": ["All"]
+      },
+      "config": {
+        "maxRefillsPerDay": 10,
+        "costIncrement": true,
+        "baseCost": 30
+      },
+      "requirements": {
+        "minVersion": "1.0.0",
+        "platforms": ["iOS", "Android", "PC"],
+        "regions": ["Global"]
+      },
+      "killSwitch": {
+        "enabled": true,
+        "reason": null
+      }
+    },
+    {
+      "id": "FEATURE_ENHANCED_ANALYTICS",
+      "meta": {
+        "name": "Enhanced Analytics",
+        "description": "Enable detailed analytics tracking for player behavior",
+        "category": "Analytics"
+      },
+      "enabled": true,
+      "rollout": {
+        "strategy": "Gradual",
+        "percentage": 50,
+        "targetGroups": ["All"]
+      },
+      "requirements": {
+        "minVersion": "1.0.0",
+        "platforms": ["iOS", "Android", "PC"],
+        "regions": ["Global"]
+      },
+      "killSwitch": {
+        "enabled": true,
+        "reason": null
+      }
+    },
+    {
+      "id": "FEATURE_DOUBLE_DROP_EVENT",
+      "meta": {
+        "name": "Double Drop Weekend Events",
+        "description": "Enable automatic weekend double drop events",
+        "category": "LiveOps"
+      },
+      "enabled": true,
+      "rollout": {
+        "strategy": "All",
+        "percentage": 100,
+        "targetGroups": ["All"]
+      },
+      "requirements": {
+        "minVersion": "1.0.0",
+        "platforms": ["iOS", "Android", "PC"],
+        "regions": ["Global"]
+      },
+      "killSwitch": {
+        "enabled": true,
+        "reason": null
+      }
+    },
+    {
+      "id": "FEATURE_CROSS_PLATFORM_PROGRESS",
+      "meta": {
+        "name": "Cross-Platform Progress",
+        "description": "Enable syncing progress across platforms",
+        "category": "Technical"
+      },
+      "enabled": false,
+      "rollout": {
+        "strategy": "Beta",
+        "percentage": 5,
+        "targetGroups": ["BetaTesters"]
+      },
+      "requirements": {
+        "minVersion": "1.2.0",
+        "platforms": ["iOS", "Android", "PC"],
+        "regions": ["Global"]
+      },
+      "killSwitch": {
+        "enabled": false,
+        "reason": null
+      }
+    }
+  ],
+  "abTests": [
+    {
+      "id": "AB_TEST_GACHA_RATES",
+      "meta": {
+        "name": "Gacha Rate Test",
+        "description": "Test different SSR rates for new players",
+        "startDate": "2025-12-01T00:00:00Z",
+        "endDate": "2025-12-15T23:59:59Z"
+      },
+      "variants": [
+        {
+          "variant": "Control",
+          "percentage": 50,
+          "config": {
+            "ssrRate": 0.02
+          }
+        },
+        {
+          "variant": "TestA",
+          "percentage": 50,
+          "config": {
+            "ssrRate": 0.03
+          }
+        }
+      ],
+      "targetAudience": {
+        "minLevel": 1,
+        "maxLevel": 10,
+        "newPlayersOnly": true
+      },
+      "metrics": ["METRIC_RETENTION_D7", "METRIC_CONVERSION_RATE", "METRIC_ARPU"]
+    }
+  ],
+  "remoteConfig": {
+    "updateFrequency": 300,
+    "cacheDuration": 3600,
+    "fallbackToLocal": true
+  }
+}

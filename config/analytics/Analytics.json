@@ -1,0 +1,440 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "metrics": [
+    {
+      "id": "METRIC_DAU",
+      "meta": {
+        "name": "Daily Active Users",
+        "description": "Number of unique users who logged in during a 24-hour period",
+        "category": "Engagement",
+        "priority": "Critical"
+      },
+      "collection": {
+        "event": "UserLogin",
+        "frequency": "RealTime",
+        "dataType": "Count",
+        "aggregation": "UniqueCount",
+        "dimensions": ["Date", "Platform", "Region"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "engagement_metrics",
+        "retentionDays": 365
+      },
+      "alerts": {
+        "enabled": true,
+        "threshold": {
+          "type": "Percentage",
+          "value": -10,
+          "comparison": "DayOverDay"
+        }
+      }
+    },
+    {
+      "id": "METRIC_MAU",
+      "meta": {
+        "name": "Monthly Active Users",
+        "description": "Number of unique users who logged in during a 30-day period",
+        "category": "Engagement",
+        "priority": "Critical"
+      },
+      "collection": {
+        "event": "UserLogin",
+        "frequency": "Daily",
+        "dataType": "Count",
+        "aggregation": "UniqueCount",
+        "dimensions": ["Month", "Platform", "Region"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "engagement_metrics",
+        "retentionDays": 730
+      },
+      "alerts": {
+        "enabled": true,
+        "threshold": {
+          "type": "Percentage",
+          "value": -5,
+          "comparison": "MonthOverMonth"
+        }
+      }
+    },
+    {
+      "id": "METRIC_SESSION_LENGTH",
+      "meta": {
+        "name": "Average Session Length",
+        "description": "Average duration of user play sessions in minutes",
+        "category": "Engagement",
+        "priority": "High"
+      },
+      "collection": {
+        "event": "SessionEnd",
+        "frequency": "RealTime",
+        "dataType": "Duration",
+        "aggregation": "Average",
+        "dimensions": ["Date", "UserLevel", "Platform"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "engagement_metrics",
+        "retentionDays": 90
+      },
+      "alerts": {
+        "enabled": false
+      }
+    },
+    {
+      "id": "METRIC_RETENTION_D1",
+      "meta": {
+        "name": "Day 1 Retention",
+        "description": "Percentage of users who return 1 day after installation",
+        "category": "Retention",
+        "priority": "Critical"
+      },
+      "collection": {
+        "event": "UserLogin",
+        "frequency": "Daily",
+        "dataType": "Percentage",
+        "aggregation": "RetentionCohort",
+        "dimensions": ["InstallDate", "Source", "Platform"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "retention_metrics",
+        "retentionDays": 365
+      },
+      "alerts": {
+        "enabled": true,
+        "threshold": {
+          "type": "Absolute",
+          "value": 40,
+          "comparison": "Below"
+        }
+      }
+    },
+    {
+      "id": "METRIC_RETENTION_D7",
+      "meta": {
+        "name": "Day 7 Retention",
+        "description": "Percentage of users who return 7 days after installation",
+        "category": "Retention",
+        "priority": "Critical"
+      },
+      "collection": {
+        "event": "UserLogin",
+        "frequency": "Daily",
+        "dataType": "Percentage",
+        "aggregation": "RetentionCohort",
+        "dimensions": ["InstallDate", "Source", "Platform"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "retention_metrics",
+        "retentionDays": 365
+      },
+      "alerts": {
+        "enabled": true,
+        "threshold": {
+          "type": "Absolute",
+          "value": 20,
+          "comparison": "Below"
+        }
+      }
+    },
+    {
+      "id": "METRIC_ARPU",
+      "meta": {
+        "name": "Average Revenue Per User",
+        "description": "Average revenue generated per active user",
+        "category": "Monetization",
+        "priority": "Critical"
+      },
+      "collection": {
+        "event": "Purchase",
+        "frequency": "Daily",
+        "dataType": "Currency",
+        "aggregation": "AveragePerUser",
+        "dimensions": ["Date", "Platform", "UserSegment"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "monetization_metrics",
+        "retentionDays": 730
+      },
+      "alerts": {
+        "enabled": true,
+        "threshold": {
+          "type": "Percentage",
+          "value": -15,
+          "comparison": "WeekOverWeek"
+        }
+      }
+    },
+    {
+      "id": "METRIC_ARPPU",
+      "meta": {
+        "name": "Average Revenue Per Paying User",
+        "description": "Average revenue generated per paying user",
+        "category": "Monetization",
+        "priority": "High"
+      },
+      "collection": {
+        "event": "Purchase",
+        "frequency": "Daily",
+        "dataType": "Currency",
+        "aggregation": "AveragePerPayingUser",
+        "dimensions": ["Date", "Platform", "UserSegment"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "monetization_metrics",
+        "retentionDays": 730
+      },
+      "alerts": {
+        "enabled": false
+      }
+    },
+    {
+      "id": "METRIC_CONVERSION_RATE",
+      "meta": {
+        "name": "Conversion Rate",
+        "description": "Percentage of users who make at least one purchase",
+        "category": "Monetization",
+        "priority": "Critical"
+      },
+      "collection": {
+        "event": "FirstPurchase",
+        "frequency": "Daily",
+        "dataType": "Percentage",
+        "aggregation": "ConversionRate",
+        "dimensions": ["Date", "Platform", "Source"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "monetization_metrics",
+        "retentionDays": 365
+      },
+      "alerts": {
+        "enabled": true,
+        "threshold": {
+          "type": "Percentage",
+          "value": -20,
+          "comparison": "WeekOverWeek"
+        }
+      }
+    },
+    {
+      "id": "METRIC_GACHA_PULL_COUNT",
+      "meta": {
+        "name": "Gacha Pull Count",
+        "description": "Total number of gacha pulls performed",
+        "category": "Economy",
+        "priority": "Medium"
+      },
+      "collection": {
+        "event": "GachaPull",
+        "frequency": "RealTime",
+        "dataType": "Count",
+        "aggregation": "Sum",
+        "dimensions": ["Date", "BannerId", "UserSegment"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "economy_metrics",
+        "retentionDays": 90
+      },
+      "alerts": {
+        "enabled": false
+      }
+    },
+    {
+      "id": "METRIC_CURRENCY_EARNED",
+      "meta": {
+        "name": "Currency Earned",
+        "description": "Total amount of in-game currency earned by players",
+        "category": "Economy",
+        "priority": "Medium"
+      },
+      "collection": {
+        "event": "CurrencyGained",
+        "frequency": "RealTime",
+        "dataType": "Amount",
+        "aggregation": "Sum",
+        "dimensions": ["Date", "CurrencyType", "Source"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "economy_metrics",
+        "retentionDays": 90
+      },
+      "alerts": {
+        "enabled": false
+      }
+    },
+    {
+      "id": "METRIC_CURRENCY_SPENT",
+      "meta": {
+        "name": "Currency Spent",
+        "description": "Total amount of in-game currency spent by players",
+        "category": "Economy",
+        "priority": "Medium"
+      },
+      "collection": {
+        "event": "CurrencySpent",
+        "frequency": "RealTime",
+        "dataType": "Amount",
+        "aggregation": "Sum",
+        "dimensions": ["Date", "CurrencyType", "Sink"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "economy_metrics",
+        "retentionDays": 90
+      },
+      "alerts": {
+        "enabled": false
+      }
+    },
+    {
+      "id": "METRIC_STAGE_COMPLETION",
+      "meta": {
+        "name": "Stage Completion Rate",
+        "description": "Percentage of stage attempts that result in completion",
+        "category": "Progression",
+        "priority": "High"
+      },
+      "collection": {
+        "event": "StageEnd",
+        "frequency": "RealTime",
+        "dataType": "Percentage",
+        "aggregation": "CompletionRate",
+        "dimensions": ["Date", "StageId", "Difficulty"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "progression_metrics",
+        "retentionDays": 180
+      },
+      "alerts": {
+        "enabled": true,
+        "threshold": {
+          "type": "Absolute",
+          "value": 30,
+          "comparison": "Below",
+          "scope": "PerStage"
+        }
+      }
+    },
+    {
+      "id": "METRIC_ARENA_PARTICIPATION",
+      "meta": {
+        "name": "Arena Participation Rate",
+        "description": "Percentage of eligible users who participate in arena",
+        "category": "PvP",
+        "priority": "High"
+      },
+      "collection": {
+        "event": "ArenaMatch",
+        "frequency": "Daily",
+        "dataType": "Percentage",
+        "aggregation": "ParticipationRate",
+        "dimensions": ["Date", "UserLevel", "Tier"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "pvp_metrics",
+        "retentionDays": 180
+      },
+      "alerts": {
+        "enabled": false
+      }
+    },
+    {
+      "id": "METRIC_CRASH_RATE",
+      "meta": {
+        "name": "Crash Rate",
+        "description": "Percentage of sessions that end with a crash",
+        "category": "Technical",
+        "priority": "Critical"
+      },
+      "collection": {
+        "event": "SessionEnd",
+        "frequency": "RealTime",
+        "dataType": "Percentage",
+        "aggregation": "CrashRate",
+        "dimensions": ["Date", "Platform", "Version"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "technical_metrics",
+        "retentionDays": 90
+      },
+      "alerts": {
+        "enabled": true,
+        "threshold": {
+          "type": "Absolute",
+          "value": 2,
+          "comparison": "Above"
+        }
+      }
+    },
+    {
+      "id": "METRIC_LOAD_TIME",
+      "meta": {
+        "name": "Average Load Time",
+        "description": "Average time taken to load game scenes",
+        "category": "Technical",
+        "priority": "Medium"
+      },
+      "collection": {
+        "event": "SceneLoad",
+        "frequency": "RealTime",
+        "dataType": "Duration",
+        "aggregation": "Average",
+        "dimensions": ["Date", "SceneName", "Platform"]
+      },
+      "storage": {
+        "database": "MongoDB",
+        "collection": "technical_metrics",
+        "retentionDays": 30
+      },
+      "alerts": {
+        "enabled": true,
+        "threshold": {
+          "type": "Absolute",
+          "value": 5000,
+          "comparison": "Above"
+        }
+      }
+    }
+  ],
+  "dashboards": [
+    {
+      "id": "DASHBOARD_OVERVIEW",
+      "name": "Game Overview",
+      "metrics": ["METRIC_DAU", "METRIC_MAU", "METRIC_RETENTION_D1", "METRIC_RETENTION_D7", "METRIC_ARPU", "METRIC_CONVERSION_RATE"],
+      "refreshInterval": 300
+    },
+    {
+      "id": "DASHBOARD_MONETIZATION",
+      "name": "Monetization",
+      "metrics": ["METRIC_ARPU", "METRIC_ARPPU", "METRIC_CONVERSION_RATE", "METRIC_GACHA_PULL_COUNT"],
+      "refreshInterval": 600
+    },
+    {
+      "id": "DASHBOARD_ECONOMY",
+      "name": "Economy Balance",
+      "metrics": ["METRIC_CURRENCY_EARNED", "METRIC_CURRENCY_SPENT", "METRIC_GACHA_PULL_COUNT"],
+      "refreshInterval": 300
+    }
+  ],
+  "exportConfig": {
+    "enabled": true,
+    "format": "CSV",
+    "schedule": "Daily",
+    "destination": "MongoDB",
+    "compression": true
+  }
+}

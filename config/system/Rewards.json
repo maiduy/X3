@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "dropTables": [
+    {
+      "id": "DROP_TABLE_CHAPTER_1_NORMAL",
+      "meta": {
+        "name": "Chapter 1 Normal Drop Table",
+        "description": "Common drops for Chapter 1 normal difficulty stages"
+      },
+      "drops": [
+        {
+          "itemId": "MAT_COMMON_ORE",
+          "dropRate": 0.30,
+          "quantity": {"min": 1, "max": 3}
+        },
+        {
+          "itemId": "MAT_WEAPON_ORE",
+          "dropRate": 0.15,
+          "quantity": {"min": 1, "max": 2}
+        },
+        {
+          "itemId": "CURRENCY_GOLD",
+          "dropRate": 1.0,
+          "quantity": {"min": 50, "max": 150}
+        },
+        {
+          "itemId": "ITEM_EXP_POTION_SMALL",
+          "dropRate": 0.20,
+          "quantity": {"min": 1, "max": 2}
+        }
+      ]
+    },
+    {
+      "id": "DROP_TABLE_BOSS_CHAPTER_1",
+      "meta": {
+        "name": "Chapter 1 Boss Drop Table",
+        "description": "Boss drops for Chapter 1"
+      },
+      "drops": [
+        {
+          "itemId": "MAT_RARE_ORE",
+          "dropRate": 0.50,
+          "quantity": {"min": 1, "max": 3}
+        },
+        {
+          "itemId": "CHAR_SHADOW_ASSASSIN_FRAGMENT",
+          "dropRate": 0.25,
+          "quantity": {"min": 1, "max": 2}
+        },
+        {
+          "itemId": "CURRENCY_GOLD",
+          "dropRate": 1.0,
+          "quantity": {"min": 500, "max": 1000}
+        },
+        {
+          "itemId": "ITEM_EQUIPMENT_RANDOM_SR",
+          "dropRate": 0.10,
+          "quantity": {"min": 1, "max": 1}
+        }
+      ]
+    }
+  ],
+  "achievementRewards": [
+    {
+      "id": "ACHIEVEMENT_FIRST_VICTORY",
+      "meta": {
+        "nameKey": "ACHIEVEMENT_NAME_FIRST_VICTORY",
+        "descriptionKey": "ACHIEVEMENT_DESC_FIRST_VICTORY",
+        "icon": "Icon_Achievement_FirstVictory",
+        "category": "Combat"
+      },
+      "requirements": {
+        "type": "StageCompletion",
+        "count": 1
+      },
+      "rewards": [
+        {"itemId": "CURRENCY_GEM", "amount": 50},
+        {"itemId": "CURRENCY_GOLD", "amount": 5000}
+      ],
+      "hidden": false,
+      "points": 10
+    },
+    {
+      "id": "ACHIEVEMENT_STAGE_MASTER",
+      "meta": {
+        "nameKey": "ACHIEVEMENT_NAME_STAGE_MASTER",
+        "descriptionKey": "ACHIEVEMENT_DESC_STAGE_MASTER",
+        "icon": "Icon_Achievement_StageMaster",
+        "category": "Combat"
+      },
+      "requirements": {
+        "type": "StageCompletion",
+        "count": 100
+      },
+      "rewards": [
+        {"itemId": "CURRENCY_GEM", "amount": 500},
+        {"itemId": "ITEM_SUMMON_SCROLL", "amount": 10},
+        {"itemId": "ITEM_EXCLUSIVE_TITLE_STAGE_MASTER", "amount": 1}
+      ],
+      "hidden": false,
+      "points": 100
+    },
+    {
+      "id": "ACHIEVEMENT_GACHA_ADDICT",
+      "meta": {
+        "nameKey": "ACHIEVEMENT_NAME_GACHA_ADDICT",
+        "descriptionKey": "ACHIEVEMENT_DESC_GACHA_ADDICT",
+        "icon": "Icon_Achievement_GachaAddict",
+        "category": "Collection"
+      },
+      "requirements": {
+        "type": "GachaPull",
+        "count": 1000
+      },
+      "rewards": [
+        {"itemId": "CURRENCY_GEM", "amount": 1000},
+        {"itemId": "ITEM_EXCLUSIVE_AVATAR_GACHA", "amount": 1}
+      ],
+      "hidden": false,
+      "points": 200
+    }
+  ],
+  "levelUpRewards": [
+    {
+      "level": 5,
+      "rewards": [
+        {"itemId": "CURRENCY_GOLD", "amount": 10000},
+        {"itemId": "RESOURCE_ENERGY", "amount": 50}
+      ]
+    },
+    {
+      "level": 10,
+      "rewards": [
+        {"itemId": "CURRENCY_GEM", "amount": 100},
+        {"itemId": "ITEM_SUMMON_SCROLL", "amount": 5}
+      ]
+    },
+    {
+      "level": 20,
+      "rewards": [
+        {"itemId": "CURRENCY_GEM", "amount": 200},
+        {"itemId": "ITEM_SUMMON_SCROLL", "amount": 10},
+        {"itemId": "CHAR_FROST_MAGE_FRAGMENT", "amount": 50}
+      ]
+    },
+    {
+      "level": 30,
+      "rewards": [
+        {"itemId": "CURRENCY_GEM", "amount": 500},
+        {"itemId": "ITEM_SUMMON_SCROLL", "amount": 20}
+      ]
+    },
+    {
+      "level": 50,
+      "rewards": [
+        {"itemId": "CURRENCY_GEM", "amount": 1000},
+        {"itemId": "ITEM_SUMMON_SCROLL", "amount": 50},
+        {"itemId": "ITEM_EQUIPMENT_RANDOM_SSR", "amount": 1}
+      ]
+    }
+  ],
+  "firstTimeRewards": {
+    "firstLogin": [
+      {"itemId": "CURRENCY_GOLD", "amount": 50000},
+      {"itemId": "CURRENCY_GEM", "amount": 500},
+      {"itemId": "ITEM_SUMMON_SCROLL", "amount": 10}
+    ],
+    "firstStageComplete": [
+      {"itemId": "CURRENCY_GOLD", "amount": 5000},
+      {"itemId": "CURRENCY_GEM", "amount": 20}
+    ],
+    "firstGachaPull": [
+      {"itemId": "CURRENCY_GOLD", "amount": 10000}
+    ],
+    "firstPvPWin": [
+      {"itemId": "CURRENCY_ARENA_COIN", "amount": 100},
+      {"itemId": "CURRENCY_GEM", "amount": 50}
+    ]
+  },
+  "streakRewards": {
+    "loginStreak": {
+      "enabled": true,
+      "rewards": [
+        {
+          "day": 3,
+          "rewards": [
+            {"itemId": "CURRENCY_GEM", "amount": 50}
+          ]
+        },
+        {
+          "day": 7,
+          "rewards": [
+            {"itemId": "CURRENCY_GEM", "amount": 200},
+            {"itemId": "ITEM_SUMMON_SCROLL", "amount": 5}
+          ]
+        },
+        {
+          "day": 14,
+          "rewards": [
+            {"itemId": "CURRENCY_GEM", "amount": 500},
+            {"itemId": "ITEM_SUMMON_SCROLL", "amount": 10},
+            {"itemId": "ITEM_EXCLUSIVE_AVATAR_LOYAL", "amount": 1}
+          ]
+        },
+        {
+          "day": 30,
+          "rewards": [
+            {"itemId": "CURRENCY_GEM", "amount": 1000},
+            {"itemId": "ITEM_SUMMON_SCROLL", "amount": 30},
+            {"itemId": "ITEM_EQUIPMENT_RANDOM_SSR", "amount": 1}
+          ]
+        }
+      ]
+    },
+    "winStreak": {
+      "enabled": true,
+      "bonusMultiplier": 1.1,
+      "maxBonus": 2.0,
+      "appliesToModes": ["Arena"]
+    }
+  },
+  "randomRewardBoxes": [
+    {
+      "id": "REWARD_BOX_BRONZE",
+      "meta": {
+        "nameKey": "REWARD_BOX_NAME_BRONZE",
+        "icon": "Icon_RewardBox_Bronze",
+        "rarity": "Common"
+      },
+      "contents": [
+        {
+          "itemId": "CURRENCY_GOLD",
+          "weight": 50,
+          "quantity": {"min": 1000, "max": 5000}
+        },
+        {
+          "itemId": "MAT_COMMON_ORE",
+          "weight": 30,
+          "quantity": {"min": 3, "max": 10}
+        },
+        {
+          "itemId": "ITEM_EXP_POTION_SMALL",
+          "weight": 20,
+          "quantity": {"min": 2, "max": 5}
+        }
+      ],
+      "guaranteedCount": 3
+    },
+    {
+      "id": "REWARD_BOX_GOLD",
+      "meta": {
+        "nameKey": "REWARD_BOX_NAME_GOLD",
+        "icon": "Icon_RewardBox_Gold",
+        "rarity": "Rare"
+      },
+      "contents": [
+        {
+          "itemId": "CURRENCY_GEM",
+          "weight": 20,
+          "quantity": {"min": 50, "max": 200}
+        },
+        {
+          "itemId": "ITEM_SUMMON_SCROLL",
+          "weight": 30,
+          "quantity": {"min": 1, "max": 5}
+        },
+        {
+          "itemId": "MAT_RARE_ORE",
+          "weight": 30,
+          "quantity": {"min": 3, "max": 10}
+        },
+        {
+          "itemId": "ITEM_EQUIPMENT_RANDOM_SR",
+          "weight": 20,
+          "quantity": {"min": 1, "max": 1}
+        }
+      ],
+      "guaranteedCount": 5
+    }
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "events": [
+    {
+      "id": "EVENT_DOUBLE_DROP",
+      "meta": {
+        "nameKey": "EVENT_NAME_DOUBLE_DROP",
+        "descriptionKey": "EVENT_DESC_DOUBLE_DROP",
+        "icon": "Icon_Event_DoubleDrop",
+        "type": "Recurring",
+        "category": "Farming"
+      },
+      "schedule": {
+        "startDate": "2025-11-25T00:00:00Z",
+        "endDate": "2025-11-27T23:59:59Z",
+        "recurrence": {
+          "pattern": "Weekly",
+          "daysOfWeek": [6, 7],
+          "duration": 48
+        }
+      },
+      "requirements": {
+        "minLevel": 10,
+        "unlockCondition": null
+      },
+      "effects": {
+        "globalModifiers": [
+          {
+            "type": "DropRateMultiplier",
+            "target": "AllStages",
+            "multiplier": 2.0
+          }
+        ]
+      },
+      "rewards": null,
+      "announcement": {
+        "showInGame": true,
+        "showPopup": true,
+        "notifyBeforeStart": 86400
+      }
+    },
+    {
+      "id": "EVENT_DRAGON_RAID",
+      "meta": {
+        "nameKey": "EVENT_NAME_DRAGON_RAID",
+        "descriptionKey": "EVENT_DESC_DRAGON_RAID",
+        "icon": "Icon_Event_DragonRaid",
+        "type": "Limited",
+        "category": "Raid"
+      },
+      "schedule": {
+        "startDate": "2025-12-01T00:00:00Z",
+        "endDate": "2025-12-15T23:59:59Z",
+        "recurrence": null
+      },
+      "requirements": {
+        "minLevel": 25,
+        "unlockCondition": "STAGE_5_BOSS_CLEARED"
+      },
+      "content": {
+        "stages": [
+          {
+            "id": "EVENT_RAID_EASY",
+            "difficulty": "Easy",
+            "recommendedPower": 3000,
+            "energyCost": 15,
+            "boss": {
+              "enemyId": "BOSS_ANCIENT_DRAGON",
+              "level": 30,
+              "aiProfile": "AI_BOSS_PATTERN"
+            },
+            "rewards": {
+              "firstClear": [
+                {"itemId": "CURRENCY_GEM", "amount": 100},
+                {"itemId": "MAT_DRAGON_SCALE", "amount": 5}
+              ],
+              "repeat": [
+                {"itemId": "MAT_DRAGON_SCALE", "amount": 2},
+                {"itemId": "CURRENCY_GOLD", "amount": 5000}
+              ]
+            },
+            "dailyLimit": 5
+          },
+          {
+            "id": "EVENT_RAID_HARD",
+            "difficulty": "Hard",
+            "recommendedPower": 6000,
+            "energyCost": 20,
+            "boss": {
+              "enemyId": "BOSS_ANCIENT_DRAGON",
+              "level": 50,
+              "aiProfile": "AI_BOSS_PATTERN"
+            },
+            "rewards": {
+              "firstClear": [
+                {"itemId": "CURRENCY_GEM", "amount": 200},
+                {"itemId": "MAT_DRAGON_SCALE", "amount": 10}
+              ],
+              "repeat": [
+                {"itemId": "MAT_DRAGON_SCALE", "amount": 5},
+                {"itemId": "CURRENCY_GOLD", "amount": 10000}
+              ]
+            },
+            "dailyLimit": 3
+          }
+        ],
+        "eventCurrency": {
+          "id": "CURRENCY_EVENT_DRAGON_COIN",
+          "sources": ["EventStageCompletion", "EventMissions"],
+          "shop": "SHOP_EVENT_DRAGON_RAID"
+        },
+        "milestones": [
+          {
+            "points": 1000,
+            "rewards": [
+              {"itemId": "CURRENCY_GEM", "amount": 100}
+            ]
+          },
+          {
+            "points": 5000,
+            "rewards": [
+              {"itemId": "ITEM_SUMMON_SCROLL", "amount": 5},
+              {"itemId": "MAT_DRAGON_SCALE", "amount": 10}
+            ]
+          },
+          {
+            "points": 10000,
+            "rewards": [
+              {"itemId": "CHAR_FIRE_DRAGON_FRAGMENT", "amount": 50},
+              {"itemId": "ITEM_EXCLUSIVE_TITLE_DRAGONSLAYER", "amount": 1}
+            ]
+          }
+        ]
+      },
+      "effects": null,
+      "announcement": {
+        "showInGame": true,
+        "showPopup": true,
+        "notifyBeforeStart": 172800
+      }
+    },
+    {
+      "id": "EVENT_LOGIN_REWARD",
+      "meta": {
+        "nameKey": "EVENT_NAME_LOGIN_REWARD",
+        "descriptionKey": "EVENT_DESC_LOGIN_REWARD",
+        "icon": "Icon_Event_LoginReward",
+        "type": "Permanent",
+        "category": "Engagement"
+      },
+      "schedule": {
+        "startDate": "2025-01-01T00:00:00Z",
+        "endDate": null,
+        "recurrence": null
+      },
+      "requirements": {
+        "minLevel": 1,
+        "unlockCondition": null
+      },
+      "content": {
+        "dailyRewards": [
+          {
+            "day": 1,
+            "rewards": [
+              {"itemId": "CURRENCY_GOLD", "amount": 10000}
+            ]
+          },
+          {
+            "day": 2,
+            "rewards": [
+              {"itemId": "ITEM_SUMMON_SCROLL", "amount": 1}
+            ]
+          },
+          {
+            "day": 3,
+            "rewards": [
+              {"itemId": "CURRENCY_GEM", "amount": 50}
+            ]
+          },
+          {
+            "day": 4,
+            "rewards": [
+              {"itemId": "MAT_WEAPON_ORE", "amount": 10}
+            ]
+          },
+          {
+            "day": 5,
+            "rewards": [
+              {"itemId": "CURRENCY_GOLD", "amount": 20000}
+            ]
+          },
+          {
+            "day": 6,
+            "rewards": [
+              {"itemId": "ITEM_SUMMON_SCROLL", "amount": 3}
+            ]
+          },
+          {
+            "day": 7,
+            "rewards": [
+              {"itemId": "CURRENCY_GEM", "amount": 200},
+              {"itemId": "ITEM_EXCLUSIVE_AVATAR_7DAY", "amount": 1}
+            ]
+          }
+        ],
+        "resetType": "Weekly"
+      },
+      "effects": null,
+      "announcement": {
+        "showInGame": true,
+        "showPopup": false,
+        "notifyBeforeStart": 0
+      }
+    },
+    {
+      "id": "EVENT_SEASON_PASS",
+      "meta": {
+        "nameKey": "EVENT_NAME_SEASON_PASS",
+        "descriptionKey": "EVENT_DESC_SEASON_PASS",
+        "icon": "Icon_Event_SeasonPass",
+        "type": "Seasonal",
+        "category": "Progression"
+      },
+      "schedule": {
+        "startDate": "2025-11-01T00:00:00Z",
+        "endDate": "2025-11-30T23:59:59Z",
+        "recurrence": {
+          "pattern": "Monthly",
+          "duration": 30
+        }
+      },
+      "requirements": {
+        "minLevel": 10,
+        "unlockCondition": null
+      },
+      "content": {
+        "tiers": [
+          {
+            "tier": 1,
+            "requiredExp": 0,
+            "freeRewards": [
+              {"itemId": "CURRENCY_GOLD", "amount": 5000}
+            ],
+            "premiumRewards": [
+              {"itemId": "CURRENCY_GOLD", "amount": 10000},
+              {"itemId": "CURRENCY_GEM", "amount": 50}
+            ]
+          },
+          {
+            "tier": 10,
+            "requiredExp": 5000,
+            "freeRewards": [
+              {"itemId": "ITEM_SUMMON_SCROLL", "amount": 1}
+            ],
+            "premiumRewards": [
+              {"itemId": "ITEM_SUMMON_SCROLL", "amount": 5},
+              {"itemId": "CURRENCY_GEM", "amount": 100}
+            ]
+          },
+          {
+            "tier": 30,
+            "requiredExp": 20000,
+            "freeRewards": [
+              {"itemId": "MAT_RARE_ORE", "amount": 5}
+            ],
+            "premiumRewards": [
+              {"itemId": "CHAR_FIRE_DRAGON_FRAGMENT", "amount": 50},
+              {"itemId": "ITEM_EXCLUSIVE_SKIN_SEASON1", "amount": 1}
+            ]
+          }
+        ],
+        "expSources": [
+          {"activity": "DailyQuest", "exp": 100},
+          {"activity": "WeeklyQuest", "exp": 500},
+          {"activity": "StageCompletion", "exp": 10}
+        ],
+        "premiumPass": {
+          "price": [
+            {"itemId": "CURRENCY_GEM", "amount": 980}
+          ],
+          "iapSku": "com.game.season.pass.premium"
+        }
+      },
+      "effects": null,
+      "announcement": {
+        "showInGame": true,
+        "showPopup": true,
+        "notifyBeforeStart": 259200
+      }
+    }
+  ],
+  "globalEventConfig": {
+    "maxConcurrentEvents": 5,
+    "priorityOrder": ["Limited", "Seasonal", "Recurring", "Permanent"],
+    "conflictResolution": "Priority",
+    "notificationSettings": {
+      "pushNotifications": true,
+      "inGamePopups": true,
+      "mailboxMessages": true
+    }
+  }
+}

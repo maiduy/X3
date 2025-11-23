@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "rankedMatchmaking": {
+    "algorithm": "ELO",
+    "parameters": {
+      "matchmakingRange": {
+        "initial": 100,
+        "expansionRate": 50,
+        "maxRange": 500,
+        "expansionInterval": 10
+      },
+      "eloConsideration": {
+        "weight": 0.7,
+        "rangeMultiplier": 1.0
+      },
+      "powerConsideration": {
+        "weight": 0.2,
+        "maxDifference": 2000
+      },
+      "winStreakConsideration": {
+        "weight": 0.1,
+        "bonusEloPerWin": 10
+      }
+    },
+    "queuePriority": {
+      "waitTimeBonus": {
+        "enabled": true,
+        "bonusPerSecond": 0.5,
+        "maxBonus": 100
+      },
+      "tierProtection": {
+        "enabled": true,
+        "preventCrossTier": ["Master", "Grandmaster"]
+      }
+    },
+    "timeouts": {
+      "maxSearchTime": 120,
+      "botMatchThreshold": 90,
+      "requeue Delay": 5
+    },
+    "botMatching": {
+      "enabled": true,
+      "botEloRange": 50,
+      "preferRealPlayers": true,
+      "botDifficultyScaling": true
+    }
+  },
+  "casualMatchmaking": {
+    "algorithm": "PowerBased",
+    "parameters": {
+      "powerRange": {
+        "initial": 500,
+        "expansionRate": 200,
+        "maxRange": 2000,
+        "expansionInterval": 15
+      },
+      "levelConsideration": {
+        "weight": 0.3,
+        "maxDifference": 10
+      }
+    },
+    "timeouts": {
+      "maxSearchTime": 60,
+      "botMatchThreshold": 45,
+      "requeueDelay": 3
+    },
+    "botMatching": {
+      "enabled": true,
+      "botPowerRange": 300,
+      "preferRealPlayers": false,
+      "botDifficultyScaling": true
+    }
+  },
+  "coopMatchmaking": {
+    "algorithm": "PartyBased",
+    "parameters": {
+      "partySize": {
+        "min": 1,
+        "max": 4
+      },
+      "averagePowerMatching": true,
+      "roleBalancing": {
+        "enabled": true,
+        "preferredComposition": {
+          "Tank": 1,
+          "DPS": 2,
+          "Support": 1
+        }
+      }
+    },
+    "timeouts": {
+      "maxSearchTime": 90,
+      "fillWithBots": true,
+      "requeueDelay": 5
+    }
+  },
+  "antiSmurfing": {
+    "enabled": true,
+    "newAccountDetection": {
+      "winRateThreshold": 0.8,
+      "gamesPlayed": 20,
+      "actionOnDetection": "AccelerateEloGain"
+    },
+    "eloBoostDetection": {
+      "enabled": true,
+      "suspiciousPatterns": ["RapidEloGain", "PartyMMRGap"],
+      "actionOnDetection": "FlagForReview"
+    }
+  },
+  "fairnessRules": {
+    "maxPartyMMRDifference": 400,
+    "soloQueueProtection": {
+      "enabled": true,
+      "separateQueue": false,
+      "maxPartySize": 2
+    },
+    "regionLocking": {
+      "enabled": true,
+      "preferSameRegion": true,
+      "crossRegionThreshold": 60
+    }
+  },
+  "backfillSystem": {
+    "enabled": true,
+    "allowBackfill": true,
+    "backfillRewards": {
+      "bonusGold": 1000,
+      "bonusExp": 100
+    }
+  }
+}

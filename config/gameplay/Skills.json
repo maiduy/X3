@@ -1,0 +1,535 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "skills": [
+    {
+      "id": "SKILL_PHOENIX_STRIKE",
+      "meta": {
+        "nameKey": "SKILL_NAME_PHOENIX_STRIKE",
+        "descriptionKey": "SKILL_DESC_PHOENIX_STRIKE",
+        "icon": "Icon_Skill_PhoenixStrike",
+        "tags": ["Fire", "Melee", "Burst", "Ultimate"]
+      },
+      "activation": {
+        "cooldown": 12.0,
+        "initialCooldown": 0.0,
+        "cost": [
+          {"resource": "Mana", "value": 50},
+          {"resource": "Energy", "value": 100}
+        ]
+      },
+      "targeting": {
+        "mode": "TargetUnit",
+        "range": 4.0,
+        "filter": {
+          "team": "Enemy",
+          "sort": "LowestHP",
+          "maxTargets": 1
+        },
+        "aoe": {
+          "enabled": true,
+          "shape": "Circle",
+          "radius": 2.0,
+          "centerOn": "Target"
+        }
+      },
+      "timeline": [
+        {
+          "time": 0.0,
+          "action": "PlayAnim",
+          "param": "Attack_Ultimate_Phoenix"
+        },
+        {
+          "time": 0.3,
+          "action": "SpawnVFX",
+          "param": "VFX_Phoenix_Charge",
+          "target": "Caster"
+        },
+        {
+          "time": 0.5,
+          "action": "ApplyEffects",
+          "payload": [
+            {
+              "type": "Damage",
+              "formula": "(caster.atk * 3.5) + (target.maxHp * 0.05)",
+              "element": "Fire",
+              "canCrit": true,
+              "damageType": "Physical"
+            },
+            {
+              "type": "ApplyStatus",
+              "id": "STATUS_BURN",
+              "duration": 3,
+              "chance": 0.8,
+              "stacks": 2
+            }
+          ]
+        },
+        {
+          "time": 0.5,
+          "action": "SpawnVFX",
+          "param": "VFX_Phoenix_Impact",
+          "target": "Target"
+        },
+        {
+          "time": 0.7,
+          "action": "CameraShake",
+          "param": {"intensity": 0.8, "duration": 0.3}
+        }
+      ],
+      "assets": {
+        "icon": "Addressables/UI/Icons/Skills/PhoenixStrike",
+        "vfx": "Addressables/VFX/Skills/PhoenixStrike/"
+      }
+    },
+    {
+      "id": "SKILL_BLIZZARD",
+      "meta": {
+        "nameKey": "SKILL_NAME_BLIZZARD",
+        "descriptionKey": "SKILL_DESC_BLIZZARD",
+        "icon": "Icon_Skill_Blizzard",
+        "tags": ["Ice", "AoE", "Control", "Ultimate"]
+      },
+      "activation": {
+        "cooldown": 15.0,
+        "initialCooldown": 0.0,
+        "cost": [
+          {"resource": "Mana", "value": 80},
+          {"resource": "Energy", "value": 100}
+        ]
+      },
+      "targeting": {
+        "mode": "TargetArea",
+        "range": 8.0,
+        "filter": {
+          "team": "Enemy",
+          "sort": "Random"
+        },
+        "aoe": {
+          "enabled": true,
+          "shape": "Circle",
+          "radius": 4.0,
+          "centerOn": "TargetLocation"
+        }
+      },
+      "timeline": [
+        {
+          "time": 0.0,
+          "action": "PlayAnim",
+          "param": "Cast_Ultimate_Blizzard"
+        },
+        {
+          "time": 0.8,
+          "action": "SpawnVFX",
+          "param": "VFX_Blizzard_Storm",
+          "target": "TargetArea",
+          "duration": 5.0
+        },
+        {
+          "time": 1.0,
+          "action": "ApplyEffectsOverTime",
+          "interval": 1.0,
+          "tickCount": 5,
+          "payload": [
+            {
+              "type": "Damage",
+              "formula": "caster.atk * 0.8",
+              "element": "Ice",
+              "canCrit": true,
+              "damageType": "Magical"
+            },
+            {
+              "type": "ApplyStatus",
+              "id": "STATUS_SLOW",
+              "duration": 2,
+              "chance": 0.6
+            }
+          ]
+        },
+        {
+          "time": 6.0,
+          "action": "ApplyEffects",
+          "payload": [
+            {
+              "type": "Damage",
+              "formula": "caster.atk * 2.0",
+              "element": "Ice",
+              "canCrit": true,
+              "damageType": "Magical"
+            },
+            {
+              "type": "ApplyStatus",
+              "id": "STATUS_FREEZE",
+              "duration": 1,
+              "chance": 0.7
+            }
+          ]
+        }
+      ],
+      "assets": {
+        "icon": "Addressables/UI/Icons/Skills/Blizzard",
+        "vfx": "Addressables/VFX/Skills/Blizzard/"
+      }
+    },
+    {
+      "id": "SKILL_DIVINE_HEALING",
+      "meta": {
+        "nameKey": "SKILL_NAME_DIVINE_HEALING",
+        "descriptionKey": "SKILL_DESC_DIVINE_HEALING",
+        "icon": "Icon_Skill_DivineHealing",
+        "tags": ["Light", "Heal", "Support", "Active"]
+      },
+      "activation": {
+        "cooldown": 8.0,
+        "initialCooldown": 0.0,
+        "cost": [
+          {"resource": "Mana", "value": 40}
+        ]
+      },
+      "targeting": {
+        "mode": "TargetUnit",
+        "range": 6.0,
+        "filter": {
+          "team": "Ally",
+          "sort": "LowestHP",
+          "maxTargets": 1
+        },
+        "aoe": {
+          "enabled": false
+        }
+      },
+      "timeline": [
+        {
+          "time": 0.0,
+          "action": "PlayAnim",
+          "param": "Cast_Heal"
+        },
+        {
+          "time": 0.5,
+          "action": "SpawnVFX",
+          "param": "VFX_Divine_Light",
+          "target": "Target"
+        },
+        {
+          "time": 0.6,
+          "action": "ApplyEffects",
+          "payload": [
+            {
+              "type": "Heal",
+              "formula": "(caster.atk * 2.0) + (target.maxHp * 0.15)",
+              "canCrit": false
+            },
+            {
+              "type": "ApplyStatus",
+              "id": "STATUS_REGEN",
+              "duration": 3,
+              "chance": 1.0
+            },
+            {
+              "type": "RemoveDebuffs",
+              "count": 2,
+              "priority": "Highest"
+            }
+          ]
+        }
+      ],
+      "assets": {
+        "icon": "Addressables/UI/Icons/Skills/DivineHealing",
+        "vfx": "Addressables/VFX/Skills/DivineHealing/"
+      }
+    },
+    {
+      "id": "SKILL_DEATH_MARK",
+      "meta": {
+        "nameKey": "SKILL_NAME_DEATH_MARK",
+        "descriptionKey": "SKILL_DESC_DEATH_MARK",
+        "icon": "Icon_Skill_DeathMark",
+        "tags": ["Dark", "Single-Target", "Execute", "Ultimate"]
+      },
+      "activation": {
+        "cooldown": 10.0,
+        "initialCooldown": 0.0,
+        "cost": [
+          {"resource": "Energy", "value": 100}
+        ]
+      },
+      "targeting": {
+        "mode": "TargetUnit",
+        "range": 5.0,
+        "filter": {
+          "team": "Enemy",
+          "sort": "LowestHP",
+          "maxTargets": 1
+        },
+        "aoe": {
+          "enabled": false
+        }
+      },
+      "timeline": [
+        {
+          "time": 0.0,
+          "action": "PlayAnim",
+          "param": "Attack_Ultimate_DeathMark"
+        },
+        {
+          "time": 0.2,
+          "action": "Teleport",
+          "param": "BehindTarget"
+        },
+        {
+          "time": 0.4,
+          "action": "ApplyEffects",
+          "payload": [
+            {
+              "type": "Damage",
+              "formula": "caster.atk * 5.0",
+              "element": "Dark",
+              "canCrit": true,
+              "damageType": "Physical",
+              "critBonusDmg": 0.5
+            },
+            {
+              "type": "ConditionalDamage",
+              "condition": "target.hp < (target.maxHp * 0.35)",
+              "formula": "target.currentHp * 0.99",
+              "element": "Dark",
+              "description": "Execute if target HP below 35%"
+            }
+          ]
+        },
+        {
+          "time": 0.4,
+          "action": "SpawnVFX",
+          "param": "VFX_DeathMark_Execute",
+          "target": "Target"
+        }
+      ],
+      "assets": {
+        "icon": "Addressables/UI/Icons/Skills/DeathMark",
+        "vfx": "Addressables/VFX/Skills/DeathMark/"
+      }
+    },
+    {
+      "id": "SKILL_FIRE_MASTERY",
+      "meta": {
+        "nameKey": "SKILL_NAME_FIRE_MASTERY",
+        "descriptionKey": "SKILL_DESC_FIRE_MASTERY",
+        "icon": "Icon_Skill_FireMastery",
+        "tags": ["Fire", "Passive", "DamageBoost"]
+      },
+      "activation": {
+        "cooldown": 0.0,
+        "initialCooldown": 0.0,
+        "cost": []
+      },
+      "targeting": {
+        "mode": "Self",
+        "range": 0.0,
+        "filter": null,
+        "aoe": {
+          "enabled": false
+        }
+      },
+      "timeline": [
+        {
+          "time": 0.0,
+          "action": "ApplyPassiveBuff",
+          "payload": [
+            {
+              "type": "StatBonus",
+              "stat": "FireDmg",
+              "value": 0.25,
+              "formula": null
+            },
+            {
+              "type": "OnDealDamage",
+              "condition": "damageElement == Fire",
+              "chance": 0.3,
+              "effect": {
+                "type": "ApplyStatus",
+                "id": "STATUS_BURN",
+                "duration": 2,
+                "target": "DamageTarget"
+              }
+            }
+          ]
+        }
+      ],
+      "assets": {
+        "icon": "Addressables/UI/Icons/Skills/FireMastery",
+        "vfx": null
+      }
+    },
+    {
+      "id": "SKILL_BACKSTAB",
+      "meta": {
+        "nameKey": "SKILL_NAME_BACKSTAB",
+        "descriptionKey": "SKILL_DESC_BACKSTAB",
+        "icon": "Icon_Skill_Backstab",
+        "tags": ["Dark", "Single-Target", "Physical", "Active"]
+      },
+      "activation": {
+        "cooldown": 6.0,
+        "initialCooldown": 0.0,
+        "cost": [
+          {"resource": "Energy", "value": 30}
+        ]
+      },
+      "targeting": {
+        "mode": "TargetUnit",
+        "range": 3.0,
+        "filter": {
+          "team": "Enemy",
+          "sort": "Nearest",
+          "maxTargets": 1
+        },
+        "aoe": {
+          "enabled": false
+        }
+      },
+      "timeline": [
+        {
+          "time": 0.0,
+          "action": "PlayAnim",
+          "param": "Attack_Backstab"
+        },
+        {
+          "time": 0.1,
+          "action": "Teleport",
+          "param": "BehindTarget"
+        },
+        {
+          "time": 0.3,
+          "action": "ApplyEffects",
+          "payload": [
+            {
+              "type": "Damage",
+              "formula": "caster.atk * 2.8",
+              "element": "Dark",
+              "canCrit": true,
+              "damageType": "Physical",
+              "critRateBonus": 0.25
+            },
+            {
+              "type": "ConditionalDamage",
+              "condition": "attackFromBehind == true",
+              "formula": "caster.atk * 1.5",
+              "element": "Dark",
+              "description": "Bonus damage from behind"
+            },
+            {
+              "type": "ApplyStatus",
+              "id": "STATUS_BLEED",
+              "duration": 3,
+              "chance": 0.7
+            }
+          ]
+        }
+      ],
+      "assets": {
+        "icon": "Addressables/UI/Icons/Skills/Backstab",
+        "vfx": "Addressables/VFX/Skills/Backstab/"
+      }
+    }
+  ],
+  "statusEffects": [
+    {
+      "id": "STATUS_BURN",
+      "meta": {
+        "nameKey": "STATUS_NAME_BURN",
+        "descriptionKey": "STATUS_DESC_BURN",
+        "icon": "Icon_Status_Burn",
+        "type": "Debuff",
+        "stackable": true,
+        "maxStacks": 5
+      },
+      "effects": [
+        {
+          "type": "DamageOverTime",
+          "formula": "caster.atk * 0.3",
+          "element": "Fire",
+          "interval": 1.0
+        }
+      ],
+      "vfx": "VFX_Status_Burn"
+    },
+    {
+      "id": "STATUS_FREEZE",
+      "meta": {
+        "nameKey": "STATUS_NAME_FREEZE",
+        "descriptionKey": "STATUS_DESC_FREEZE",
+        "icon": "Icon_Status_Freeze",
+        "type": "Debuff",
+        "stackable": false,
+        "maxStacks": 1
+      },
+      "effects": [
+        {
+          "type": "DisableAction",
+          "actions": ["Move", "Attack", "Skill"]
+        }
+      ],
+      "vfx": "VFX_Status_Freeze"
+    },
+    {
+      "id": "STATUS_REGEN",
+      "meta": {
+        "nameKey": "STATUS_NAME_REGEN",
+        "descriptionKey": "STATUS_DESC_REGEN",
+        "icon": "Icon_Status_Regen",
+        "type": "Buff",
+        "stackable": false,
+        "maxStacks": 1
+      },
+      "effects": [
+        {
+          "type": "HealOverTime",
+          "formula": "target.maxHp * 0.05",
+          "interval": 1.0
+        }
+      ],
+      "vfx": "VFX_Status_Regen"
+    },
+    {
+      "id": "STATUS_SLOW",
+      "meta": {
+        "nameKey": "STATUS_NAME_SLOW",
+        "descriptionKey": "STATUS_DESC_SLOW",
+        "icon": "Icon_Status_Slow",
+        "type": "Debuff",
+        "stackable": true,
+        "maxStacks": 3
+      },
+      "effects": [
+        {
+          "type": "StatModifier",
+          "stat": "spd",
+          "modifier": -0.15,
+          "stackMultiplier": true
+        }
+      ],
+      "vfx": "VFX_Status_Slow"
+    },
+    {
+      "id": "STATUS_BLEED",
+      "meta": {
+        "nameKey": "STATUS_NAME_BLEED",
+        "descriptionKey": "STATUS_DESC_BLEED",
+        "icon": "Icon_Status_Bleed",
+        "type": "Debuff",
+        "stackable": true,
+        "maxStacks": 5
+      },
+      "effects": [
+        {
+          "type": "DamageOverTime",
+          "formula": "target.maxHp * 0.02",
+          "element": "Physical",
+          "interval": 1.0
+        }
+      ],
+      "vfx": "VFX_Status_Bleed"
+    }
+  ]
+}

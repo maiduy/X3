@@ -1,0 +1,366 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "profiles": [
+    {
+      "id": "AI_AGGRESSIVE_DPS",
+      "meta": {
+        "name": "Aggressive DPS",
+        "description": "Focuses on dealing maximum damage to priority targets",
+        "tags": ["Offensive", "DPS"]
+      },
+      "behaviorTree": {
+        "root": "Sequence",
+        "nodes": [
+          {
+            "type": "Selector",
+            "children": [
+              {
+                "type": "Condition",
+                "check": "hasUltimate",
+                "onTrue": {
+                  "type": "Action",
+                  "action": "UseUltimate",
+                  "targetSelection": "LowestHPEnemy"
+                }
+              },
+              {
+                "type": "Condition",
+                "check": "hasHighValueSkill",
+                "onTrue": {
+                  "type": "Action",
+                  "action": "UseSkill",
+                  "targetSelection": "HighestThreatEnemy"
+                }
+              },
+              {
+                "type": "Action",
+                "action": "BasicAttack",
+                "targetSelection": "LowestHPEnemy"
+              }
+            ]
+          }
+        ]
+      },
+      "targetPriority": {
+        "weights": {
+          "lowHP": 5.0,
+          "highThreat": 3.0,
+          "squishy": 2.0,
+          "support": 4.0,
+          "tank": 0.5
+        },
+        "roleModifiers": {
+          "Support": 1.5,
+          "DPS": 1.2,
+          "Tank": 0.5
+        }
+      },
+      "skillUsageRules": {
+        "ultimate": {
+          "useWhen": "energyFull",
+          "targetCount": "max",
+          "saveFor": null
+        },
+        "skill": {
+          "useWhen": "onCooldown",
+          "prioritizeAoE": true,
+          "minTargets": 1
+        },
+        "basicAttack": {
+          "fallback": true
+        }
+      }
+    },
+    {
+      "id": "AI_DEFENSIVE_SUPPORT",
+      "meta": {
+        "name": "Defensive Support",
+        "description": "Prioritizes healing and protecting allies",
+        "tags": ["Defensive", "Support"]
+      },
+      "behaviorTree": {
+        "root": "Sequence",
+        "nodes": [
+          {
+            "type": "Selector",
+            "children": [
+              {
+                "type": "Condition",
+                "check": "allyHPCritical",
+                "threshold": 0.3,
+                "onTrue": {
+                  "type": "Action",
+                  "action": "UseHeal",
+                  "targetSelection": "LowestHPAlly"
+                }
+              },
+              {
+                "type": "Condition",
+                "check": "allyHPLow",
+                "threshold": 0.6,
+                "onTrue": {
+                  "type": "Action",
+                  "action": "UseSkill",
+                  "targetSelection": "LowestHPAlly"
+                }
+              },
+              {
+                "type": "Condition",
+                "check": "canApplyBuff",
+                "onTrue": {
+                  "type": "Action",
+                  "action": "UseBuffSkill",
+                  "targetSelection": "HighestDPSAlly"
+                }
+              },
+              {
+                "type": "Action",
+                "action": "BasicAttack",
+                "targetSelection": "NearestEnemy"
+              }
+            ]
+          }
+        ]
+      },
+      "targetPriority": {
+        "weights": {
+          "allyLowHP": 10.0,
+          "allyNeedsBuff": 5.0,
+          "allyDebuffed": 7.0,
+          "selfPreservation": 3.0
+        },
+        "roleModifiers": {
+          "Support": 0.5,
+          "DPS": 1.5,
+          "Tank": 1.2
+        }
+      },
+      "skillUsageRules": {
+        "heal": {
+          "useWhen": "allyHPBelow",
+          "threshold": 0.7,
+          "targetSelection": "LowestHPAlly"
+        },
+        "buff": {
+          "useWhen": "allyNeedsBuff",
+          "targetSelection": "HighestDPSAlly",
+          "preventOverwrite": true
+        },
+        "cleanse": {
+          "useWhen": "allyDebuffed",
+          "debuffCountThreshold": 2
+        }
+      }
+    },
+    {
+      "id": "AI_TACTICAL_CONTROLLER",
+      "meta": {
+        "name": "Tactical Controller",
+        "description": "Uses crowd control and debuffs strategically",
+        "tags": ["Control", "Tactical"]
+      },
+      "behaviorTree": {
+        "root": "Sequence",
+        "nodes": [
+          {
+            "type": "Selector",
+            "children": [
+              {
+                "type": "Condition",
+                "check": "enemyChargingUltimate",
+                "onTrue": {
+                  "type": "Action",
+                  "action": "UseCC",
+                  "targetSelection": "HighestEnergyEnemy"
+                }
+              },
+              {
+                "type": "Condition",
+                "check": "multipleEnemiesGrouped",
+                "minCount": 3,
+                "onTrue": {
+                  "type": "Action",
+                  "action": "UseAoECC",
+                  "targetSelection": "EnemyCluster"
+                }
+              },
+              {
+                "type": "Condition",
+                "check": "hasDebuffSkill",
+                "onTrue": {
+                  "type": "Action",
+                  "action": "UseDebuff",
+                  "targetSelection": "HighestThreatEnemy"
+                }
+              },
+              {
+                "type": "Action",
+                "action": "BasicAttack",
+                "targetSelection": "HighestThreatEnemy"
+              }
+            ]
+          }
+        ]
+      },
+      "targetPriority": {
+        "weights": {
+          "highEnergy": 5.0,
+          "notCCd": 4.0,
+          "noCCResistance": 3.0,
+          "highThreat": 3.5,
+          "clustered": 2.5
+        }
+      },
+      "skillUsageRules": {
+        "cc": {
+          "useWhen": "enemyNotCCd",
+          "targetSelection": "HighestThreatEnemy",
+          "checkResistance": true
+        },
+        "debuff": {
+          "useWhen": "enemyHasNoBuff",
+          "stackDebuffs": true,
+          "maxStacksPerTarget": 3
+        },
+        "aoe": {
+          "useWhen": "multipleTargets",
+          "minTargets": 3,
+          "targetSelection": "EnemyCluster"
+        }
+      }
+    },
+    {
+      "id": "AI_BALANCED_ALLROUNDER",
+      "meta": {
+        "name": "Balanced All-Rounder",
+        "description": "Adapts to battlefield conditions",
+        "tags": ["Balanced", "Adaptive"]
+      },
+      "behaviorTree": {
+        "root": "Sequence",
+        "nodes": [
+          {
+            "type": "Selector",
+            "children": [
+              {
+                "type": "Condition",
+                "check": "teamHPLow",
+                "threshold": 0.5,
+                "onTrue": {
+                  "type": "Action",
+                  "action": "Defensive",
+                  "subBehavior": "AI_DEFENSIVE_SUPPORT"
+                }
+              },
+              {
+                "type": "Condition",
+                "check": "enemyHPLow",
+                "threshold": 0.3,
+                "onTrue": {
+                  "type": "Action",
+                  "action": "Aggressive",
+                  "subBehavior": "AI_AGGRESSIVE_DPS"
+                }
+              },
+              {
+                "type": "Action",
+                "action": "Balanced",
+                "targetSelection": "BestTarget"
+              }
+            ]
+          }
+        ]
+      },
+      "targetPriority": {
+        "weights": {
+          "situational": 5.0,
+          "opportunistic": 3.0,
+          "balanced": 2.0
+        },
+        "adaptiveWeighting": true
+      },
+      "skillUsageRules": {
+        "adaptive": true,
+        "evaluateEachTurn": true,
+        "switchStrategy": {
+          "healthThreshold": 0.5,
+          "turnThreshold": 10
+        }
+      }
+    },
+    {
+      "id": "AI_BOSS_PATTERN",
+      "meta": {
+        "name": "Boss AI Pattern",
+        "description": "Complex boss behavior with phases",
+        "tags": ["Boss", "Pattern"]
+      },
+      "behaviorTree": {
+        "root": "Sequence",
+        "nodes": [
+          {
+            "type": "PhaseSelector",
+            "phases": [
+              {
+                "name": "Phase1",
+                "hpRange": {"min": 0.66, "max": 1.0},
+                "behavior": {
+                  "type": "Pattern",
+                  "actions": [
+                    {"turn": 1, "action": "BasicAttack", "target": "Random"},
+                    {"turn": 2, "action": "BasicAttack", "target": "Random"},
+                    {"turn": 3, "action": "Skill1", "target": "HighestThreat"},
+                    {"repeat": true}
+                  ]
+                }
+              },
+              {
+                "name": "Phase2",
+                "hpRange": {"min": 0.33, "max": 0.66},
+                "onEnter": {
+                  "action": "SummonMinions",
+                  "count": 2
+                },
+                "behavior": {
+                  "type": "Pattern",
+                  "actions": [
+                    {"turn": 1, "action": "AoESkill", "target": "AllEnemies"},
+                    {"turn": 2, "action": "BuffSelf", "target": "Self"},
+                    {"turn": 3, "action": "Skill2", "target": "LowestHP"},
+                    {"repeat": true}
+                  ]
+                }
+              },
+              {
+                "name": "Phase3",
+                "hpRange": {"min": 0.0, "max": 0.33},
+                "onEnter": {
+                  "action": "EnrageMode",
+                  "buffs": ["BUFF_ENRAGE"]
+                },
+                "behavior": {
+                  "type": "Pattern",
+                  "actions": [
+                    {"turn": 1, "action": "Ultimate", "target": "All"},
+                    {"turn": 2, "action": "Skill1", "target": "Random"},
+                    {"turn": 3, "action": "Skill2", "target": "Random"},
+                    {"repeat": true}
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "targetPriority": {
+        "phaseDependent": true
+      },
+      "skillUsageRules": {
+        "phasePattern": true,
+        "enrageThreshold": 0.33
+      }
+    }
+  ]
+}

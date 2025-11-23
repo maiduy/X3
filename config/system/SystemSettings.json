@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-23T00:00:00Z",
+  "server": {
+    "environment": "Production",
+    "apiVersion": "v1",
+    "baseUrl": "https://api.game.example.com",
+    "cdnUrl": "https://cdn.game.example.com",
+    "timeout": 30000,
+    "retryAttempts": 3,
+    "retryDelay": 1000
+  },
+  "client": {
+    "minSupportedVersion": "1.0.0",
+    "currentVersion": "1.0.0",
+    "forceUpdateVersion": "0.9.0",
+    "updateCheckInterval": 3600,
+    "maintenanceMode": {
+      "enabled": false,
+      "message": "Server maintenance in progress. Please try again later.",
+      "estimatedDuration": 7200
+    }
+  },
+  "gameplay": {
+    "maxTeamSize": 5,
+    "maxCharacterLevel": 80,
+    "maxItemLevel": 90,
+    "energyConfig": {
+      "maxEnergy": 200,
+      "naturalCap": 100,
+      "regenRate": 1,
+      "regenInterval": 300
+    },
+    "battleConfig": {
+      "maxTurnLimit": 50,
+      "turnTimeout": 30,
+      "autoPlayUnlockLevel": 5,
+      "speedUpUnlockLevel": 10
+    },
+    "inventoryConfig": {
+      "maxCharacters": 200,
+      "maxItems": 500,
+      "maxMaterials": 9999,
+      "autoSellThreshold": null
+    }
+  },
+  "economy": {
+    "goldCap": 999999999,
+    "gemCap": 999999999,
+    "dailyGoldLimit": null,
+    "dailyGemSpendLimit": null,
+    "shopRefreshTimes": {
+      "dailyShop": "00:00:00",
+      "weeklyShop": "Monday_00:00:00"
+    },
+    "gachaConfig": {
+      "singlePullCost": 160,
+      "multiPullCost": 1600,
+      "multiPullCount": 10,
+      "multiPullDiscount": 0,
+      "historyRetention": 100
+    }
+  },
+  "social": {
+    "maxFriends": 100,
+    "maxFriendRequests": 50,
+    "friendStaminaGift": 10,
+    "maxDailyFriendGifts": 50,
+    "chatMessageMaxLength": 200,
+    "chatHistoryLimit": 100,
+    "reportCooldown": 300
+  },
+  "pvp": {
+    "dailyFreeMatches": 5,
+    "energyCostPerMatch": 0,
+    "matchmakingTimeout": 60,
+    "seasonDuration": 30,
+    "rankDecayEnabled": true,
+    "rankDecayDays": 7,
+    "rankDecayAmount": 50
+  },
+  "performance": {
+    "targetFrameRate": 60,
+    "graphicsQuality": {
+      "low": {
+        "shadowQuality": 0,
+        "textureQuality": 0,
+        "particleCount": 50
+      },
+      "medium": {
+        "shadowQuality": 1,
+        "textureQuality": 1,
+        "particleCount": 100
+      },
+      "high": {
+        "shadowQuality": 2,
+        "textureQuality": 2,
+        "particleCount": 200
+      }
+    },
+    "assetBundleCompression": true,
+    "assetBundleCaching": true,
+    "maxConcurrentDownloads": 3
+  },
+  "notifications": {
+    "pushNotifications": {
+      "enabled": true,
+      "energyFull": true,
+      "eventStart": true,
+      "guildNotifications": true,
+      "friendRequests": true
+    },
+    "inGameNotifications": {
+      "maintenance": true,
+      "events": true,
+      "updates": true,
+      "achievements": true
+    }
+  },
+  "security": {
+    "antiCheat": {
+      "enabled": true,
+      "clientValidation": true,
+      "serverValidation": true,
+      "checksumValidation": true
+    },
+    "rateLimit": {
+      "enabled": true,
+      "maxRequestsPerMinute": 60,
+      "maxRequestsPerHour": 1000
+    },
+    "sessionTimeout": 86400,
+    "tokenRefreshInterval": 3600
+  },
+  "analytics": {
+    "enabled": true,
+    "trackingLevel": "Detailed",
+    "batchSize": 50,
+    "uploadInterval": 60,
+    "offlineQueueSize": 1000,
+    "anonymousTracking": false
+  },
+  "logging": {
+    "logLevel": "Info",
+    "enableRemoteLogging": true,
+    "maxLocalLogs": 100,
+    "sensitiveDataMasking": true,
+    "crashReporting": {
+      "enabled": true,
+      "autoUpload": true,
+      "includeScreenshots": false
+    }
+  },
+  "localization": {
+    "defaultLanguage": "en",
+    "supportedLanguages": ["en", "vi", "ja", "ko", "zh-CN", "zh-TW"],
+    "fallbackLanguage": "en",
+    "autoDetectLanguage": true,
+    "languagePackVersion": "1.0.0"
+  },
+  "regions": {
+    "default": "Global",
+    "available": [
+      {
+        "id": "Global",
+        "name": "Global",
+        "serverUrl": "https://api-global.game.example.com"
+      },
+      {
+        "id": "Asia",
+        "name": "Asia",
+        "serverUrl": "https://api-asia.game.example.com"
+      },
+      {
+        "id": "EU",
+        "name": "Europe",
+        "serverUrl": "https://api-eu.game.example.com"
+      },
+      {
+        "id": "NA",
+        "name": "North America",
+        "serverUrl": "https://api-na.game.example.com"
+      }
+    ]
+  },
+  "debug": {
+    "enableDebugMenu": false,
+    "enableCheatCodes": false,
+    "showFPS": false,
+    "showMemoryUsage": false,
+    "enableGodMode": false,
+    "skipTutorial": false
+  }
+}
