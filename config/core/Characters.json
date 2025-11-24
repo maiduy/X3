@@ -1,7 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Character Configuration Schema - Defines all playable characters in the game with their stats, assets, and progression data",
   "version": "1.0.0",
   "lastUpdated": "2025-11-23T00:00:00Z",
+  "description": "Complete character roster configuration for the game. Each character includes metadata, base statistics, growth curves, asset references, skill sets, unlock requirements, and ascension materials.",
   "characters": [
     {
       "id": "CHAR_FIRE_DRAGON",
