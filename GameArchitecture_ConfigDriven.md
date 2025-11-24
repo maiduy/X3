@@ -1,5 +1,3 @@
-Dưới đây là toàn bộ nội dung phân tích và thiết kế kiến trúc được tổng hợp lại thành một file Markdown tiêu chuẩn (`.md`). Bạn có thể sao chép nội dung này lưu thành file `GameArchitecture_ConfigDriven.md` để sử dụng cho team dự án.
-
 -----
 
 # Modular Config-Driven Game Architecture
