@@ -92,20 +92,32 @@ Contains display and categorization metadata for the character.
 - **Values**: `"Fire"`, `"Ice"`, `"Light"`, `"Dark"`, `"Nature"`, `"Lightning"`, `"Water"`, `"Earth"`
 - **Usage**: Elemental combat system, weakness/resistance calculations
 
-#### `meta.role` (string)
-- **Type**: Enum
-- **Description**: Character's primary combat role in party composition
-- **Values**:
+#### `meta.roles` (array of strings)
+- **Type**: Array of Enums
+- **Description**: Character's combat roles in party composition, allowing multi-role versatility
+- **Common Roles**:
   - `"DPS"` - Damage Dealer
   - `"Tank"` - Defensive/Protector
   - `"Support"` - Healer/Buffer/Debuffer
-- **Usage**: Team building, AI behavior, recommended party compositions
+  - `"Sub-DPS"` - Secondary Damage Dealer
+  - `"Hybrid"` - Multi-role Versatility
+- **Usage**: Team building, AI behavior, recommended party compositions, flexible role assignments
 
-#### `meta.faction` (string)
-- **Type**: Category
-- **Description**: Character's lore group or organization affiliation
-- **Examples**: `"Dragons"`, `"Wizards"`, `"Paladins"`, `"Rogues"`, `"Druids"`
-- **Usage**: Faction bonuses, story missions, synergy effects
+#### `meta.factions` (array of strings)
+- **Type**: Array of Categories
+- **Description**: Character's lore groups or organization affiliations, allowing multi-faction membership
+- **Common Factions**: `"Dragons"`, `"Wizards"`, `"Paladins"`, `"Rogues"`, `"Druids"`, `"Knights"`, `"Scholars"`, `"Mercenaries"`
+- **Usage**: Faction bonuses, story missions, synergy effects, cross-faction team compositions
+
+#### `meta.gender` (string)
+- **Type**: Enum
+- **Description**: Character's gender identity for character design and lore purposes
+- **Values**:
+  - `"Male"` - Male character
+  - `"Female"` - Female character
+  - `"Other"` - Non-binary or other gender identity
+- **Usage**: Character filtering, voice acting assignments, cosmetic systems, player preferences
+- **Required**: Yes
 
 #### `meta.tags` (array of strings)
 - **Type**: Array of Keywords
@@ -193,44 +205,24 @@ Defines character's starting statistics at level 1.
 
 ---
 
-## Growth Curves Object
+## Growth Curve Reference
 
-### `growthCurves` (object)
-Defines how character statistics scale with leveling.
-
-#### `growthCurves.hp` (object)
-- **Description**: HP growth formula parameters
-
-#### `growthCurves.atk` (object)
-- **Description**: Attack growth formula parameters
-
-#### `growthCurves.def` (object)
-- **Description**: Defense growth formula parameters
-
-#### `growthCurves.spd` (object)
-- **Description**: Speed growth formula parameters
-
-#### Growth Curve Sub-fields:
-
-##### `base` (number)
-- **Type**: Integer
-- **Description**: Starting value at level 1 (should match baseStats)
-- **Usage**: Formula calculation anchor point
-
-##### `perLevel` (number)
-- **Type**: Float
-- **Description**: Stat increase per level
-- **Usage**: Linear growth calculation: `stat = base + (perLevel × (level - 1))`
-- **Note**: `0` means the stat doesn't scale with level
-
-##### `curve` (string)
-- **Type**: Enum
-- **Description**: Growth curve type for stat scaling
-- **Values**:
-  - `"Linear"` - Consistent growth per level
-  - `"Flat"` - No growth (stays at base value)
-  - `"Exponential"` (potential future value) - Accelerating growth
-- **Usage**: Determines stat progression feel and balance
+### `growthCurveId` (string)
+- **Type**: Reference ID
+- **Description**: References a growth curve definition from `GrowthCurves.json`
+- **Format**: `CURVE_[CATEGORY]_[TIER]`
+- **Examples**:
+  - `"CURVE_WARRIOR_S_TIER"` - High-end warrior stat scaling for SSR characters
+  - `"CURVE_MAGE_S_TIER"` - High-end mage stat scaling for SSR characters
+  - `"CURVE_SUPPORT_A_TIER"` - Mid-tier support stat scaling for SR characters
+  - `"CURVE_COMMON_B_TIER"` - Basic stat scaling for R characters
+- **Usage**: Determines how the character's stats (HP, ATK, DEF, SPD) scale from level 1 to max level
+- **Benefits**:
+  - Reusable growth formulas across multiple characters
+  - Centralized balance tuning in `GrowthCurves.json`
+  - Supports both linear and exponential growth patterns with breakpoints
+- **Required**: Yes
+- **Note**: The curve must exist in `GrowthCurves.json` or the game will fail to calculate stats
 
 ---
 
@@ -410,9 +402,13 @@ Character power-up system beyond level cap.
 ## Usage Examples
 
 ### Calculating Stats at Level 50
+Character stats are calculated using the formula defined in the referenced `growthCurveId`:
 ```
-hp_at_50 = baseStats.hp + (growthCurves.hp.perLevel × (50 - 1))
-hp_at_50 = 850 + (42 × 49) = 850 + 2058 = 2908 HP
+1. Look up the growth curve in GrowthCurves.json using growthCurveId
+2. Apply the formula: stat = baseStats.stat × formula_multiplier
+3. Example with CURVE_WARRIOR_S_TIER at level 50:
+   hp_at_50 = baseStats.hp × (1 + (50 - 1) × 0.08)
+   hp_at_50 = 850 × (1 + 3.92) = 850 × 4.92 = 4,182 HP
 ```
 
 ### Determining Combat Effectiveness
@@ -430,6 +426,7 @@ Combine characters with complementary:
 
 ## Related Configuration Files
 
+- **GrowthCurves.json**: Defines stat growth formulas referenced in `growthCurveId`
 - **Skills.json**: Defines all skill effects referenced in `skillSet`
 - **Items.json**: Defines all materials referenced in `ascension.materials`
 - **Localization/**: Contains translated text for `nameKey` and `descriptionKey`

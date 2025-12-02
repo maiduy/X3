@@ -26,17 +26,17 @@ This document provides comprehensive descriptions for all indices (fields) in th
 
 ### `sets` (array)
 - **Type**: Array of Gear Set Objects
-- **Description**: All equipment set bonus configurations
+- **Description**: All equipment set bonus configurations (Định nghĩa tất cả bộ trang bị)
 - **Required**: Yes
 
 ### `buffs` (array)
 - **Type**: Array of Buff Objects
-- **Description**: Positive status effects granted by set bonuses
+- **Description**: Positive status effects granted by set bonuses (Các hiệu ứng có lợi)
 - **Required**: Yes
 
 ### `debuffs` (array)
 - **Type**: Array of Debuff Objects
-- **Description**: Negative status effects applied to enemies by set bonuses
+- **Description**: Negative status effects applied to enemies by set bonuses (Các hiệu ứng bất lợi)
 - **Required**: Yes
 
 ---

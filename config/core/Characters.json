@@ -14,8 +14,9 @@
         "model": "Model_FireDragon_Character",
         "rarity": "SSR",
         "element": "Fire",
-        "role": "DPS",
-        "faction": "Dragons",
+        "roles": ["DPS"],
+        "factions": ["Dragons"],
+        "gender": "Male",
         "tags": ["Melee", "Burst", "AoE"]
       },
       "baseStats": {
@@ -31,12 +32,7 @@
         "evasion": 0.05,
         "effectRes": 0.15
       },
-      "growthCurves": {
-        "hp": {"base": 850, "perLevel": 42, "curve": "Linear"},
-        "atk": {"base": 120, "perLevel": 6.5, "curve": "Linear"},
-        "def": {"base": 65, "perLevel": 3.2, "curve": "Linear"},
-        "spd": {"base": 95, "perLevel": 0, "curve": "Flat"}
-      },
+      "growthCurveId": "CURVE_WARRIOR_S_TIER",
       "assets": {
         "prefab": "Addressables/Characters/FireDragon/Prefab",
         "animations": "Addressables/Characters/FireDragon/Animations",
@@ -72,8 +68,9 @@
         "model": "Model_FrostMage_Character",
         "rarity": "SR",
         "element": "Ice",
-        "role": "Support",
-        "faction": "Wizards",
+        "roles": ["Support"],
+        "factions": ["Wizards"],
+        "gender": "Female",
         "tags": ["Ranged", "Control", "Debuff"]
       },
       "baseStats": {
@@ -89,12 +86,7 @@
         "evasion": 0.08,
         "effectRes": 0.20
       },
-      "growthCurves": {
-        "hp": {"base": 720, "perLevel": 36, "curve": "Linear"},
-        "atk": {"base": 95, "perLevel": 5.2, "curve": "Linear"},
-        "def": {"base": 55, "perLevel": 2.8, "curve": "Linear"},
-        "spd": {"base": 105, "perLevel": 0, "curve": "Flat"}
-      },
+      "growthCurveId": "CURVE_SUPPORT_A_TIER",
       "assets": {
         "prefab": "Addressables/Characters/FrostMage/Prefab",
         "animations": "Addressables/Characters/FrostMage/Animations",
@@ -130,8 +122,9 @@
         "model": "Model_HolyKnight_Character",
         "rarity": "SSR",
         "element": "Light",
-        "role": "Tank",
-        "faction": "Paladins",
+        "roles": ["Tank"],
+        "factions": ["Paladins"],
+        "gender": "Male",
         "tags": ["Melee", "Defense", "Heal"]
       },
       "baseStats": {
@@ -147,12 +140,7 @@
         "evasion": 0.03,
         "effectRes": 0.30
       },
-      "growthCurves": {
-        "hp": {"base": 1200, "perLevel": 58, "curve": "Linear"},
-        "atk": {"base": 75, "perLevel": 3.8, "curve": "Linear"},
-        "def": {"base": 110, "perLevel": 5.5, "curve": "Linear"},
-        "spd": {"base": 80, "perLevel": 0, "curve": "Flat"}
-      },
+      "growthCurveId": "CURVE_WARRIOR_S_TIER",
       "assets": {
         "prefab": "Addressables/Characters/HolyKnight/Prefab",
         "animations": "Addressables/Characters/HolyKnight/Animations",
@@ -188,8 +176,9 @@
         "model": "Model_ShadowAssassin_Character",
         "rarity": "SR",
         "element": "Dark",
-        "role": "DPS",
-        "faction": "Rogues",
+        "roles": ["DPS"],
+        "factions": ["Rogues"],
+        "gender": "Male",
         "tags": ["Melee", "Single-Target", "Stealth"]
       },
       "baseStats": {
@@ -205,12 +194,7 @@
         "evasion": 0.15,
         "effectRes": 0.10
       },
-      "growthCurves": {
-        "hp": {"base": 680, "perLevel": 32, "curve": "Linear"},
-        "atk": {"base": 135, "perLevel": 7.0, "curve": "Linear"},
-        "def": {"base": 50, "perLevel": 2.5, "curve": "Linear"},
-        "spd": {"base": 115, "perLevel": 0, "curve": "Flat"}
-      },
+      "growthCurveId": "CURVE_SUPPORT_A_TIER",
       "assets": {
         "prefab": "Addressables/Characters/ShadowAssassin/Prefab",
         "animations": "Addressables/Characters/ShadowAssassin/Animations",
@@ -246,8 +230,9 @@
         "model": "Model_NatureHealer_Character",
         "rarity": "R",
         "element": "Nature",
-        "role": "Support",
-        "faction": "Druids",
+        "roles": ["Support"],
+        "factions": ["Druids"],
+        "gender": "Female",
         "tags": ["Ranged", "Heal", "Buff"]
       },
       "baseStats": {
@@ -263,12 +248,7 @@
         "evasion": 0.05,
         "effectRes": 0.25
       },
-      "growthCurves": {
-        "hp": {"base": 760, "perLevel": 38, "curve": "Linear"},
-        "atk": {"base": 70, "perLevel": 3.5, "curve": "Linear"},
-        "def": {"base": 60, "perLevel": 3.0, "curve": "Linear"},
-        "spd": {"base": 90, "perLevel": 0, "curve": "Flat"}
-      },
+      "growthCurveId": "CURVE_COMMON_B_TIER",
       "assets": {
         "prefab": "Addressables/Characters/NatureHealer/Prefab",
         "animations": "Addressables/Characters/NatureHealer/Animations",

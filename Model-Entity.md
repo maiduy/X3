@@ -10,7 +10,7 @@ File này định nghĩa danh tính và dữ liệu tĩnh của nhân vật. Lư
 | :--- | :--- | :--- |
 | `id` | String (Unique) | Mã định danh duy nhất (VD: `CHAR_FIRE_KNIGHT`). Dùng làm khóa chính cho DB và Analytics. |
 | `meta.nameKey` | String | Key trỏ đến file Localization để hiển thị tên đa ngôn ngữ. |
-| `meta.role` | Enum | `Tank`, `DPS`, `Support`, `Control`. Dùng để AI chọn vị trí đứng hoặc filter trong UI. |
+| `meta.roles` | Array\<String\> | `Tank`, `DPS`, `Support`, `Control`, `Sub-DPS`, `Hybrid`. Dùng để AI chọn vị trí đứng hoặc filter trong UI. Cho phép tướng có nhiều vai trò. |
 | `meta.tags` | Array\<String\> | Các thẻ phụ: `Human`, `Dragon`, `Flying` (Dùng cho logic kỹ năng, VD: +10% dmg lên Dragon). |
 | `assets.prefab` | String | **Addressable Key** trỏ tới 3D Model/Prefab của tướng. Game chỉ tải khi cần. |
 | `assets.icon` | String | Addressable Key trỏ tới ảnh đại diện (Avatar). |
